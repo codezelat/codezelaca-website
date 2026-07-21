@@ -1,0 +1,108 @@
+{
+  "syncedAt": "2026-07-21T21:09:24.650Z",
+  "source": "https://cca.it.com/",
+  "title": "Codezela Career Accelerator - #1 Tech Career Program In Sri Lanka",
+  "description": "Launch your tech career in months, not years. Join Sri Lanka’s top accelerator with SITC & LBC Group UK. Get DEC recognized certification & hired. Apply now.",
+  "canonical": "https://cca.it.com/",
+  "robots": "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large",
+  "openGraph": {
+    "locale": "en_US",
+    "type": "website",
+    "title": "Codezela Career Accelerator - #1 Tech Career Program In Sri Lanka",
+    "description": "Launch your tech career in months, not years. Join Sri Lanka’s top accelerator with SITC & LBC Group UK. Get DEC recognized certification & hired. Apply now.",
+    "url": "https://cca.it.com/",
+    "siteName": "CodeZela Career Accelerator",
+    "image": "https://cca.it.com/wp-content/uploads/2025/11/CodeZela-Career-Accelerator-WEB-Banner.jpg",
+    "imageWidth": "1640",
+    "imageHeight": "721",
+    "imageType": "image/jpeg"
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "title": "Codezela Career Accelerator - #1 Tech Career Program In Sri Lanka",
+    "description": "Launch your tech career in months, not years. Join Sri Lanka’s top accelerator with SITC & LBC Group UK. Get DEC recognized certification & hired. Apply now.",
+    "site": "@codezelaca",
+    "creator": "@codezelaca",
+    "image": "https://cca.it.com/wp-content/uploads/2025/11/CodeZela-Career-Accelerator-WEB-Banner.jpg"
+  },
+  "liveOrganization": {
+    "@type": "Organization",
+    "@id": "https://cca.it.com/#organization",
+    "name": "CodeZela Career Accelerator",
+    "url": "https://cca.it.com",
+    "sameAs": [
+      "https://www.facebook.com/codezelaca",
+      "https://twitter.com/codezelaca",
+      "https://www.instagram.com/codezelaca",
+      "https://www.linkedin.com/company/codezelaca/",
+      "https://x.com/CodezelaCA",
+      "https://www.tiktok.com/@codezelaca"
+    ],
+    "email": "ca@codezela.com",
+    "address": {
+      "@type": "PostalAddress",
+      "postalCode": "00200",
+      "addressCountry": "LK",
+      "addressRegion": "Western",
+      "streetAddress": "Level 12, Parkland Building, 33, Park Street"
+    },
+    "logo": {
+      "@type": "ImageObject",
+      "@id": "https://cca.it.com/#logo",
+      "url": "https://cca.it.com/wp-content/uploads/2025/11/cca-logo.png",
+      "contentUrl": "https://cca.it.com/wp-content/uploads/2025/11/cca-logo.png",
+      "caption": "CodeZela Career Accelerator",
+      "inLanguage": "en-US",
+      "width": "2000",
+      "height": "2000"
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+94766772923",
+        "contactType": "customer support"
+      }
+    ],
+    "description": "Don't just learn. Build real projects and get hired. The only Sri Lankan career accelerator with UK-standard mentorship and DEC recognition. Start your free trial.",
+    "legalName": "Codezela Career Accelerator",
+    "location": {
+      "@id": "https://cca.it.com/#place"
+    }
+  },
+  "assets": [
+    {
+      "name": "openGraph",
+      "source": "https://cca.it.com/wp-content/uploads/2025/11/CodeZela-Career-Accelerator-WEB-Banner.jpg",
+      "filename": "cca-og-live.jpg",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 141300,
+      "local": "/seo/cca-og-live.jpg"
+    },
+    {
+      "name": "organizationLogo",
+      "source": "https://cca.it.com/wp-content/uploads/2025/11/cca-logo.png",
+      "filename": "cca-logo-live.png",
+      "status": 403,
+      "local": null
+    },
+    {
+      "name": "icon",
+      "source": "https://cca.it.com/wp-content/uploads/2025/11/cca-logo-150x150.png",
+      "filename": "cca-favicon-live.png",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 5547,
+      "local": "/seo/cca-favicon-live.png"
+    },
+    {
+      "name": "appleIcon",
+      "source": "https://cca.it.com/wp-content/uploads/2025/11/cca-logo-300x300.png",
+      "filename": "cca-apple-touch-live.png",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 10862,
+      "local": "/seo/cca-apple-touch-live.png"
+    }
+  ]
+}

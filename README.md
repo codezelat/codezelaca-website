@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CodeZela Career Accelerator
 
-## Getting Started
+The production-ready Next.js homepage for CodeZela Career Accelerator, rebuilt from the current `cca.it.com` visual system with local assets, responsive layouts, and accessible interactions.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 App Router and React 19
+- Tailwind CSS 4
+- Embla Carousel with autoplay
+- Lucide and React Icons
+- Local Poppins and Inter font files through `next/font/local`
+- Playwright browser QA
+
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Quality gates
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npx tsc --noEmit
+npm run build
+npm run qa:home
+npm run sync:seo-assets
+```
 
-## Learn More
+`qa:home` expects the site at `http://localhost:3000`. Set `HOME_QA_URL` to check another local or deployed URL. It validates desktop and mobile geometry, visible image loading, horizontal overflow, the mobile navigation dialog, and carousel pagination. Screenshots and the JSON report are written to `output/playwright/`.
 
-To learn more about Next.js, take a look at the following resources:
+`sync:seo-assets` refreshes the source-controlled Open Graph banner, favicon, Apple icon, and live metadata evidence from `cca.it.com`. The [SEO contract](docs/research/SEO_CONTRACT.md) documents the release boundary for preserving existing indexed URLs while the remaining pages are rebuilt.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `app/` — App Router entry point, metadata, local fonts, and global Tailwind theme
+- `components/home/` — homepage sections and interactive carousels
+- `components/ui/` — shared interface primitives
+- `data/home.ts` — typed homepage content and destinations
+- `public/images/cca/` — local source imagery and recognition marks
+- `docs/research/` — source topology, behavior notes, section specifications, and parity evidence
+- `scripts/` — production browser QA and live SEO-asset synchronization
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The homepage is intentionally section-based so future pages can reuse the brand, navigation, action, carousel, and footer foundations without duplicating the homepage implementation.
