@@ -18,7 +18,7 @@ export function Consultation() {
           </p>
           <div className="absolute inset-x-0 top-[534px] flex w-full flex-col justify-center gap-3 lg:static lg:mt-10 lg:max-w-[480px] lg:flex-row lg:gap-5">
             <ActionLink href={whatsappRegistration} showArrow className="min-w-[163px]">Register Now</ActionLink>
-            <ActionLink href="https://cca.it.com/contact-us/" variant="outline" className="min-w-[230px]">Book a Free Consultation</ActionLink>
+            <ActionLink href="/contact-us/" variant="outline" className="min-w-[230px]">Book a Free Consultation</ActionLink>
           </div>
         </div>
       </div>

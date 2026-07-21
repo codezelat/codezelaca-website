@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
+import { SiteStructuredData } from "@/components/seo/SiteStructuredData";
+
 import "./globals.css";
 
 const poppins = localFont({
@@ -80,7 +82,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en-US" className={`${poppins.variable} ${inter.variable}`}>
-      <body>{children}</body>
+      <body>
+        <SiteStructuredData />
+        {children}
+      </body>
     </html>
   );
 }

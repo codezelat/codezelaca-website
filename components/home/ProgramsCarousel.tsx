@@ -68,7 +68,7 @@ export function ProgramsCarousel() {
           ))}
         </div>
 
-        <ActionLink href="https://cca.it.com/divisions/" variant="deep" className="mt-[18px] min-w-[264px]">Explore All Learning Programs</ActionLink>
+        <ActionLink href="/divisions/" variant="deep" className="mt-[18px] min-w-[264px]">Explore All Learning Programs</ActionLink>
       </div>
     </section>
   );

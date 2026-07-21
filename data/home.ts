@@ -8,9 +8,9 @@ import type {
 } from "@/types/home";
 
 export const navigation: NavigationItem[] = [
-  { label: "About Us", href: "https://cca.it.com/about-us/" },
-  { label: "Divisions", href: "https://cca.it.com/divisions/" },
-  { label: "Contact Us", href: "https://cca.it.com/contact-us/" },
+  { label: "About Us", href: "/about-us/" },
+  { label: "Divisions", href: "/divisions/" },
+  { label: "Contact Us", href: "/contact-us/" },
 ];
 
 export const metrics: Metric[] = [

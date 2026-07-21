@@ -39,7 +39,7 @@ function DifferenceCard({
   );
 }
 
-export function Differences() {
+export function Differences({ heading = "How We're Different" }: { heading?: string }) {
   const leftDifferences = differences.slice(0, LEFT_COLUMN_COUNT);
   const rightDifferences = differences.slice(LEFT_COLUMN_COUNT);
 
@@ -55,7 +55,7 @@ export function Differences() {
           id="differences-heading"
           className="mt-[17px] text-center font-sans text-[32px] font-semibold leading-[38px] text-black md:text-[42px] md:leading-[45px]"
         >
-          How We&apos;re Different
+          {heading}
         </h2>
 
         <p className="mt-[9px] max-w-[350px] text-center font-sans text-[16px] leading-[25px] text-muted-foreground md:mt-[15px] md:max-w-none md:text-[18px] md:leading-[27px]">

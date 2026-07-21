@@ -13,11 +13,12 @@ const divisions = [
 ] as const;
 
 const siteMenu = [
-  ["Divisions", "https://cca.it.com/divisions/"],
-  ["About Us", "https://cca.it.com/about-us/"],
-  ["Contact Us", "https://cca.it.com/contact-us/"],
-  ["Privacy Policy", "https://cca.it.com/privacy-policy/"],
-  ["Terms and Conditions", "https://cca.it.com/terms-and-conditions/"],
+  ["Divisions", "/divisions/"],
+  ["About Us", "/about-us/"],
+  ["Contact Us", "/contact-us/"],
+  ["Privacy Policy", "/privacy-policy/"],
+  ["Terms and Conditions", "/terms-and-conditions/"],
+  ["Refund Policy", "/refund-policy/"],
 ] as const;
 
 const socialLinks = [

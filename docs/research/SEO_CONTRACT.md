@@ -24,4 +24,4 @@ The homepage must preserve the live `cca.it.com` search identity while improving
 
 The current sitemap intentionally contains only the implemented homepage. Do not replace the full live site with this homepage-only build until every indexed legacy URL is either rebuilt at the same URL or safely preserved through an origin/rewrite strategy. Launching a homepage while existing public URLs return 404 would lose search equity even if the homepage SEO is perfect.
 
-Run `npm run sync:seo-assets` to refresh source-controlled live SEO assets, then run `npm run build` and `npm run qa:home` before release.
+Run `bun run sync:seo-assets` to refresh source-controlled live SEO assets, then run `bun run build` and `bun run qa:home` before release.
