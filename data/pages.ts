@@ -10,7 +10,7 @@ export const divisions: Division[] = [
     programmes: ["Full-stack Developer", "Frontend Developer", "Backend Developer", "Mobile App Developer", "Software Engineer"],
     image: "/images/pages/divisions/software-development.webp",
     imageAlt: "Software developer working at a computer",
-    href: "https://cca.it.com/divisions/school-of-software-and-development/",
+    href: "/divisions/#software-and-development",
   },
   {
     id: "ai-and-data-science",
@@ -21,7 +21,7 @@ export const divisions: Division[] = [
     programmes: ["Data Analyst", "AI and ML Engineer", "Data Scientist", "Data Engineer"],
     image: "/images/pages/divisions/ai-data-science.jpg",
     imageAlt: "Developer working with code and data",
-    href: "https://cca.it.com/divisions/school-of-ai-and-data-science/",
+    href: "/divisions/#ai-and-data-science",
   },
   {
     id: "systems-engineering",
@@ -32,7 +32,7 @@ export const divisions: Division[] = [
     programmes: ["DevOps Engineer", "QA Engineer (Manual/Automation)", "Cyber Security Engineer"],
     image: "/images/pages/divisions/systems-engineering.webp",
     imageAlt: "Cyber security engineer working at a computer",
-    href: "https://cca.it.com/divisions/school-of-systems-engineering/",
+    href: "/divisions/#systems-engineering",
   },
   {
     id: "creative-media-and-design",
@@ -43,7 +43,7 @@ export const divisions: Division[] = [
     programmes: ["UI/UX Designer", "Graphic Designer"],
     image: "/images/pages/divisions/creative-media-design.webp",
     imageAlt: "Creative professional working with a laptop",
-    href: "https://cca.it.com/divisions/school-of-creative-media-and-design/",
+    href: "/divisions/#creative-media-and-design",
   },
   {
     id: "marketing-and-business",
@@ -54,7 +54,7 @@ export const divisions: Division[] = [
     programmes: ["Digital Marketing Specialist", "SEO/AEO Specialist", "Project Manager", "Business Analyst"],
     image: "/images/pages/divisions/marketing-business.webp",
     imageAlt: "Business professionals discussing a project",
-    href: "https://cca.it.com/divisions/school-of-marketing-and-business/",
+    href: "/divisions/#marketing-and-business",
   },
 ];
 

@@ -25,6 +25,7 @@ export interface DifferenceItem {
 export interface Program {
   title: string;
   slug: string;
+  divisionId: "software-and-development" | "ai-and-data-science" | "systems-engineering" | "creative-media-and-design" | "marketing-and-business";
   image: string;
   alt: string;
 }

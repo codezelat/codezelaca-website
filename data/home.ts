@@ -57,18 +57,18 @@ export const differences: DifferenceItem[] = [
 ];
 
 export const programs: Program[] = [
-  { title: "Full-Stack Developer", slug: "full-stack-developer", image: "/images/cca/it-female-technician-uses-coding-language-computer-agency-1536x864.jpeg", alt: "Full-stack developer at work" },
-  { title: "AI/ML Engineer", slug: "ai-ml-engineer", image: "/images/cca/person-using-laptop-using-artificial-intelligence-generate-images-1536x865.jpeg", alt: "AI engineer developing a model" },
-  { title: "Back-End Developer", slug: "back-end-developer", image: "/images/cca/male-coder-programming-server-encryption-firewall-software-using-security-network-code-system-data-development-working-with-text-information-script-program-1536x864.jpeg", alt: "Back-end developer programming" },
-  { title: "Business Analyst", slug: "business-analyst", image: "/images/cca/business-research-768x512.jpeg", alt: "Business analyst reviewing research" },
-  { title: "Cyber Security Engineer", slug: "cyber-security-engineer", image: "/images/cca/night-programmer-man-office-typing-overlay-interface-keyboard-software-dark-dashboard-coder-agency-information-technology-ideas-programming-data-web-1024x686.jpg", alt: "Cyber security engineer at work" },
-  { title: "Data Analyst", slug: "data-analyst", image: "/images/cca/portrait-smiling-woman-startup-office-coding-1024x683.jpeg", alt: "Data analyst working in an office" },
-  { title: "Data Engineer", slug: "data-engineer", image: "/images/cca/night-programmer-man-office-typing-overlay-interface-keyboard-software-dark-dashboard-coder-agency-information-technology-ideas-programming-data-web-1024x686.jpg", alt: "Data engineer programming" },
-  { title: "Data Scientist", slug: "data-scientist", image: "/images/cca/man-using-tablet-work-connect-with-others-1536x1025.jpeg", alt: "Data scientist collaborating with a tablet" },
-  { title: "DevOps Engineer", slug: "devops-engineer", image: "/images/cca/specialist-doing-maintenance-server-farm-providing-secure-scalable-failsafe-infrastructure-storing-computing-analyzing-large-amounts-data-generated-by-ai-applications-1536x1024.jpg", alt: "DevOps engineer in a server room" },
-  { title: "Digital Marketing Specialist", slug: "digital-marketing-specialist", image: "/images/cca/premium_photo-1683133933219-f975c11fa2f11-1536x1024.jpg", alt: "Digital marketing specialist collaborating" },
-  { title: "Front-End Developer", slug: "front-end-developer", image: "/images/cca/happy-smiling-man-working-with-laptop2-1536x1024.jpg", alt: "Front-end developer working on a laptop" },
-  { title: "Graphic Designer", slug: "graphic-designer", image: "/images/cca/Frame-1000001114-2-1024x503.png", alt: "Creative design workspace" },
+  { title: "Full-Stack Developer", slug: "full-stack-developer", divisionId: "software-and-development", image: "/images/cca/it-female-technician-uses-coding-language-computer-agency-1536x864.jpeg", alt: "Full-stack developer at work" },
+  { title: "AI/ML Engineer", slug: "ai-ml-engineer", divisionId: "ai-and-data-science", image: "/images/cca/person-using-laptop-using-artificial-intelligence-generate-images-1536x865.jpeg", alt: "AI engineer developing a model" },
+  { title: "Back-End Developer", slug: "back-end-developer", divisionId: "software-and-development", image: "/images/cca/male-coder-programming-server-encryption-firewall-software-using-security-network-code-system-data-development-working-with-text-information-script-program-1536x864.jpeg", alt: "Back-end developer programming" },
+  { title: "Business Analyst", slug: "business-analyst", divisionId: "marketing-and-business", image: "/images/cca/business-research-768x512.jpeg", alt: "Business analyst reviewing research" },
+  { title: "Cyber Security Engineer", slug: "cyber-security-engineer", divisionId: "systems-engineering", image: "/images/cca/night-programmer-man-office-typing-overlay-interface-keyboard-software-dark-dashboard-coder-agency-information-technology-ideas-programming-data-web-1024x686.jpg", alt: "Cyber security engineer at work" },
+  { title: "Data Analyst", slug: "data-analyst", divisionId: "ai-and-data-science", image: "/images/cca/portrait-smiling-woman-startup-office-coding-1024x683.jpeg", alt: "Data analyst working in an office" },
+  { title: "Data Engineer", slug: "data-engineer", divisionId: "ai-and-data-science", image: "/images/cca/night-programmer-man-office-typing-overlay-interface-keyboard-software-dark-dashboard-coder-agency-information-technology-ideas-programming-data-web-1024x686.jpg", alt: "Data engineer programming" },
+  { title: "Data Scientist", slug: "data-scientist", divisionId: "ai-and-data-science", image: "/images/cca/man-using-tablet-work-connect-with-others-1536x1025.jpeg", alt: "Data scientist collaborating with a tablet" },
+  { title: "DevOps Engineer", slug: "devops-engineer", divisionId: "systems-engineering", image: "/images/cca/specialist-doing-maintenance-server-farm-providing-secure-scalable-failsafe-infrastructure-storing-computing-analyzing-large-amounts-data-generated-by-ai-applications-1536x1024.jpg", alt: "DevOps engineer in a server room" },
+  { title: "Digital Marketing Specialist", slug: "digital-marketing-specialist", divisionId: "marketing-and-business", image: "/images/cca/premium_photo-1683133933219-f975c11fa2f11-1536x1024.jpg", alt: "Digital marketing specialist collaborating" },
+  { title: "Front-End Developer", slug: "front-end-developer", divisionId: "software-and-development", image: "/images/cca/happy-smiling-man-working-with-laptop2-1536x1024.jpg", alt: "Front-end developer working on a laptop" },
+  { title: "Graphic Designer", slug: "graphic-designer", divisionId: "creative-media-and-design", image: "/images/cca/Frame-1000001114-2-1024x503.png", alt: "Creative design workspace" },
 ];
 
 export const recognitions: Recognition[] = [

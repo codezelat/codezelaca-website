@@ -127,6 +127,11 @@ async function inspect(page, route) {
         const href = link.getAttribute("href") ?? "";
         return ["/about-us/", "/divisions/", "/contact-us/"].includes(href);
       }),
+      internalLinks: Array.from(document.querySelectorAll("a[href]"))
+        .map((link) => link.getAttribute("href") ?? "")
+        .filter((href) => href.startsWith("/")),
+      externalSelfLinks: Array.from(document.querySelectorAll('a[href^="https://cca.it.com"]'))
+        .map((link) => link.getAttribute("href")),
       copyright2026: text.includes("© 2026"),
       hasRefundFooterLink: Boolean(document.querySelector('footer a[href="/refund-policy/"]')),
     };
@@ -213,10 +218,19 @@ const [sitemapResponse, robotsResponse] = await Promise.all([
   api.request.get(`${baseUrl}/robots.txt`),
 ]);
 const sitemapBody = await sitemapResponse.text();
+const internalPaths = Array.from(new Set(
+  routes.flatMap((route) => report.routes[route.slug].desktop.internalLinks)
+    .map((href) => href.split("#")[0])
+    .filter(Boolean),
+));
+const internalLinkStatuses = await Promise.all(
+  internalPaths.map(async (pathname) => ({ pathname, status: (await api.request.get(`${baseUrl}${pathname}`)).status() })),
+);
 report.endpoints = {
   sitemapStatus: sitemapResponse.status(),
   robotsStatus: robotsResponse.status(),
   sitemapRoutesPresent: routes.map((route) => ({ pathname: route.pathname, present: sitemapBody.includes(`<loc>https://cca.it.com${route.pathname}</loc>`) })),
+  internalLinkStatuses,
 };
 await api.close();
 await browser.close();
@@ -239,6 +253,7 @@ for (const route of routes) {
     if (result.brokenImages.length) failures.push(`${route.slug}/${device}: broken images`);
     if (result.errors.length) failures.push(`${route.slug}/${device}: browser errors`);
     if (!result.localPrimaryNavigation || !result.copyright2026 || !result.hasRefundFooterLink) failures.push(`${route.slug}/${device}: shared shell`);
+    if (result.externalSelfLinks.length) failures.push(`${route.slug}/${device}: absolute self-links`);
     if (!result.statusCopyPresent.every((check) => check.present)) failures.push(`${route.slug}/${device}: required copy`);
   }
 }
@@ -246,6 +261,7 @@ for (const route of routes) {
 if (!report.routes["about-us"].mobile.interaction.menuOpenedAndClosed) failures.push("mobile navigation interaction");
 if (!report.routes["contact-us"].desktop.interaction.openedUrl?.startsWith("https://wa.me/94766772923?text=")) failures.push("contact WhatsApp handoff");
 if (report.endpoints.sitemapStatus !== 200 || report.endpoints.robotsStatus !== 200 || !report.endpoints.sitemapRoutesPresent.every((entry) => entry.present)) failures.push("SEO endpoints");
+if (!report.endpoints.internalLinkStatuses.every((entry) => entry.status === 200)) failures.push("internal link status");
 
 if (failures.length) throw new Error(`Page QA failed:\n- ${failures.join("\n- ")}\nInspect ${outputDirectory}/cca-pages-qa.json.`);
 

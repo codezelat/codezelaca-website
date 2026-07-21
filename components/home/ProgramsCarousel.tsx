@@ -47,7 +47,7 @@ export function ProgramsCarousel() {
                       <span className="rounded-full border border-black/20 px-4 py-2 font-sans text-[14px] font-semibold text-primary-deep">6 Months</span>
                       <span className="rounded-full border border-black/20 px-4 py-2 font-sans text-[14px] font-semibold text-primary-deep">Hybrid &amp; 100% Online</span>
                     </div>
-                    <ActionLink href={`https://cca.it.com/programs/${program.slug}/`} className="mt-auto w-fit px-5">Learn More</ActionLink>
+                    <ActionLink href={`/divisions/#${program.divisionId}`} className="mt-auto w-fit px-5">Learn More</ActionLink>
                   </div>
                 </article>
               </div>

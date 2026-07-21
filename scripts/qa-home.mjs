@@ -111,6 +111,13 @@ async function inspectPage(page) {
         over18Tracks: document.body.textContent?.includes("over 18 specialized tracks") ?? false,
         copyright2026: document.body.textContent?.includes("© 2026") ?? false,
       },
+      links: {
+        internal: Array.from(document.querySelectorAll("a[href]"))
+          .map((link) => link.getAttribute("href") ?? "")
+          .filter((href) => href.startsWith("/")),
+        externalSelf: Array.from(document.querySelectorAll('a[href^="https://cca.it.com"]'))
+          .map((link) => link.getAttribute("href")),
+      },
       programDots: document.querySelectorAll('[aria-label="Choose a program slide"] button').length,
       recognitionDots: document.querySelectorAll('[aria-label="Choose a recognition logo"] button').length,
     };
@@ -165,6 +172,10 @@ const [robotsResponse, sitemapResponse, manifestResponse] = await Promise.all([
   desktopSession.page.request.get(`${baseUrl}/sitemap.xml`),
   desktopSession.page.request.get(`${baseUrl}/manifest.webmanifest`),
 ]);
+const internalPaths = Array.from(new Set(report.desktop.links.internal.map((href) => href.split("#")[0]).filter(Boolean)));
+const internalLinkStatuses = await Promise.all(
+  internalPaths.map(async (pathname) => ({ pathname, status: (await desktopSession.page.request.get(`${baseUrl}${pathname}`)).status() })),
+);
 report.seoEndpoints = {
   robots: {
     status: robotsResponse.status(),
@@ -178,6 +189,7 @@ report.seoEndpoints = {
     status: manifestResponse.status(),
     body: await manifestResponse.text(),
   },
+  internalLinkStatuses,
 };
 await desktopSession.page.close();
 
@@ -253,6 +265,9 @@ const seoChecks = [
     report.desktop.seo.structuredDataTypes.includes(type),
   ),
   Object.values(report.desktop.approvedContent).every(Boolean),
+  report.desktop.links.externalSelf.length === 0,
+  report.mobile.links.externalSelf.length === 0,
+  report.seoEndpoints.internalLinkStatuses.every((entry) => entry.status === 200),
   report.seoEndpoints.robots.status === 200,
   report.seoEndpoints.robots.body.includes("Sitemap: https://cca.it.com/sitemap.xml"),
   report.seoEndpoints.sitemap.status === 200,
