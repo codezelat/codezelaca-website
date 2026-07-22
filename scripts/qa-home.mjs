@@ -273,7 +273,8 @@ report.mobile = {
 await mobileSession.page.close();
 
 const qaOrigin = new URL(baseUrl);
-if (["localhost", "127.0.0.1"].includes(qaOrigin.hostname)) {
+const runsProductionHostConsentCheck = ["localhost", "127.0.0.1"].includes(qaOrigin.hostname);
+if (runsProductionHostConsentCheck) {
   const consentPage = await browser.newPage({ viewport: { width: 390, height: 844 } });
   await consentPage.route("**/*googletagmanager.com/**", (route) => route.abort());
   const consentUrl = `http://cca.it.com:${qaOrigin.port || "80"}/`;
@@ -374,17 +375,17 @@ const seoChecks = [
   report.mobile.programDotChanged,
   report.mobile.recognitionDotAvailable,
   report.mobile.recognitionDotChanged,
-  report.analyticsConsent?.semantics.tagName === "SECTION",
-  report.analyticsConsent?.semantics.explicitRole === null,
-  report.analyticsConsent?.semantics.live === "polite",
-  report.analyticsConsent?.accessibilityTree.role === "region",
-  report.analyticsConsent?.accessibilityTree.name === "Analytics preferences",
-  report.analyticsConsent?.accessibilityTree.ignored === false,
-  report.analyticsConsent?.declined.stored === "denied",
-  report.analyticsConsent?.declined.update === "denied",
-  report.analyticsConsent?.staysDismissed,
-  report.analyticsConsent?.granted.stored === "granted",
-  report.analyticsConsent?.granted.update === "granted",
+  !runsProductionHostConsentCheck || report.analyticsConsent?.semantics.tagName === "SECTION",
+  !runsProductionHostConsentCheck || report.analyticsConsent?.semantics.explicitRole === null,
+  !runsProductionHostConsentCheck || report.analyticsConsent?.semantics.live === "polite",
+  !runsProductionHostConsentCheck || report.analyticsConsent?.accessibilityTree.role === "region",
+  !runsProductionHostConsentCheck || report.analyticsConsent?.accessibilityTree.name === "Analytics preferences",
+  !runsProductionHostConsentCheck || report.analyticsConsent?.accessibilityTree.ignored === false,
+  !runsProductionHostConsentCheck || report.analyticsConsent?.declined.stored === "denied",
+  !runsProductionHostConsentCheck || report.analyticsConsent?.declined.update === "denied",
+  !runsProductionHostConsentCheck || report.analyticsConsent?.staysDismissed,
+  !runsProductionHostConsentCheck || report.analyticsConsent?.granted.stored === "granted",
+  !runsProductionHostConsentCheck || report.analyticsConsent?.granted.update === "granted",
   report.desktop.links.externalSelf.length === 0,
   report.mobile.links.externalSelf.length === 0,
   report.seoEndpoints.internalLinkStatuses.every((entry) => entry.status === 200),

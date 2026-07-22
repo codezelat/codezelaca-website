@@ -56,8 +56,11 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: [{ url: "/seo/cca-favicon-live.png", type: "image/png", sizes: "150x150" }],
-    shortcut: "/seo/cca-favicon-live.png",
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon", sizes: "64x64" },
+      { url: "/seo/cca-favicon-live.png", type: "image/png", sizes: "150x150" },
+    ],
+    shortcut: "/favicon.ico",
     apple: [{ url: "/seo/cca-apple-touch-live.png", type: "image/png", sizes: "300x300" }],
   },
   openGraph: {
