@@ -18,7 +18,7 @@
 - ca@codezela.com; +94 76 677 2923; +94 76 677 8438.
 - Divisions: School of AI and Data Science; School of Software and Development; School of Systems Engineering; School of Creative Media and Design; School of Marketing and Business.
 - Site Menu: Divisions; About Us; Contact Us; Privacy Policy; Terms and Conditions.
-- © 2026 Codezela Technologies. All rights reserved.; Sitemap.
+- © 2025–current-year Codezela Technologies. All rights reserved.; Sitemap.
 
 ## Responsive
 - Mobile footer card uses 20px gutter and approximately 1360px height, all groups stacked and centered.

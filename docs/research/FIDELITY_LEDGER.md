@@ -24,7 +24,7 @@ All 18 programme feature images have now been downloaded from the live WordPress
 
 ## Approved current-content updates
 
-The visual reference still contains older live-site copy. The implementation intentionally uses the user-approved current facts: **August 2026** for the next cohort, **over 18 specialized tracks**, and **© 2026**. The consultation panel above the footer intentionally omits the stray decorative person image requested for removal. These are approved deviations, not fidelity defects.
+The visual reference still contains older live-site copy. The implementation intentionally uses the user-approved current facts: **August 2026** for the next cohort, **over 18 specialized tracks**, and the operating-year range **© 2025–2026**. The consultation panel above the footer intentionally omits the stray decorative person image requested for removal. These are approved deviations, not fidelity defects.
 
 Image presentation was also corrected without changing the measured layout: hero and card imagery preserve source aspect ratios with explicit cover/crop positioning, primary programme and program-card photos use the largest captured WordPress derivatives, and logos/recognition marks bypass unnecessary image recompression.
 

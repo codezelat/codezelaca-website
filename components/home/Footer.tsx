@@ -33,6 +33,9 @@ const socialLinks = [
   ["TikTok", "https://www.tiktok.com/@codezelaca", FaTiktok],
 ] as const;
 
+const currentYear = new Date().getFullYear();
+const copyrightYears = currentYear > 2025 ? `2025–${currentYear}` : "2025";
+
 export function Footer() {
   return (
     <footer className="content-visibility-auto flex min-h-[1480px] items-start bg-white px-5 pt-20 lg:mt-px lg:min-h-[682px] lg:px-0">
@@ -67,7 +70,7 @@ export function Footer() {
         </div>
 
         <div className="flex min-h-[84px] flex-col items-center justify-between gap-6 border-t border-white/20 px-[10px] pb-10 pt-8 font-body text-[14px] sm:flex-row lg:pb-6">
-          <p>© 2026 <a href="https://codezela.com/" className="hover:text-primary-bright">Codezela Technologies</a>. All rights reserved.</p>
+          <p>© {copyrightYears} <a href="https://codezela.com/" className="hover:text-primary-bright">Codezela Technologies</a>. All rights reserved.</p>
           <nav aria-label="Policies and site information">
             <ul className="flex flex-wrap items-center justify-center divide-x divide-white/25 text-white/70 sm:justify-end">
               {policyLinks.map(([label, href]) => (

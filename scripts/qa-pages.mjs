@@ -132,7 +132,7 @@ async function inspect(page, route) {
         .filter((href) => href.startsWith("/")),
       externalSelfLinks: Array.from(document.querySelectorAll('a[href^="https://cca.it.com"]'))
         .map((link) => link.getAttribute("href")),
-      copyright2026: text.includes("© 2026"),
+      copyright2026: text.includes("© 2025–2026"),
       hasRefundFooterLink: Boolean(document.querySelector('footer a[href="/refund-policy"]')),
       policyFooterLinks: Array.from(document.querySelectorAll('footer nav[aria-label="Policies and site information"] a'))
         .map((link) => link.getAttribute("href")),

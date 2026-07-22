@@ -124,7 +124,7 @@ async function inspectPage(page) {
       approvedContent: {
         august2026: document.body.textContent?.includes("August 2026") ?? false,
         over18Tracks: document.body.textContent?.includes("over 18 specialized tracks") ?? false,
-        copyright2026: document.body.textContent?.includes("© 2026") ?? false,
+        copyright2026: document.body.textContent?.includes("© 2025–2026") ?? false,
       },
       links: {
         internal: Array.from(document.querySelectorAll("a[href]"))
