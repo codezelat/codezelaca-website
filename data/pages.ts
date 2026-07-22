@@ -92,7 +92,7 @@ export const privacySections: LegalSection[] = [
   {
     title: "5. Cookies and Website Data",
     paragraphs: [
-      "Our website may use essential cookies and similar technologies to operate correctly, remember preferences, understand website performance and improve the visitor experience. You can manage cookies through your browser settings, although disabling some cookies may affect certain website features.",
+      "Our website uses essential storage and, with your permission, Google Analytics 4 to understand page visits and website performance. Advertising storage, advertising user data and ad personalisation are disabled in our current analytics setup. You can decline analytics through the website prompt or manage cookies through your browser settings.",
     ],
   },
   {

@@ -121,6 +121,12 @@ async function inspectPage(page) {
           }
         }),
       },
+      analytics: {
+        measurementConfigured: document.querySelector("#google-analytics")?.textContent?.includes("G-FEV38YNDVC") ?? false,
+        consentModeConfigured: document.querySelector("#analytics-consent-default")?.textContent?.includes('"consent", "default"') ?? false,
+        productionHostGuarded: document.querySelector("#google-analytics")?.textContent?.includes('window.location.hostname === "cca.it.com"') ?? false,
+        externalTagLoadedLocally: Boolean(document.querySelector('script[src*="googletagmanager.com/gtag/js"]')),
+      },
       approvedContent: {
         august2026: document.body.textContent?.includes("August 2026") ?? false,
         over18Tracks: document.body.textContent?.includes("over 18 specialized tracks") ?? false,
@@ -279,6 +285,10 @@ const seoChecks = [
   ["Place", "EducationalOrganization", "WebSite", "WebPage"].every((type) =>
     report.desktop.seo.structuredDataTypes.includes(type),
   ),
+  report.desktop.analytics.measurementConfigured,
+  report.desktop.analytics.consentModeConfigured,
+  report.desktop.analytics.productionHostGuarded,
+  !report.desktop.analytics.externalTagLoadedLocally,
   Object.values(report.desktop.approvedContent).every(Boolean),
   report.desktop.heroCareerLink.text === "Explore Career Tracks",
   report.desktop.heroCareerLink.whiteSpace === "nowrap",

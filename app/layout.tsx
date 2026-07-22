@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 
+import { AnalyticsConsent } from "@/components/analytics/AnalyticsConsent";
 import { SiteStructuredData } from "@/components/seo/SiteStructuredData";
 
 import "./globals.css";
@@ -85,6 +87,39 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <SiteStructuredData />
         {children}
+        <AnalyticsConsent />
+        <Script id="analytics-consent-default" strategy="beforeInteractive">
+          {`
+            if (window.location.hostname === "cca.it.com" || window.location.hostname === "www.cca.it.com") {
+              window.dataLayer = window.dataLayer || [];
+              window.gtag = window.gtag || function gtag(){window.dataLayer.push(arguments);};
+              var analyticsChoice = null;
+              try { analyticsChoice = window.localStorage.getItem("cca-analytics-consent"); } catch (error) {}
+              var analyticsStorage = analyticsChoice === "granted" ? "granted" : "denied";
+              window.gtag("consent", "default", {
+                ad_storage: "denied",
+                ad_user_data: "denied",
+                ad_personalization: "denied",
+                analytics_storage: analyticsStorage,
+                wait_for_update: analyticsChoice ? 0 : 500
+              });
+              window.gtag("set", "ads_data_redaction", true);
+              window.gtag("set", "allow_google_signals", false);
+            }
+          `}
+        </Script>
+        <Script id="google-analytics" strategy="lazyOnload">
+          {`
+            if (window.location.hostname === "cca.it.com" || window.location.hostname === "www.cca.it.com") {
+              var googleTag = document.createElement("script");
+              googleTag.async = true;
+              googleTag.src = "https://www.googletagmanager.com/gtag/js?id=G-FEV38YNDVC";
+              document.head.appendChild(googleTag);
+              window.gtag("js", new Date());
+              window.gtag("config", "G-FEV38YNDVC", { send_page_view: true });
+            }
+          `}
+        </Script>
       </body>
     </html>
   );
