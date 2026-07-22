@@ -1,0 +1,231 @@
+import type { DivisionCatalogEntry, DivisionId, ProgrammeCatalogEntry } from "@/types/catalog";
+
+const imageExtensions: Record<string, string> = {
+  "ui-ux-designer": "png",
+  "software-engineer": "jpeg",
+  "seo-aeo-specialist": "jpg",
+  "qa-engineer": "jpeg",
+  "project-manager": "jpg",
+  "mobile-app-developer": "jpeg",
+  "graphic-designer": "jpg",
+  "front-end-developer": "jpg",
+  "digital-marketing-specialist": "jpeg",
+  "devops-engineer": "jpg",
+  "data-scientist": "jpeg",
+  "data-engineer": "jpg",
+  "data-analyst": "jpeg",
+  "cyber-security-engineer": "jpeg",
+  "business-analyst": "jpeg",
+  "back-end-developer": "jpeg",
+  "ai-ml-engineer": "jpeg",
+  "full-stack-developer": "jpeg",
+};
+
+function programme(
+  slug: string,
+  title: string,
+  divisionId: DivisionId,
+  roleDescription: string,
+  moduleTitles: string[],
+): ProgrammeCatalogEntry {
+  return {
+    slug,
+    title,
+    divisionId,
+    image: `/images/programs/${slug}.${imageExtensions[slug]}`,
+    imageAlt: `${title} career accelerator programme`,
+    heroDescription: `Join our ${title} Career Accelerator and go from beginner to job-ready. Learn through practical projects, industry mentorship and a structured six-month pathway to a modern career.`,
+    roleDescription,
+    modules: moduleTitles.map((moduleTitle) => ({
+      title: moduleTitle,
+      description: `Build practical capability in ${moduleTitle.toLowerCase()} through guided learning, mentor feedback and portfolio-ready work based on real industry expectations.`,
+    })),
+  };
+}
+
+export const programmes: ProgrammeCatalogEntry[] = [
+  programme(
+    "software-engineer",
+    "Software Engineer",
+    "software-and-development",
+    "A Software Engineer applies engineering principles across the software lifecycle. They design, develop, test and maintain reliable systems, solve complex problems and create software that remains secure, scalable and maintainable as products grow.",
+    ["CS Fundamentals and Problem Solving", "Programming with Java and Python", "Version Control and Collaboration", "Backend Engineering with Node.js", "Databases and Storage", "Frontend Integration Basics", "Testing and Quality Engineering", "System Design and Architecture", "Cloud, Containers and Deployment", "Security, Performance and Observability"],
+  ),
+  programme(
+    "mobile-app-developer",
+    "Mobile App Developer",
+    "software-and-development",
+    "A Mobile App Developer designs, builds and maintains applications for smartphones and tablets. They translate product designs into responsive screens, connect apps to services and data, and deliver reliable mobile experiences across the complete release lifecycle.",
+    ["Kotlin and Android Foundations", "Responsive Mobile Interfaces", "App Lifecycles and Navigation", "Data Persistence with Room", "Networking with Retrofit and Coroutines", "Clean Architecture with MVVM", "Firebase Authentication and Firestore", "Mobile Testing and Quality", "React Native and Flutter Foundations", "Deployment and Industrial Project"],
+  ),
+  programme(
+    "front-end-developer",
+    "Front-End Developer",
+    "software-and-development",
+    "A Front-End Developer is responsible for the interfaces people see and use. They combine HTML, CSS, JavaScript, React and modern web standards to build responsive, accessible and high-performance digital experiences connected to real data.",
+    ["The Modern Web Foundation", "React.js Deep Dive", "Mastering Next.js", "Modern Styling and UI/UX", "Enterprise State Management", "Robust API Integration", "TypeScript for Front-End Development", "Testing and Quality Assurance", "The Industrial Project", "Career Preparation and Portfolio Polish"],
+  ),
+  programme(
+    "back-end-developer",
+    "Back-End Developer",
+    "software-and-development",
+    "A Back-End Developer builds the server, database and application logic that power digital products. They create secure APIs, manage data and authentication, and engineer systems for speed, reliability and growth.",
+    ["Version Control and JavaScript Foundations", "Server-Side Development with Node.js and Express", "Advanced Next.js for Backend APIs", "Data Layer Excellence with SQL and MongoDB", "Authentication and API Security", "State and UI Integration", "DevOps and Containerization", "Scalable Backend Architecture", "Industrial Project Development", "Career Preparation and Portfolio Enhancement"],
+  ),
+  programme(
+    "full-stack-developer",
+    "Full-Stack Developer",
+    "software-and-development",
+    "A Full-Stack Developer works across user interfaces, servers, databases and deployment. They can take a product from idea to production and collaborate confidently across every layer of a modern application.",
+    ["Web and Programming Foundations", "Modern JavaScript and TypeScript", "React Interface Development", "Next.js Full-Stack Applications", "Node.js and API Engineering", "SQL and NoSQL Databases", "Authentication and Application Security", "Testing and Quality Assurance", "Cloud Deployment and DevOps", "Industrial Full-Stack Capstone"],
+  ),
+  programme(
+    "data-scientist",
+    "Data Scientist",
+    "ai-and-data-science",
+    "A Data Scientist turns complex data into evidence, predictions and practical decisions. They combine statistics, programming, experimentation and machine learning to discover patterns and communicate what those patterns mean for a real organisation.",
+    ["Python and Statistical Foundations", "Data Collection and Preparation", "Exploratory Data Analysis", "Applied Statistics and Experimentation", "Machine Learning Foundations", "Feature Engineering", "Model Evaluation and Selection", "Data Visualisation and Storytelling", "Production Data Science", "Industrial Research Capstone"],
+  ),
+  programme(
+    "data-engineer",
+    "Data Engineer",
+    "ai-and-data-science",
+    "A Data Engineer designs the infrastructure that makes reliable analytics possible. They build pipelines, warehouses and lakehouses that move and organise data safely at scale for analysts, scientists and business teams.",
+    ["Data Engineering Foundations", "Python and SQL for Data Engineering", "Data Modelling", "Warehousing on Cloud", "ETL and ELT with Orchestration", "Streaming Data Pipelines", "Data Lakes and Lakehouse", "Data Quality, Lineage and Governance", "DataOps and Infrastructure", "Industrial Capstone and Performance Tuning"],
+  ),
+  programme(
+    "data-analyst",
+    "Data Analyst",
+    "ai-and-data-science",
+    "A Data Analyst prepares, explores and explains data so teams can make better decisions. They use spreadsheets, SQL, visualisation and business reasoning to turn raw information into clear, actionable insight.",
+    ["Analytics and Business Foundations", "Excel for Professional Analysis", "SQL for Data Analysis", "Data Cleaning and Preparation", "Statistics for Decision-Making", "Power BI and Dashboard Design", "Python for Analytics", "Business Metrics and Experiments", "Insight Communication and Storytelling", "Industrial Analytics Project"],
+  ),
+  programme(
+    "ai-ml-engineer",
+    "AI/ML Engineer",
+    "ai-and-data-science",
+    "An AI/ML Engineer designs, trains and deploys intelligent systems that learn from data. They combine programming, mathematics and production engineering to turn useful models into reliable features people can use.",
+    ["Programming and Math Foundations", "Data Processing and Exploration", "Feature Engineering and Pipelines", "Core Machine Learning Algorithms", "Model Evaluation and Experimentation", "Introduction to Deep Learning", "Computer Vision and NLP Basics", "Introduction to Generative AI", "MLOps Foundations", "Industrial Project and Career Launch"],
+  ),
+  programme(
+    "qa-engineer",
+    "QA Engineer",
+    "systems-engineering",
+    "A QA Engineer protects product quality throughout development. They design test strategies, identify risks, automate repeatable checks and work with delivery teams to make software stable, usable and ready for release.",
+    ["Software Quality Foundations", "Test Planning and Test Design", "Manual Web and Mobile Testing", "API Testing with Postman", "SQL for Quality Assurance", "JavaScript for Test Automation", "UI Automation with Playwright", "Performance and Security Testing", "CI/CD Quality Gates", "Industrial QA Automation Project"],
+  ),
+  programme(
+    "devops-engineer",
+    "DevOps Engineer",
+    "systems-engineering",
+    "A DevOps Engineer connects software development and technology operations. They automate delivery, manage scalable infrastructure and build the monitoring and recovery practices that help teams release reliable software quickly.",
+    ["DevOps Culture and Linux Fundamentals", "Source Control with Git and GitHub", "CI/CD with Jenkins and GitLab CI", "Containerization with Docker", "Container Orchestration with Kubernetes", "Infrastructure as Code with Terraform", "Configuration Management with Ansible", "AWS and Azure Essentials", "Monitoring, Logging and Observability", "Real-World Industrial Project"],
+  ),
+  programme(
+    "cyber-security-engineer",
+    "Cyber Security Engineer",
+    "systems-engineering",
+    "A Cyber Security Engineer protects systems, networks and information from threats. They assess risk, harden technology, monitor suspicious activity and help organisations prevent, detect and respond to security incidents.",
+    ["Cyber Security and Networking Foundations", "Linux and Security Scripting", "Identity and Access Management", "Vulnerability Assessment", "Network Defence and Monitoring", "Web Application Security", "Cloud Security Foundations", "Digital Forensics and Incident Response", "Security Governance and Risk", "Industrial Security Operations Project"],
+  ),
+  programme(
+    "ui-ux-designer",
+    "UI/UX Designer",
+    "creative-media-and-design",
+    "A UI/UX Designer researches user needs and turns them into clear digital journeys and polished interfaces. They combine evidence, information architecture, interaction design and visual craft to make products useful and enjoyable.",
+    ["Design Thinking and UX Foundations", "User Research and Personas", "Information Architecture", "Wireframing and User Flows", "Figma Interface Design", "Responsive UI Systems", "Interaction Design and Prototyping", "Usability Testing and Accessibility", "Developer Handoff and Design Systems", "Industrial Product Design Project"],
+  ),
+  programme(
+    "graphic-designer",
+    "Graphic Designer",
+    "creative-media-and-design",
+    "A Graphic Designer communicates ideas through typography, colour, imagery and layout. They translate a brief into distinctive visual work for brands, campaigns, social media, print and digital products.",
+    ["Visual Design Foundations", "Typography and Layout", "Adobe Photoshop and Image Making", "Illustrator and Vector Design", "Brand Identity Systems", "Editorial and Print Design", "Digital and Social Campaigns", "Motion and Multimedia Foundations", "Professional Production and Handoff", "Industrial Brand Project"],
+  ),
+  programme(
+    "seo-aeo-specialist",
+    "SEO/AEO Specialist",
+    "marketing-and-business",
+    "An SEO/AEO Specialist helps people and answer engines discover trustworthy content. They combine technical optimisation, audience research, content strategy and measurement to grow qualified visibility across search and AI-assisted discovery.",
+    ["Search and Answer Engine Foundations", "Keyword and Audience Research", "On-Page SEO", "Technical SEO and Site Health", "Content Strategy and Topical Authority", "Digital PR and Authority Building", "Local and International SEO", "Analytics and Conversion Measurement", "AI Search and Answer Engine Optimisation", "Industrial Organic Growth Project"],
+  ),
+  programme(
+    "project-manager",
+    "Project Manager",
+    "marketing-and-business",
+    "A Project Manager turns an agreed goal into an organised, achievable delivery plan. They coordinate people, scope, time, risk and communication so teams can make good decisions and deliver valuable outcomes.",
+    ["Project Management Foundations", "Scope and Requirements", "Planning, Estimation and Scheduling", "Agile and Scrum Delivery", "Stakeholder Communication", "Budget and Resource Management", "Risk, Quality and Change", "Project Tools and Reporting", "Leadership and Team Facilitation", "Industrial Delivery Project"],
+  ),
+  programme(
+    "digital-marketing-specialist",
+    "Digital Marketing Specialist",
+    "marketing-and-business",
+    "A Digital Marketing Specialist plans and improves campaigns across search, social, content, email and paid media. They connect creative ideas with audience evidence and commercial goals, then measure what works.",
+    ["Digital Marketing Strategy", "Audience and Market Research", "Content and Social Media Marketing", "Search Engine Optimisation", "Paid Search and Social Advertising", "Email and Lifecycle Marketing", "Conversion-Focused Landing Pages", "Analytics, Attribution and Reporting", "Campaign Optimisation and Automation", "Industrial Growth Campaign"],
+  ),
+  programme(
+    "business-analyst",
+    "Business Analyst",
+    "marketing-and-business",
+    "A Business Analyst bridges business needs and technical delivery. They investigate problems, clarify requirements, model processes and help stakeholders agree on solutions that create measurable value.",
+    ["Business Analysis Foundations", "Stakeholder Discovery and Facilitation", "Requirements Engineering", "Process Mapping and Improvement", "Business Data and SQL", "Product Backlogs and User Stories", "Solution Evaluation and Gap Analysis", "Testing and User Acceptance", "Agile Business Analysis", "Industrial Business Change Project"],
+  ),
+];
+
+export const programmeBySlug = new Map(programmes.map((item) => [item.slug, item]));
+
+export const divisionCatalog: DivisionCatalogEntry[] = [
+  {
+    id: "software-and-development",
+    slug: "school-of-software-and-development",
+    shortTitle: "Software and Development",
+    title: "School of Software and Development",
+    description: "The School of Software and Development helps you move from beginner to job-ready through practical training, modern tools and real industry mentorship. Each programme focuses on high-demand skills and a clear pathway into real careers.",
+    image: "/images/pages/divisions/software-development.webp",
+    imageAlt: "Software developer working at a computer",
+    programmeSlugs: ["software-engineer", "mobile-app-developer", "front-end-developer", "back-end-developer", "full-stack-developer"],
+  },
+  {
+    id: "ai-and-data-science",
+    slug: "school-of-ai-and-data-science",
+    shortTitle: "AI and Data Science",
+    title: "School of AI and Data Science",
+    description: "The School of AI and Data Science helps you build the analytical, data and machine-learning skills used by modern organisations. Learn through practical work, current tools and guidance from experienced professionals.",
+    image: "/images/pages/divisions/ai-data-science.jpg",
+    imageAlt: "Professional working with code and data",
+    programmeSlugs: ["data-scientist", "data-engineer", "data-analyst", "ai-ml-engineer"],
+  },
+  {
+    id: "systems-engineering",
+    slug: "school-of-systems-engineering",
+    shortTitle: "Systems Engineering",
+    title: "School of Systems Engineering",
+    description: "The School of Systems Engineering helps you move from beginner to job-ready through practical training, modern tools and real industry mentorship. Each programme focuses on high-demand skills and a clear pathway into real careers.",
+    image: "/images/pages/divisions/systems-engineering.webp",
+    imageAlt: "Systems engineer working at a computer",
+    programmeSlugs: ["qa-engineer", "devops-engineer", "cyber-security-engineer"],
+  },
+  {
+    id: "creative-media-and-design",
+    slug: "school-of-creative-media-and-design",
+    shortTitle: "Creative Media and Design",
+    title: "School of Creative Media and Design",
+    description: "The School of Creative Media and Design combines visual craft, product thinking and real creative briefs. Build a credible portfolio while learning how professional teams research, design and deliver polished work.",
+    image: "/images/pages/divisions/creative-media-design.webp",
+    imageAlt: "Creative professional working with a laptop",
+    programmeSlugs: ["ui-ux-designer", "graphic-designer"],
+  },
+  {
+    id: "marketing-and-business",
+    slug: "school-of-marketing-and-business",
+    shortTitle: "Marketing and Business",
+    title: "School of Marketing and Business",
+    description: "The School of Marketing and Business develops practical skills for growth, operations, analysis and delivery. Learn to connect modern tools and evidence with the decisions organisations make every day.",
+    image: "/images/pages/divisions/marketing-business.webp",
+    imageAlt: "Business professionals discussing a project",
+    programmeSlugs: ["seo-aeo-specialist", "project-manager", "digital-marketing-specialist", "business-analyst"],
+  },
+];
+
+export const divisionBySlug = new Map(divisionCatalog.map((item) => [item.slug, item]));
+export const divisionById = new Map(divisionCatalog.map((item) => [item.id, item]));

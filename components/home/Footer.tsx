@@ -5,11 +5,11 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTiktok, FaXTwitter } from "react
 import { Brand } from "@/components/home/Brand";
 
 const divisions = [
-  ["School of AI and Data Science", "/divisions/#ai-and-data-science"],
-  ["School of Software and Development", "/divisions/#software-and-development"],
-  ["School of Systems Engineering", "/divisions/#systems-engineering"],
-  ["School of Creative Media and Design", "/divisions/#creative-media-and-design"],
-  ["School of Marketing and Business", "/divisions/#marketing-and-business"],
+  ["School of AI and Data Science", "/divisions/school-of-ai-and-data-science/"],
+  ["School of Software and Development", "/divisions/school-of-software-and-development/"],
+  ["School of Systems Engineering", "/divisions/school-of-systems-engineering/"],
+  ["School of Creative Media and Design", "/divisions/school-of-creative-media-and-design/"],
+  ["School of Marketing and Business", "/divisions/school-of-marketing-and-business/"],
 ] as const;
 
 const siteMenu = [

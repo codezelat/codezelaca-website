@@ -36,7 +36,7 @@ async function inspectPage(page) {
         height: Math.round(rect.height),
       };
     };
-    const heroCareerLink = document.querySelector('section[aria-labelledby="hero-heading"] a[href="/divisions/"]');
+    const heroCareerLink = document.querySelector('section[aria-labelledby="hero-heading"] a[href="/divisions"], section[aria-labelledby="hero-heading"] a[href="/divisions/"]');
     const mobileMenuButton = document.querySelector('button[aria-label="Open navigation menu"]');
     const mobileMenuIcon = mobileMenuButton?.querySelector("svg");
     const mobileMenuButtonRect = mobileMenuButton?.getBoundingClientRect();

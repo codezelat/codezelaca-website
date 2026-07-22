@@ -4,10 +4,15 @@ interface PageMetadataOptions {
   title: string;
   description: string;
   pathname: string;
+  image?: string;
+  imageAlt?: string;
 }
 
-export function createPageMetadata({ title, description, pathname }: PageMetadataOptions): Metadata {
+export function createPageMetadata({ title, description, pathname, image = "/seo/cca-og-live.jpg", imageAlt = "CodeZela Career Accelerator technology career programmes" }: PageMetadataOptions): Metadata {
   const canonical = `https://cca.it.com${pathname}`;
+  const openGraphImage = image === "/seo/cca-og-live.jpg"
+    ? { url: image, width: 1640, height: 721, alt: imageAlt }
+    : { url: image, alt: imageAlt };
 
   return {
     title: { absolute: title },
@@ -20,14 +25,7 @@ export function createPageMetadata({ title, description, pathname }: PageMetadat
       locale: "en_US",
       title,
       description,
-      images: [
-        {
-          url: "/seo/cca-og-live.jpg",
-          width: 1640,
-          height: 721,
-          alt: "CodeZela Career Accelerator technology career programmes",
-        },
-      ],
+      images: [openGraphImage],
     },
     twitter: {
       card: "summary_large_image",
@@ -35,8 +33,7 @@ export function createPageMetadata({ title, description, pathname }: PageMetadat
       description,
       site: "@codezelaca",
       creator: "@codezelaca",
-      images: ["/seo/cca-og-live.jpg"],
+      images: [image],
     },
   };
 }
-

@@ -20,7 +20,7 @@ Reference: `https://cca.it.com/`, captured at 1440×1000 and 390×844 on 2026-07
 | Visible imagery | no broken visible images expected | 0 broken visible images at both viewports | Verified |
 | Overflow/runtime | no horizontal page overflow | no overflow; 0 console/page/request errors | Verified |
 
-The four WordPress derivatives that rejected direct download were mapped to the nearest already-captured source photos for their off-screen program cards. The initially visible program imagery and every structural brand asset use exact local source files.
+All 18 programme feature images have now been downloaded from the live WordPress media library at their original published resolutions and stored locally. Homepage cards, division grids and programme-detail heroes no longer need substitute photos or live image requests.
 
 ## Approved current-content updates
 

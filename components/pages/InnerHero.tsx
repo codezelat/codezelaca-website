@@ -46,11 +46,11 @@ export function InnerHero({
       </div>
 
       <div className="mx-auto flex w-full max-w-[1180px] flex-col items-center text-center">
-        <h1 className="inline-flex min-h-10 items-center rounded-full border border-black/20 bg-white px-5 font-sans text-[17px] font-bold leading-5 text-primary-deep shadow-[0_2px_8px_rgba(0,0,0,.06)]">
+        <p className="inline-flex min-h-10 items-center rounded-full border border-black/20 bg-white px-5 font-sans text-[17px] font-bold leading-5 text-primary-deep shadow-[0_2px_8px_rgba(0,0,0,.06)]">
           {eyebrow}
-        </h1>
+        </p>
 
-        <h2
+        <h1
           id="inner-page-title"
           className={cn(
             "font-sans font-semibold tracking-[-0.035em]",
@@ -60,7 +60,7 @@ export function InnerHero({
           )}
         >
           {title}
-        </h2>
+        </h1>
 
         {description ? (
           <p className="mt-8 max-w-[980px] font-body text-[16px] leading-7 text-muted-foreground sm:text-[17px] lg:text-[19px] lg:leading-8">

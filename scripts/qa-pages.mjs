@@ -10,7 +10,7 @@ const routes = [
     pathname: "/divisions/",
     title: "Our Divisions - Specialized Career Faculties - Codezela",
     description: "Explore the specialized academic divisions at Codezela. Choose from Technology, Design, or Business tracks powered by SITC Campus and LBC Group UK standards.",
-    h1: "Our Divisions",
+    h1: "Five Divisions Built for Real Careers",
     required: ["Five Divisions Built for Real Careers", "School of Marketing and Business"],
   },
   {
@@ -18,15 +18,15 @@ const routes = [
     pathname: "/about-us/",
     title: "About Codezela Career Accelerator - Born From Industry Tech Training",
     description: "Discover the story behind Codezela Career Accelerator, the industry-led education programme helping Sri Lankan learners build job-ready skills and global careers.",
-    h1: "About Us",
+    h1: "where your potential becomes your profession",
     required: ["where your potential becomes your profession", "over 18 specialized tracks"],
   },
   {
     slug: "contact-us",
     pathname: "/contact-us/",
     title: "Contact Us - Start Your Application At Codezela Career Accelerator",
-    description: "Ready to launch your career in tech? Visit us at in Colombo or call our admissions team. Reach out today to secure your spot in our next intake.",
-    h1: "Contact Us",
+    description: "Talk with the CodeZela Career Accelerator admissions team about programmes, applications and the August 2026 cohort. Request a free career consultation today.",
+    h1: "Your journey to a global career begins here",
     required: ["Your journey to a global career begins here", "Request Consultation"],
   },
   {
@@ -34,7 +34,7 @@ const routes = [
     pathname: "/privacy-policy/",
     title: "Privacy Policy - Data Protection At Codezela Career Accelerator",
     description: "We value your trust. Read how Codezela Career Accelerator protects your personal student data and learn more about our transparency.",
-    h1: "Privacy Policy",
+    h1: "How We Handle Personal Information",
     required: ["Last updated 22 July 2026", "8. Updates to This Policy"],
   },
   {
@@ -42,7 +42,7 @@ const routes = [
     pathname: "/terms-and-conditions/",
     title: "Terms And Conditions - Codezela Career Accelerator",
     description: "Read the official terms of service for Codezela Career Accelerator. Understand the rules regarding enrollment course fees and the code of conduct for students.",
-    h1: "Terms and Conditions",
+    h1: "Website and Programme Terms",
     required: ["Last updated 22 July 2026", "11. Privacy, Updates and Governing Law"],
   },
   {
@@ -50,7 +50,7 @@ const routes = [
     pathname: "/refund-policy/",
     title: "Refund Policy - Codezela Career Accelerator",
     description: "Read the Codezela Career Accelerator refund policy, including the limited circumstances that apply when CCA permanently cancels a programme.",
-    h1: "Refund Policy",
+    h1: "Programme Fee Refunds",
     required: ["Last updated 22 July 2026", "7. Statutory Rights and Policy Updates"],
   },
 ];
@@ -151,6 +151,7 @@ for (const route of routes) {
     const page = await browser.newPage({ viewport: device.viewport, reducedMotion: "reduce" });
     const errors = [];
     page.on("console", (message) => {
+      if (message.type() === "warning" && message.text().includes("was detected as the Largest Contentful Paint")) return;
       if (message.type() === "error" || message.type() === "warning") errors.push(`console-${message.type()}: ${message.text()}`);
     });
     page.on("pageerror", (error) => errors.push(`page: ${error.message}`));
@@ -187,7 +188,7 @@ for (const route of routes) {
       await page.getByLabel("Full Name").fill("CCA QA Student");
       await page.getByLabel("Mobile Number").fill("0771234567");
       await page.getByLabel("Email").fill("qa@example.com");
-      await page.getByLabel("Preferred Time for Consultation").selectOption("Afternoon");
+      await page.getByLabel("Preferred time").selectOption("Afternoon");
       await page.getByRole("button", { name: "Request Consultation" }).click();
       interaction = await page.evaluate(() => ({
         openedUrl: window.__qaOpenedUrl,

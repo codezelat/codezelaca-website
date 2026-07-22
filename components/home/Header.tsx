@@ -76,12 +76,12 @@ export function Header() {
               <ul className="flex items-center">
                 {navigation.map((item) => (
                   <li key={item.href}>
-                    <a
+                    <Link
                       href={item.href}
                       className="flex h-[46px] items-center px-[20px] font-sans text-[16px] leading-[20px] font-semibold text-primary-deep transition-colors duration-300 hover:text-primary-bright"
                     >
                       {item.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -144,13 +144,13 @@ export function Header() {
               <ul className="space-y-1">
                 {navigation.map((item) => (
                   <li key={item.href}>
-                    <a
+                    <Link
                       href={item.href}
                       onClick={closeMenu}
                       className="block rounded-[14px] px-[16px] py-[14px] font-sans text-[17px] font-semibold text-muted-foreground transition-colors hover:bg-hero hover:text-primary-deep"
                     >
                       {item.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
