@@ -33,7 +33,7 @@ export function createPageMetadata({ title, description, pathname, image = "/seo
       description,
       site: "@codezelaca",
       creator: "@codezelaca",
-      images: [image],
+      images: [{ url: image, alt: imageAlt }],
     },
   };
 }

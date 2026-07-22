@@ -13,7 +13,7 @@ export function ProgrammeCard({ programme }: { programme: ProgrammeCatalogEntry 
           alt={programme.imageAlt}
           fill
           quality={90}
-          sizes="(max-width: 767px) calc(100vw - 60px), (max-width: 1199px) 45vw, 360px"
+          sizes="520px"
           className="object-cover object-center transition duration-500 group-hover:scale-[1.035]"
         />
       </Link>

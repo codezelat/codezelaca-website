@@ -77,7 +77,7 @@ export const metadata: Metadata = {
       "Launch your tech career in months, not years. Join Sri Lanka’s top accelerator with SITC & LBC Group UK. Get DEC recognized certification & hired. Apply now.",
     site: "@codezelaca",
     creator: "@codezelaca",
-    images: ["/seo/cca-og-live.jpg"],
+    images: [{ url: "/seo/cca-og-live.jpg", alt: "CodeZela Career Accelerator technology career programs" }],
   },
 };
 

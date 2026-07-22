@@ -45,7 +45,7 @@ export function DivisionDetailPage({ division }: { division: DivisionCatalogEntr
             </ul>
           </div>
           <div className="relative min-h-[420px] overflow-hidden rounded-[28px_120px_28px_28px] shadow-[0_24px_70px_rgba(113,11,192,.16)] sm:min-h-[540px] lg:min-h-[610px]">
-            <Image src={division.image} alt={division.imageAlt} fill priority quality={90} sizes="(min-width: 1024px) 590px, calc(100vw - 40px)" className="object-cover" />
+            <Image src={division.image} alt={division.imageAlt} fill priority quality={90} sizes="(min-width: 1024px) 920px, calc(150vw - 60px)" className="object-cover" />
           </div>
         </div>
       </section>

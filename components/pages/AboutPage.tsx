@@ -31,7 +31,7 @@ function EditorialSection({ title, paragraphs, image, imageAlt, reverse = false 
           </div>
         </div>
         <div className={`relative aspect-[4/3] overflow-hidden rounded-[24px_120px_24px_24px] lg:h-[570px] lg:aspect-auto ${reverse ? "lg:order-1 lg:rounded-[120px_24px_24px_24px]" : ""}`}>
-          <Image src={image} alt={imageAlt} fill quality={90} sizes="(min-width: 1024px) 600px, calc(100vw - 40px)" className="object-cover" />
+          <Image src={image} alt={imageAlt} fill quality={90} sizes="(min-width: 1024px) 900px, calc(150vw - 60px)" className="object-cover" />
         </div>
       </div>
     </section>
@@ -93,7 +93,7 @@ export function AboutPage() {
             </div>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-[120px_24px_24px_24px] lg:h-[600px] lg:aspect-auto">
-            <Image src="/images/cca/happy-smiling-man-working-with-laptop2-1536x1024.jpg" alt="Learner confidently building a technology career" fill quality={90} sizes="(min-width: 1024px) 550px, calc(100vw - 40px)" className="object-cover" />
+            <Image src="/images/cca/happy-smiling-man-working-with-laptop2-1536x1024.jpg" alt="Learner confidently building a technology career" fill quality={90} sizes="(min-width: 1024px) 900px, calc(150vw - 60px)" className="object-cover" />
           </div>
         </div>
       </section>
@@ -104,4 +104,3 @@ export function AboutPage() {
     </PageShell>
   );
 }
-

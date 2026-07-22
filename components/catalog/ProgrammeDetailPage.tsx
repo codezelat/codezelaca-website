@@ -48,7 +48,7 @@ export function ProgrammeDetailPage({ programme }: { programme: ProgrammeCatalog
             </div>
           </div>
           <div className="relative min-h-[440px] overflow-hidden rounded-[28px_120px_28px_28px] bg-white shadow-[0_24px_70px_rgba(113,11,192,.18)] sm:min-h-[570px] lg:min-h-[640px]">
-            <Image src={programme.image} alt={programme.imageAlt} fill priority quality={90} sizes="(min-width: 1024px) 570px, calc(100vw - 40px)" className="object-cover object-center" />
+            <Image src={programme.image} alt={programme.imageAlt} fill priority quality={90} sizes="(min-width: 1024px) 1140px, calc(178vw - 71px)" className="object-cover object-center" />
           </div>
         </div>
       </section>
@@ -56,7 +56,7 @@ export function ProgrammeDetailPage({ programme }: { programme: ProgrammeCatalog
       <section aria-labelledby="role-title" className="bg-white px-5 py-20 lg:py-28">
         <div className="mx-auto grid max-w-[1180px] items-center gap-12 lg:grid-cols-[.92fr_1.08fr] lg:gap-20">
           <div className="relative aspect-[4/3] overflow-hidden rounded-[26px_90px_26px_26px] bg-hero">
-            <Image src={programme.image} alt={`Professional working as a ${programme.title}`} fill loading="eager" quality={90} sizes="(min-width: 1024px) 500px, calc(100vw - 40px)" className="object-cover" />
+            <Image src={programme.image} alt={`Professional working as a ${programme.title}`} fill loading="eager" quality={90} sizes="(min-width: 1024px) 680px, calc(134vw - 54px)" className="object-cover" />
           </div>
           <div>
             <span className="font-sans text-[14px] font-semibold uppercase tracking-[.16em] text-primary-readable">The Career</span>

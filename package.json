@@ -11,6 +11,7 @@
     "qa:home": "bun scripts/qa-home.mjs",
     "qa:pages": "bun scripts/qa-pages.mjs",
     "qa:catalog": "bun scripts/qa-catalog.mjs",
+    "qa:images": "bun scripts/qa-images.mjs",
     "sync:program-catalog": "bun scripts/sync-program-catalog.mjs",
     "sync:program-assets": "bun scripts/sync-program-assets.mjs",
     "sync:page-assets": "bun scripts/sync-page-assets.mjs",

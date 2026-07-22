@@ -73,6 +73,7 @@ export function Differences({ heading = "How We're Different" }: { heading?: str
             <Image
               src="/images/cca/cca-logo-768x768.png"
               alt=""
+              aria-hidden="true"
               width={768}
               height={768}
               unoptimized

@@ -55,7 +55,7 @@ export function DivisionsPage() {
                   alt={division.imageAlt}
                   fill
                   quality={90}
-                  sizes="(min-width: 1024px) 600px, calc(100vw - 40px)"
+                  sizes="(min-width: 1024px) 900px, calc(150vw - 60px)"
                   className="object-cover"
                 />
               </div>
@@ -68,4 +68,3 @@ export function DivisionsPage() {
     </PageShell>
   );
 }
-

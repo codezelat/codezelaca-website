@@ -75,16 +75,20 @@ export function Hero() {
 
           <div className="relative h-[262px] min-w-0 lg:h-[514px] lg:p-[10px]">
             <div className="absolute inset-x-0 bottom-0 h-[322px] lg:inset-[10px] lg:h-auto">
-              <Image
-                src="/images/cca/Hero-BG.webp"
-                alt="Learner celebrating while holding a laptop, surrounded by technology icons"
-                fill
-                preload
-                fetchPriority="high"
-                sizes="(min-width: 1024px) 610px, calc(100vw - 20px)"
-                unoptimized
-                className="object-cover object-bottom"
-              />
+              <picture>
+                <source media="(max-width: 1023px)" srcSet="/images/cca/Hero-BG-mobile.webp" />
+                {/* A pre-generated responsive picture avoids runtime image transformations for the LCP asset. */}
+                <img
+                  src="/images/cca/Hero-BG.webp"
+                  alt="Learner celebrating while holding a laptop, surrounded by technology icons"
+                  width="1294"
+                  height="1265"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover object-bottom"
+                />
+              </picture>
             </div>
           </div>
         </div>
