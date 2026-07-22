@@ -59,7 +59,7 @@ export function ProgrammeDetailPage({ programme }: { programme: ProgrammeCatalog
             <Image src={programme.image} alt={`Professional working as a ${programme.title}`} fill loading="eager" quality={90} sizes="(min-width: 1024px) 500px, calc(100vw - 40px)" className="object-cover" />
           </div>
           <div>
-            <span className="font-sans text-[14px] font-semibold uppercase tracking-[.16em] text-primary-bright">The Career</span>
+            <span className="font-sans text-[14px] font-semibold uppercase tracking-[.16em] text-primary-readable">The Career</span>
             <h2 id="role-title" className="mt-4 font-sans text-[36px] font-semibold leading-[1.12] tracking-[-0.04em] text-black sm:text-[48px]">Who is a {programme.title}?</h2>
             <p className="mt-7 font-body text-[16px] leading-8 text-muted-foreground lg:text-[18px]">{programme.roleDescription}</p>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2">

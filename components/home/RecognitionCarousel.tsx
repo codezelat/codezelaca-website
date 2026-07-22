@@ -60,7 +60,7 @@ export function RecognitionCarousel() {
           </div>
         </div>
 
-        <div className="mt-1 flex min-h-5 items-center justify-center gap-4" aria-label="Choose a recognition logo">
+        <div className="mt-1 flex min-h-6 items-center justify-center" aria-label="Choose a recognition logo">
           {recognitions.map((recognition, index) => (
             <button
               key={recognition.name}
@@ -68,8 +68,10 @@ export function RecognitionCarousel() {
               aria-label={`Show recognition ${index + 1}`}
               aria-current={index === activeRecognition ? "true" : undefined}
               onClick={() => onDotClick(index)}
-              className={cn("size-[7px] rounded-full transition-colors", index === activeRecognition ? "bg-primary-deep" : "bg-black hover:bg-primary-bright")}
-            />
+              className="group inline-flex size-6 items-center justify-center rounded-full"
+            >
+              <span aria-hidden="true" className={cn("size-[7px] rounded-full transition-colors", index === activeRecognition ? "bg-primary-deep" : "bg-black group-hover:bg-primary-bright")} />
+            </button>
           ))}
         </div>
       </div>

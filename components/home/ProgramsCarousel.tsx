@@ -55,7 +55,7 @@ export function ProgramsCarousel() {
           </div>
         </div>
 
-        <div className="mt-[10px] flex min-h-5 items-center justify-center gap-3" aria-label="Choose a program slide">
+        <div className="mt-[10px] flex min-h-6 items-center justify-center" aria-label="Choose a program slide">
           {scrollSnaps.map((_, index) => (
             <button
               key={index}
@@ -63,8 +63,10 @@ export function ProgramsCarousel() {
               aria-label={`Show program ${index + 1}`}
               aria-current={index === selectedIndex ? "true" : undefined}
               onClick={() => onDotClick(index)}
-              className={cn("size-[6px] rounded-full transition-colors", index === selectedIndex ? "bg-black" : "bg-black/20 hover:bg-primary-bright")}
-            />
+              className="group inline-flex size-6 items-center justify-center rounded-full"
+            >
+              <span aria-hidden="true" className={cn("size-[6px] rounded-full transition-colors", index === selectedIndex ? "bg-black" : "bg-black/20 group-hover:bg-primary-bright")} />
+            </button>
           ))}
         </div>
 

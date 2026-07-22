@@ -2,7 +2,8 @@ import { mkdir, writeFile } from "node:fs/promises";
 
 const liveUrl = "https://cca.it.com/";
 const outputDirectory = new URL("../public/seo/", import.meta.url);
-const researchOutput = new URL("../docs/research/LIVE_SEO.json", import.meta.url);
+const reportDirectory = new URL("../output/sync/", import.meta.url);
+const reportOutput = new URL("live-seo.json", reportDirectory);
 const headers = {
   accept: "text/html,application/xhtml+xml,image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
   referer: liveUrl,
@@ -10,6 +11,7 @@ const headers = {
 };
 
 await mkdir(outputDirectory, { recursive: true });
+await mkdir(reportDirectory, { recursive: true });
 
 const htmlResponse = await fetch(liveUrl, { headers });
 if (!htmlResponse.ok) throw new Error(`Could not fetch live homepage: ${htmlResponse.status}`);
@@ -104,5 +106,5 @@ const metadata = {
   assets: downloaded,
 };
 
-await writeFile(researchOutput, `${JSON.stringify(metadata, null, 2)}\n`);
-console.log(JSON.stringify({ assets: downloaded, metadata: researchOutput.pathname }, null, 2));
+await writeFile(reportOutput, `${JSON.stringify(metadata, null, 2)}\n`);
+console.log(JSON.stringify({ assets: downloaded, report: reportOutput.pathname }, null, 2));

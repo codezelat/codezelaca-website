@@ -133,10 +133,10 @@ async function inspect(page, route) {
       externalSelfLinks: Array.from(document.querySelectorAll('a[href^="https://cca.it.com"]'))
         .map((link) => link.getAttribute("href")),
       copyright2026: text.includes("© 2025–2026"),
-      hasRefundFooterLink: Boolean(document.querySelector('footer a[href="/refund-policy"]')),
+      hasRefundFooterLink: Boolean(document.querySelector('footer a[href="/refund-policy/"], footer a[href="/refund-policy"]')),
       policyFooterLinks: Array.from(document.querySelectorAll('footer nav[aria-label="Policies and site information"] a'))
         .map((link) => link.getAttribute("href")),
-      policiesRemovedFromSiteMenu: !document.querySelector('footer ul[aria-label="Site menu"] a[href="/privacy-policy"], footer ul[aria-label="Site menu"] a[href="/refund-policy"]'),
+      policiesRemovedFromSiteMenu: !document.querySelector('footer ul[aria-label="Site menu"] a[href="/privacy-policy/"], footer ul[aria-label="Site menu"] a[href="/privacy-policy"], footer ul[aria-label="Site menu"] a[href="/refund-policy/"], footer ul[aria-label="Site menu"] a[href="/refund-policy"]'),
     };
   }, route);
 }
@@ -261,7 +261,7 @@ for (const route of routes) {
       || !result.copyright2026
       || !result.hasRefundFooterLink
       || !result.policiesRemovedFromSiteMenu
-      || result.policyFooterLinks.join(",") !== "/privacy-policy,/refund-policy,/sitemap.xml"
+      || result.policyFooterLinks.join(",") !== "/privacy-policy/,/refund-policy/,/sitemap.xml"
     ) failures.push(`${route.slug}/${device}: shared shell`);
     if (result.externalSelfLinks.length) failures.push(`${route.slug}/${device}: absolute self-links`);
     if (!result.statusCopyPresent.every((check) => check.present)) failures.push(`${route.slug}/${device}: required copy`);

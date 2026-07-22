@@ -48,7 +48,7 @@ export function ContactPage() {
           </div>
 
           <div className="rounded-[26px] border border-black/10 bg-white p-5 shadow-[0_22px_70px_rgba(35,18,52,.11)] sm:p-8 lg:p-10">
-            <p className="font-sans text-[14px] font-semibold uppercase tracking-[.15em] text-primary-bright">Request a callback</p>
+            <p className="font-sans text-[14px] font-semibold uppercase tracking-[.15em] text-primary-readable">Request a callback</p>
             <h3 className="mt-3 font-sans text-[28px] font-semibold tracking-[-0.03em] text-black sm:text-[34px]">Speak with a programme advisor</h3>
             <p className="mt-3 font-body text-[14px] leading-6 text-muted-foreground">Complete the form and your details will open securely in WhatsApp for you to review and send.</p>
             <ConsultationForm />

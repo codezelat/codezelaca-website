@@ -7,6 +7,7 @@
   --primary: #c026d3;
   --primary-deep: #710bc0;
   --primary-bright: #cb00f8;
+  --primary-readable: #c000eb;
   --hero: #fdf2f8;
   --footer: #101828;
 }
@@ -18,6 +19,7 @@
   --color-primary: var(--primary);
   --color-primary-deep: var(--primary-deep);
   --color-primary-bright: var(--primary-bright);
+  --color-primary-readable: var(--primary-readable);
   --color-hero: var(--hero);
   --color-footer: var(--footer);
   --font-sans: var(--font-poppins);

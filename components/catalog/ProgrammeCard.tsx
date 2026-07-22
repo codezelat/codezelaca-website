@@ -33,6 +33,7 @@ export function ProgrammeCard({ programme }: { programme: ProgrammeCatalogEntry 
         </div>
         <Link
           href={`/programs/${programme.slug}/`}
+          aria-label={`Learn more about the ${programme.title} programme`}
           className="mt-7 inline-flex min-h-12 w-full items-center justify-center rounded-[10px] bg-primary px-5 font-sans text-[14px] font-semibold text-white transition hover:-translate-y-0.5 hover:bg-primary-bright"
         >
           Learn More
