@@ -63,6 +63,23 @@ try {
       const canonical = document.querySelector('link[rel="canonical"]')?.getAttribute("href") || "";
       const expectedCanonical = `https://cca.it.com${pathname}`;
       const jsonLd = [...document.querySelectorAll('script[type="application/ld+json"]')].map((script) => script.textContent || "");
+      const programmeImages = type === "programme"
+        ? [...document.querySelectorAll("main img")].slice(0, 2).map((image) => {
+            const sourceUrl = new URL(image.currentSrc || image.src, window.location.href);
+            const source = sourceUrl.pathname === "/_next/image/"
+              ? sourceUrl.searchParams.get("url") || sourceUrl.pathname
+              : sourceUrl.pathname;
+            const rect = image.getBoundingClientRect();
+            return {
+              source,
+              alt: image.alt,
+              naturalWidth: image.naturalWidth,
+              naturalHeight: image.naturalHeight,
+              renderedWidth: Math.round(rect.width),
+              renderedHeight: Math.round(rect.height),
+            };
+          })
+        : [];
 
       return {
         title: document.title,
@@ -79,6 +96,7 @@ try {
         horizontalOverflow: Math.max(0, document.documentElement.scrollWidth - window.innerWidth),
         programmeLinks: type === "division" ? [...new Set([...document.querySelectorAll('a[href^="/programs/"]')].map((anchor) => anchor.getAttribute("href")))] : [],
         moduleCount: type === "programme" ? document.querySelectorAll("details").length : 0,
+        programmeImages,
       };
     }, route);
 
@@ -143,6 +161,26 @@ try {
     status: document.querySelector('[role="status"]')?.textContent?.trim() || "",
   }));
 
+  const notFoundConsoleStart = consoleProblems.length;
+  const notFoundResponse = await page.goto(`${baseUrl}/this-page-does-not-exist/`, { waitUntil: "domcontentloaded" });
+  const notFound = await page.evaluate(() => ({
+    status: 0,
+    title: document.title,
+    h1: document.querySelector("h1")?.textContent?.trim() || "",
+    robots: document.querySelector('meta[name="robots"]')?.getAttribute("content") || "",
+    canonical: document.querySelector('link[rel="canonical"]')?.getAttribute("href") || "",
+    horizontalOverflow: Math.max(0, document.documentElement.scrollWidth - window.innerWidth),
+    homeLink: document.querySelector('main a[href="/"]')?.getAttribute("href") || "",
+    divisionsLink: document.querySelector('main a[href="/divisions/"]')?.getAttribute("href") || "",
+    contactLink: document.querySelector('main a[href="/contact-us/"]')?.getAttribute("href") || "",
+  }));
+  notFound.status = notFoundResponse?.status() || 0;
+  const notFoundConsoleProblems = consoleProblems
+    .splice(notFoundConsoleStart)
+    .filter((message) => !message.includes("Failed to load resource: the server responded with a status of 404"));
+  consoleProblems.push(...notFoundConsoleProblems);
+  notFound.consoleProblems = notFoundConsoleProblems;
+
   const failures = [];
   for (const result of results) {
     if (result.status !== 200) failures.push(`${result.pathname}: HTTP ${result.status}`);
@@ -155,16 +193,27 @@ try {
     if (result.desktop.horizontalOverflow || result.mobile.horizontalOverflow) failures.push(`${result.pathname}: horizontal overflow`);
     if (result.type === "programme" && result.desktop.moduleCount < 8) failures.push(`${result.pathname}: incomplete course breakdown`);
     if (result.type === "programme" && !result.desktop.accordionOpenedAndClosed) failures.push(`${result.pathname}: curriculum accordion interaction`);
+    if (result.type === "programme" && result.desktop.programmeImages.length !== 2) failures.push(`${result.pathname}: expected hero and career images`);
+    if (result.type === "programme" && new Set(result.desktop.programmeImages.map((image) => image.source)).size !== 2) failures.push(`${result.pathname}: duplicate programme imagery`);
+    if (result.type === "programme" && result.desktop.programmeImages[1]?.source !== `/images/programs/detail/${result.pathname.split("/").at(-2)}.webp`) failures.push(`${result.pathname}: missing role-specific detail image`);
     if (result.type === "division" && result.desktop.programmeLinks.length < 2) failures.push(`${result.pathname}: missing programme links`);
     if (result.mobile.mobileMenuCentered?.x !== 0 || result.mobile.mobileMenuCentered?.y !== 0) failures.push(`${result.pathname}: mobile menu icon not centered`);
   }
   if (!contact.whatsappUrl.startsWith("https://wa.me/94766772923?text=")) failures.push("Contact form did not prepare the WhatsApp request");
   if (!contact.status.includes("ready in WhatsApp")) failures.push("Contact form did not provide confirmation status");
+  const uniqueDetailImages = new Set(results.filter((result) => result.type === "programme").map((result) => result.desktop.programmeImages[1]?.source).filter(Boolean));
+  if (uniqueDetailImages.size !== programmeSlugs.length) failures.push(`Expected ${programmeSlugs.length} unique programme detail images; received ${uniqueDetailImages.size}`);
+  if (notFound.status !== 404) failures.push(`404 page returned HTTP ${notFound.status}`);
+  if (!notFound.title.includes("Page Not Found") || !notFound.h1) failures.push("404 page is missing its title or heading");
+  if (!notFound.robots.toLowerCase().includes("noindex")) failures.push("404 page is missing noindex");
+  if (notFound.canonical) failures.push(`404 page must not expose a canonical URL: ${notFound.canonical}`);
+  if (notFound.horizontalOverflow) failures.push("404 page has horizontal overflow");
+  if (notFound.homeLink !== "/" || notFound.divisionsLink !== "/divisions/" || notFound.contactLink !== "/contact-us/") failures.push("404 recovery links are incomplete");
   if (consoleProblems.length) failures.push(`Browser console problems: ${consoleProblems.join(" | ")}`);
 
-  const report = { baseUrl, routesChecked: routes.length, results, contact, consoleProblems, failures };
+  const report = { baseUrl, routesChecked: routes.length, results, contact, notFound, uniqueDetailImages: [...uniqueDetailImages], consoleProblems, failures };
   await writeFile("/tmp/cca-catalog-qa.json", `${JSON.stringify(report, null, 2)}\n`);
-  console.log(JSON.stringify({ routesChecked: routes.length, contact, consoleProblems, failures }, null, 2));
+  console.log(JSON.stringify({ routesChecked: routes.length, uniqueDetailImages: uniqueDetailImages.size, contact, notFound, consoleProblems, failures }, null, 2));
   if (failures.length) process.exitCode = 1;
 } finally {
   await browser.close();

@@ -6,6 +6,20 @@ const outputDirectory = "output/playwright";
 const expectedTitle = "Codezela Career Accelerator - #1 Tech Career Program In Sri Lanka";
 const expectedDescription =
   "Launch your tech career in months, not years. Join Sri Lanka’s top accelerator with SITC & LBC Group UK. Get DEC recognized certification & hired. Apply now.";
+const expectedProgramImagePaths = [
+  "/images/programs/full-stack-developer.jpeg",
+  "/images/programs/ai-ml-engineer.jpeg",
+  "/images/programs/back-end-developer.jpeg",
+  "/images/programs/business-analyst.jpeg",
+  "/images/programs/cyber-security-engineer.jpeg",
+  "/images/programs/data-analyst.jpeg",
+  "/images/programs/data-engineer.jpg",
+  "/images/programs/data-scientist.jpeg",
+  "/images/programs/devops-engineer.jpg",
+  "/images/programs/digital-marketing-specialist.jpeg",
+  "/images/programs/front-end-developer.jpg",
+  "/images/programs/graphic-designer.jpg",
+];
 const qaOrigin = new URL(baseUrl);
 const isLocalQa = ["localhost", "127.0.0.1"].includes(qaOrigin.hostname);
 
@@ -85,6 +99,16 @@ async function inspectPage(page) {
       },
       programsDetails: {
         firstCard: box("#programs article"),
+        images: Array.from(document.querySelectorAll("#programs article img")).map((image) => {
+          const sourceUrl = new URL(image.currentSrc || image.src, window.location.href);
+          return {
+            source: sourceUrl.pathname === "/_next/image/"
+              ? sourceUrl.searchParams.get("url") || sourceUrl.pathname
+              : sourceUrl.pathname,
+            alt: image.alt,
+            loaded: image.complete && image.naturalWidth > 0,
+          };
+        }),
       },
       copy: {
         h1: document.querySelector("h1")?.textContent?.replace(/\s+/g, " ").trim(),
@@ -207,6 +231,16 @@ const internalPaths = Array.from(new Set(report.desktop.links.internal.map((href
 const internalLinkStatuses = await Promise.all(
   internalPaths.map(async (pathname) => ({ pathname, status: (await desktopSession.page.request.get(`${baseUrl}${pathname}`)).status() })),
 );
+const programImageStatuses = await Promise.all(
+  expectedProgramImagePaths.map(async (pathname) => {
+    const response = await desktopSession.page.request.get(`${baseUrl}${pathname}`);
+    return {
+      pathname,
+      status: response.status(),
+      contentType: response.headers()["content-type"] ?? "",
+    };
+  }),
+);
 report.seoEndpoints = {
   robots: {
     status: robotsResponse.status(),
@@ -221,6 +255,7 @@ report.seoEndpoints = {
     body: await manifestResponse.text(),
   },
   internalLinkStatuses,
+  programImageStatuses,
 };
 await desktopSession.page.close();
 
@@ -344,6 +379,30 @@ if (runsProductionHostConsentCheck) {
   await consentPage.close();
 }
 
+const autoplayPage = await browser.newPage({ viewport: { width: 1440, height: 1000 }, reducedMotion: "no-preference" });
+const autoplayErrors = [];
+autoplayPage.on("console", (message) => {
+  if (message.type() === "error") autoplayErrors.push(`console: ${message.text()}`);
+});
+autoplayPage.on("pageerror", (error) => autoplayErrors.push(`page: ${error.message}`));
+await autoplayPage.goto(baseUrl, { waitUntil: "domcontentloaded" });
+await autoplayPage.waitForTimeout(500);
+const programInitial = await autoplayPage.locator('[aria-label="Choose a program slide"] button[aria-current="true"]').getAttribute("aria-label");
+const recognitionInitial = await autoplayPage.locator('[aria-label="Choose a recognition logo"] button[aria-current="true"]').getAttribute("aria-label");
+await autoplayPage.waitForTimeout(5_300);
+const programAfter = await autoplayPage.locator('[aria-label="Choose a program slide"] button[aria-current="true"]').getAttribute("aria-label");
+const recognitionAfter = await autoplayPage.locator('[aria-label="Choose a recognition logo"] button[aria-current="true"]').getAttribute("aria-label");
+report.carouselAutoplay = {
+  programInitial,
+  programAfter,
+  programAdvanced: programInitial !== programAfter,
+  recognitionInitial,
+  recognitionAfter,
+  recognitionAdvanced: recognitionInitial !== recognitionAfter,
+  errors: autoplayErrors,
+};
+await autoplayPage.close();
+
 await browser.close();
 
 await writeFile(
@@ -392,6 +451,14 @@ const seoChecks = [
   report.mobile.programDotChanged,
   report.mobile.recognitionDotAvailable,
   report.mobile.recognitionDotChanged,
+  report.carouselAutoplay.programAdvanced,
+  report.carouselAutoplay.recognitionAdvanced,
+  report.carouselAutoplay.errors.length === 0,
+  report.desktop.programsDetails.images.length === expectedProgramImagePaths.length,
+  report.desktop.programsDetails.images.every((image) => image.alt),
+  new Set(report.desktop.programsDetails.images.map((image) => image.source)).size === expectedProgramImagePaths.length,
+  expectedProgramImagePaths.every((path) => report.desktop.programsDetails.images.some((image) => image.source === path)),
+  report.seoEndpoints.programImageStatuses.every((image) => image.status === 200 && image.contentType.startsWith("image/")),
   report.desktop.structure.mainSections === 6,
   report.tablet.structure.mainSections === 6,
   report.mobile.structure.mainSections === 6,

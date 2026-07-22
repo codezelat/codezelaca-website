@@ -1,7 +1,9 @@
 "use client";
 
+import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
+import { useEffect, useMemo } from "react";
 
 import { useCarouselDots } from "@/components/carousel/use-carousel-dots";
 import { SectionLabel } from "@/components/home/SectionLabel";
@@ -9,8 +11,13 @@ import { recognitions } from "@/data/home";
 import { cn } from "@/lib/utils";
 
 export function RecognitionCarousel() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: "start", containScroll: "trimSnaps", slidesToScroll: 1 });
+  const autoplay = useMemo(() => Autoplay({ delay: 4_500, stopOnInteraction: false, stopOnMouseEnter: true }), []);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start", slidesToScroll: 1 }, [autoplay]);
   const { selectedIndex, scrollSnaps, onDotClick } = useCarouselDots(emblaApi);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) autoplay.stop();
+  }, [autoplay]);
 
   return (
     <section aria-labelledby="recognition-title" className="mt-[60px] h-[371px] bg-white px-5 py-5 lg:mt-20 lg:h-[321px] lg:px-0">
