@@ -80,8 +80,9 @@ export function Hero() {
                 alt="Learner celebrating while holding a laptop, surrounded by technology icons"
                 fill
                 preload
+                fetchPriority="high"
+                quality={90}
                 sizes="(min-width: 1024px) 610px, calc(100vw - 20px)"
-                unoptimized
                 className="object-cover object-bottom"
               />
             </div>

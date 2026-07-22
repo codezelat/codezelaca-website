@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://cca.it.com/sitemap.xml",
+    sitemap: ["https://cca.it.com/sitemap.xml", "https://cca.it.com/local-sitemap.xml"],
     host: "https://cca.it.com",
   };
 }

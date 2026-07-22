@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+  <Document>
+    <name>Locations for CodeZela Career Accelerator</name>
+    <open>1</open>
+    <Folder>
+      <atom:link href="https://cca.it.com/" />
+      <Placemark>
+        <name>CodeZela Career Accelerator</name>
+        <description>CodeZela Career Accelerator - Sri Lanka's career accelerator for recognised qualifications and job-ready skills.</description>
+        <address>Level 12, Parkland Building, 33, Park Street, Western 00200, LK</address>
+        <phoneNumber>+94766772923</phoneNumber>
+        <atom:link href="https://cca.it.com/" />
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>
