@@ -281,6 +281,11 @@ if (["localhost", "127.0.0.1"].includes(qaOrigin.hostname)) {
 
   const consentRegion = consentPage.locator('section[aria-label="Analytics preferences"]');
   await consentRegion.waitFor({ state: "visible" });
+  const cdpSession = await consentPage.context().newCDPSession(consentPage);
+  const accessibilityTree = await cdpSession.send("Accessibility.getFullAXTree");
+  const accessibilityNode = accessibilityTree.nodes.find(
+    (node) => node.name?.value === "Analytics preferences",
+  );
   const semantics = await consentRegion.evaluate((element) => ({
     tagName: element.tagName,
     explicitRole: element.getAttribute("role"),
@@ -307,7 +312,17 @@ if (["localhost", "127.0.0.1"].includes(qaOrigin.hostname)) {
     )?.[2]?.analytics_storage,
   }));
 
-  report.analyticsConsent = { semantics, declined, staysDismissed, granted };
+  report.analyticsConsent = {
+    semantics,
+    accessibilityTree: {
+      role: accessibilityNode?.role?.value,
+      name: accessibilityNode?.name?.value,
+      ignored: accessibilityNode?.ignored,
+    },
+    declined,
+    staysDismissed,
+    granted,
+  };
   await consentPage.close();
 }
 
@@ -362,6 +377,9 @@ const seoChecks = [
   report.analyticsConsent?.semantics.tagName === "SECTION",
   report.analyticsConsent?.semantics.explicitRole === null,
   report.analyticsConsent?.semantics.live === "polite",
+  report.analyticsConsent?.accessibilityTree.role === "region",
+  report.analyticsConsent?.accessibilityTree.name === "Analytics preferences",
+  report.analyticsConsent?.accessibilityTree.ignored === false,
   report.analyticsConsent?.declined.stored === "denied",
   report.analyticsConsent?.declined.update === "denied",
   report.analyticsConsent?.staysDismissed,
