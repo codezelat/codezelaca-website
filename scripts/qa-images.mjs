@@ -34,7 +34,7 @@ for (const route of routes) {
     }
   });
 
-  const response = await page.goto(`${baseUrl}${route}`, { waitUntil: "networkidle" });
+  const response = await page.goto(`${baseUrl}${route}`, { waitUntil: "domcontentloaded" });
   await page.evaluate(async () => {
     for (const image of document.images) image.loading = "eager";
     const step = Math.max(600, Math.floor(window.innerHeight * 0.9));

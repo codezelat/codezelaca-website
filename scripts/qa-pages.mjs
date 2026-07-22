@@ -169,8 +169,8 @@ for (const route of routes) {
       });
     }
 
-    const response = await page.goto(`${baseUrl}${route.pathname}`, { waitUntil: "networkidle" });
-    await page.addStyleTag({ content: ".content-visibility-auto{content-visibility:visible!important} nextjs-portal{display:none!important}" });
+    const response = await page.goto(`${baseUrl}${route.pathname}`, { waitUntil: "domcontentloaded" });
+    await page.addStyleTag({ content: "nextjs-portal{display:none!important}" });
     await loadAllImages(page);
     await page.waitForTimeout(250);
 

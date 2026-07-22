@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { preload } from "react-dom";
 
 import { MetricIcon } from "@/components/icons";
 import { ActionLink } from "@/components/ui/ActionLink";
@@ -12,13 +13,26 @@ const metricTone: Record<Metric["tone"], string> = {
 };
 
 export function Hero() {
+  preload("/images/cca/Hero-BG-mobile.avif", {
+    as: "image",
+    type: "image/avif",
+    media: "(max-width: 1023px)",
+    fetchPriority: "high",
+  });
+  preload("/images/cca/Hero-BG.avif", {
+    as: "image",
+    type: "image/avif",
+    media: "(min-width: 1024px)",
+    fetchPriority: "high",
+  });
+
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative -mt-[40px] h-[1383px] overflow-hidden bg-hero lg:-mt-[80px] lg:h-[1000px]"
+      className="relative -mt-[40px] h-[1383px] overflow-hidden bg-hero sm:h-[1640px] lg:-mt-[80px] lg:h-[1000px]"
     >
       <div className="absolute inset-x-[10px] top-[210px] mx-auto max-w-[1280px]">
-        <div className="grid h-[733px] grid-cols-1 gap-[20px] lg:h-[514px] lg:grid-cols-2">
+        <div className="grid h-[733px] grid-cols-1 gap-[20px] sm:h-[990px] lg:h-[514px] lg:grid-cols-2">
           <div className="relative h-[451px] min-w-0 p-[10px] lg:h-[514px]">
             <div className="absolute top-[31px] left-[10px] hidden h-[45px] w-[470px] items-center rounded-[40px] border border-black/25 bg-white px-[18px] text-[14px] leading-[20px] text-[#4915ff] shadow-[0_2px_8px_rgba(0,0,0,0.10)] lg:flex">
               <span aria-hidden="true" className="mr-[11px] inline-flex h-[14px] w-[21px] shrink-0 items-center rounded-full bg-[#7918d4] p-[3px]">
@@ -73,8 +87,8 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="relative h-[262px] min-w-0 lg:h-[514px] lg:p-[10px]">
-            <div className="absolute inset-x-0 bottom-0 h-[322px] lg:inset-[10px] lg:h-auto">
+          <div className="relative h-[262px] min-w-0 sm:h-[520px] lg:h-[514px] lg:p-[10px]">
+            <div className="absolute inset-x-0 bottom-0 h-[322px] sm:h-[520px] lg:inset-[10px] lg:h-auto">
               <picture>
                 <source type="image/avif" media="(max-width: 1023px)" srcSet="/images/cca/Hero-BG-mobile.avif" />
                 <source type="image/webp" media="(max-width: 1023px)" srcSet="/images/cca/Hero-BG-mobile.webp" />
@@ -88,7 +102,7 @@ export function Hero() {
                   loading="eager"
                   fetchPriority="high"
                   decoding="async"
-                  className="absolute inset-0 h-full w-full object-cover object-bottom"
+                  className="absolute inset-0 h-full w-full object-cover object-bottom sm:object-contain sm:object-center lg:object-cover lg:object-bottom"
                 />
               </picture>
             </div>

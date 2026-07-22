@@ -6,15 +6,17 @@ const outputDirectory = "output/playwright";
 const expectedTitle = "Codezela Career Accelerator - #1 Tech Career Program In Sri Lanka";
 const expectedDescription =
   "Launch your tech career in months, not years. Join Sri Lanka’s top accelerator with SITC & LBC Group UK. Get DEC recognized certification & hired. Apply now.";
+const qaOrigin = new URL(baseUrl);
+const isLocalQa = ["localhost", "127.0.0.1"].includes(qaOrigin.hostname);
 
 await mkdir(outputDirectory, { recursive: true });
 
 const browser = await chromium.launch({
   channel: "chrome",
   headless: true,
-  args: ["--host-resolver-rules=MAP cca.it.com 127.0.0.1"],
+  args: isLocalQa ? ["--host-resolver-rules=MAP cca.it.com 127.0.0.1"] : [],
 });
-const report = { baseUrl, generatedAt: new Date().toISOString(), desktop: {}, mobile: {} };
+const report = { baseUrl, generatedAt: new Date().toISOString(), desktop: {}, tablet: {}, mobile: {} };
 
 async function waitForImages(page) {
   await page.evaluate(async () => {
@@ -67,9 +69,13 @@ async function inspectPage(page) {
         programme: box("main > section:nth-of-type(2)"),
         differences: box("main > section:nth-of-type(3)"),
         programs: box("#programs"),
-        recognition: box("#recognition-title"),
-        consultation: box("#consultation-title"),
+        recognition: box('section[aria-labelledby="recognition-title"]'),
+        consultation: box('section[aria-labelledby="consultation-title"]'),
         footer: box("footer"),
+      },
+      structure: {
+        mainSections: document.querySelectorAll("main > section").length,
+        recognitionLogos: document.querySelectorAll('section[aria-labelledby="recognition-title"] img').length,
       },
       programmeDetails: {
         copyColumn: box("main > section:nth-of-type(2) > div > div:first-child"),
@@ -162,11 +168,11 @@ async function makePage(viewport) {
       errors.push(`request: ${request.url()} - ${errorText}`);
     }
   });
-  await page.goto(baseUrl, { waitUntil: "networkidle" });
+  await page.goto(baseUrl, { waitUntil: "domcontentloaded" });
   await waitForImages(page);
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.addStyleTag({
-    content: ".content-visibility-auto { content-visibility: visible !important; } nextjs-portal { display: none !important; }",
+    content: "nextjs-portal { display: none !important; }",
   });
   await page.waitForTimeout(250);
   for (const selector of [
@@ -217,6 +223,18 @@ report.seoEndpoints = {
   internalLinkStatuses,
 };
 await desktopSession.page.close();
+
+const tabletSession = await makePage({ width: 768, height: 1024 });
+await tabletSession.page.screenshot({
+  path: `${outputDirectory}/cca-local-tablet.png`,
+  fullPage: true,
+  animations: "disabled",
+});
+report.tablet = {
+  ...(await inspectPage(tabletSession.page)),
+  errors: tabletSession.errors,
+};
+await tabletSession.page.close();
 
 const mobileSession = await makePage({ width: 390, height: 844 });
 await mobileSession.page.screenshot({
@@ -272,8 +290,7 @@ report.mobile = {
 };
 await mobileSession.page.close();
 
-const qaOrigin = new URL(baseUrl);
-const runsProductionHostConsentCheck = ["localhost", "127.0.0.1"].includes(qaOrigin.hostname);
+const runsProductionHostConsentCheck = isLocalQa;
 if (runsProductionHostConsentCheck) {
   const consentPage = await browser.newPage({ viewport: { width: 390, height: 844 } });
   await consentPage.route("**/*googletagmanager.com/**", (route) => route.abort());
@@ -375,6 +392,19 @@ const seoChecks = [
   report.mobile.programDotChanged,
   report.mobile.recognitionDotAvailable,
   report.mobile.recognitionDotChanged,
+  report.desktop.structure.mainSections === 6,
+  report.tablet.structure.mainSections === 6,
+  report.mobile.structure.mainSections === 6,
+  report.desktop.structure.recognitionLogos === 6,
+  report.tablet.structure.recognitionLogos === 6,
+  report.mobile.structure.recognitionLogos === 6,
+  report.desktop.landmarks.footer?.height <= 700,
+  report.tablet.landmarks.footer?.height < 1100,
+  report.tablet.landmarks.consultation?.height < 650,
+  report.mobile.landmarks.footer?.height < 1300,
+  report.mobile.landmarks.consultation?.height < 720,
+  !report.tablet.document.horizontalOverflow,
+  report.tablet.errors.length === 0,
   !runsProductionHostConsentCheck || report.analyticsConsent?.semantics.tagName === "SECTION",
   !runsProductionHostConsentCheck || report.analyticsConsent?.semantics.explicitRole === null,
   !runsProductionHostConsentCheck || report.analyticsConsent?.semantics.live === "polite",

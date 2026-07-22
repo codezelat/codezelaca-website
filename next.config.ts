@@ -33,6 +33,12 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        source: "/((?!_next/static|_next/image|images/|fonts/|seo/|favicon.ico|locations.kml).*)",
+        headers: [
+          { key: "Cloudflare-CDN-Cache-Control", value: "no-store" },
+        ],
+      },
+      {
         source: "/:asset(images|fonts|seo)/:path*",
         headers: [
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },

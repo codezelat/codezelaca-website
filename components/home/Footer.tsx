@@ -38,16 +38,16 @@ const copyrightYears = currentYear > 2025 ? `2025–${currentYear}` : "2025";
 
 export function Footer() {
   return (
-    <footer className="content-visibility-auto flex min-h-[1480px] items-start bg-white px-5 pt-20 lg:mt-px lg:min-h-[682px] lg:px-0">
-      <div className="mx-auto flex min-h-[1400px] w-full max-w-[1280px] flex-col rounded-[20px] bg-footer px-5 py-12 text-white lg:min-h-[582px] lg:px-5 lg:py-[10px]">
-        <div className="grid flex-1 gap-12 px-0 py-6 text-center lg:grid-cols-[1fr_1fr_1fr] lg:gap-10 lg:px-[10px] lg:py-[40px] lg:text-left">
-          <div className="flex flex-col items-center lg:items-start">
+    <footer className="flex items-start bg-white px-5 py-16 sm:py-20 lg:mt-px lg:min-h-[682px] lg:px-0 lg:pt-20 lg:pb-5">
+      <div className="mx-auto flex w-full max-w-[1280px] flex-col rounded-[20px] bg-footer px-5 py-10 text-white sm:px-8 sm:py-12 lg:min-h-[582px] lg:px-5 lg:py-[10px]">
+        <div className="grid flex-1 gap-12 px-0 py-2 text-center md:grid-cols-2 md:py-4 md:text-left lg:grid-cols-[1.15fr_1fr_.85fr] lg:gap-10 lg:px-[10px] lg:py-[40px]">
+          <div className="flex flex-col items-center md:col-span-2 md:items-start lg:col-span-1">
             <Link href="/" aria-label="CodeZela Career Accelerator home"><Brand inverse compact /></Link>
             <p className="mt-8 max-w-[380px] font-body text-[16px] leading-6 text-white">Transform your career in months with expert mentorship, real projects, and a proven curriculum.</p>
             <div className="mt-8 space-y-4 font-body text-[16px]">
-              <a href="mailto:ca@codezela.com" className="flex items-center justify-center gap-3 transition-colors hover:text-primary-bright lg:justify-start"><Mail aria-hidden="true" className="size-5" />ca@codezela.com</a>
-              <a href="https://wa.me/94766772923" className="flex items-center justify-center gap-3 transition-colors hover:text-primary-bright lg:justify-start"><MessageCircle aria-hidden="true" className="size-5" />+94 76 677 2923</a>
-              <a href="https://wa.me/94766778438" className="flex items-center justify-center gap-3 transition-colors hover:text-primary-bright lg:justify-start"><MessageCircle aria-hidden="true" className="size-5" />+94 76 677 8438</a>
+              <a href="mailto:ca@codezela.com" className="flex items-center justify-center gap-3 transition-colors hover:text-primary-bright md:justify-start"><Mail aria-hidden="true" className="size-5" />ca@codezela.com</a>
+              <a href="https://wa.me/94766772923" className="flex items-center justify-center gap-3 transition-colors hover:text-primary-bright md:justify-start"><MessageCircle aria-hidden="true" className="size-5" />+94 76 677 2923</a>
+              <a href="https://wa.me/94766778438" className="flex items-center justify-center gap-3 transition-colors hover:text-primary-bright md:justify-start"><MessageCircle aria-hidden="true" className="size-5" />+94 76 677 8438</a>
             </div>
             <div className="mt-8 flex gap-6">
               {socialLinks.map(([label, href, Icon]) => <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label} className="text-xl transition-colors hover:text-primary-bright"><Icon aria-hidden="true" /></a>)}
@@ -69,8 +69,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex min-h-[84px] flex-col items-center justify-between gap-6 border-t border-white/20 px-[10px] pb-10 pt-8 font-body text-[14px] sm:flex-row lg:pb-6">
-          <p>© {copyrightYears} <a href="https://codezela.com/" className="hover:text-primary-bright">Codezela Technologies</a>. All rights reserved.</p>
+        <div className="flex flex-col items-center justify-between gap-6 border-t border-white/20 px-[10px] pt-8 pb-2 text-center font-body text-[14px] sm:flex-row sm:text-left lg:min-h-[84px] lg:pb-6">
+          <p className="max-w-[430px]">© {copyrightYears} <a href="https://codezela.com/" className="hover:text-primary-bright">Codezela Technologies</a>. All rights reserved.</p>
           <nav aria-label="Policies and site information">
             <ul className="flex flex-wrap items-center justify-center divide-x divide-white/25 text-white/70 sm:justify-end">
               {policyLinks.map(([label, href]) => (

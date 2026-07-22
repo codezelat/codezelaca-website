@@ -4,19 +4,19 @@ import { whatsappRegistration } from "@/data/home";
 
 export function Consultation() {
   return (
-    <section aria-labelledby="consultation-title" className="content-visibility-auto mt-20 h-[727px] bg-white px-5 py-[30px] lg:h-[555px] lg:px-0 lg:py-[10px]">
-      <div className="relative mx-auto flex h-[667px] max-w-[1280px] overflow-hidden rounded-[20px] border border-[rgba(0,0,0,0.18)] bg-white px-5 shadow-[0_0_10px_rgba(0,0,0,0.5)] lg:h-[535px] lg:px-[60px] lg:py-[60px]">
-        <div className="relative z-10 mx-auto h-full w-full max-w-[1160px] text-center lg:flex lg:flex-col lg:items-center lg:justify-start">
-          <div className="absolute inset-x-0 top-[11px] flex h-[191px] items-center justify-center lg:static lg:h-[160px] lg:w-full">
+    <section aria-labelledby="consultation-title" className="mt-20 bg-white px-5 py-8 sm:py-10 lg:px-0 lg:py-[10px]">
+      <div className="mx-auto flex max-w-[1280px] overflow-hidden rounded-[20px] border border-black/20 bg-white px-6 py-12 shadow-[0_14px_44px_rgba(16,24,40,0.14)] sm:px-10 sm:py-14 lg:min-h-[535px] lg:px-[60px] lg:py-12">
+        <div className="mx-auto flex w-full max-w-[1160px] flex-col items-center justify-center text-center">
+          <div className="flex min-h-[112px] w-full items-center justify-center sm:min-h-[132px] lg:min-h-[150px]">
             <Brand />
           </div>
-          <h2 id="consultation-title" className="absolute top-[232px] left-1/2 w-[235px] -translate-x-1/2 rounded-full bg-white font-sans text-[26px] font-bold leading-[31.2px] text-primary-deep lg:static lg:mt-5 lg:w-auto lg:max-w-[900px] lg:translate-x-0 lg:px-4 lg:py-2.5 lg:text-[28px] lg:leading-[28px]">
+          <h2 id="consultation-title" className="mt-7 max-w-[900px] font-sans text-[26px] font-bold leading-[1.2] text-primary-deep sm:text-[28px] lg:mt-5 lg:px-4 lg:py-2.5 lg:leading-[1.15]">
             Want to make sure which path fits you?
           </h2>
-          <p className="absolute inset-x-0 top-[350px] w-full font-sans text-[15px] leading-6 text-muted-foreground lg:static lg:mt-5 lg:max-w-[1160px] lg:text-[18px] lg:leading-[28px]">
+          <p className="mt-6 max-w-[1040px] font-sans text-[15px] leading-6 text-muted-foreground sm:text-[16px] lg:mt-5 lg:text-[18px] lg:leading-7">
             Let us walk you through the curriculum, career outcomes, and the exact skills you’ll build so you can decide with clarity. Whether you’re starting fresh or leveling up, we’ll help you choose the track that matches your goals.
           </p>
-          <div className="absolute inset-x-0 top-[534px] flex w-full flex-col justify-center gap-3 lg:static lg:mt-10 lg:max-w-[480px] lg:flex-row lg:gap-5">
+          <div className="mt-8 flex w-full max-w-[520px] flex-col justify-center gap-3 sm:flex-row sm:gap-5 lg:mt-10">
             <ActionLink href={whatsappRegistration} showArrow className="min-w-[163px]">Register Now</ActionLink>
             <ActionLink href="/contact-us/" variant="outline" className="min-w-[230px]">Book a Free Consultation</ActionLink>
           </div>

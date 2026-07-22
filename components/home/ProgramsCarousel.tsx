@@ -21,7 +21,7 @@ export function ProgramsCarousel() {
   }, [autoplay]);
 
   return (
-    <section id="programs" aria-labelledby="programs-title" className="content-visibility-auto mt-[79px] h-[903px] bg-white px-5 py-[30px] lg:h-[846px] lg:px-0 lg:py-[20px]">
+    <section id="programs" aria-labelledby="programs-title" className="mt-[79px] h-[903px] bg-white px-5 py-[30px] lg:h-[846px] lg:px-0 lg:py-[20px]">
       <div className="mx-auto flex max-w-[1260px] flex-col items-center">
         <SectionLabel>Our Programs</SectionLabel>
         <h2 id="programs-title" className="mt-[30px] max-w-[1180px] text-center font-sans text-[32px] font-semibold leading-[38.4px] tracking-[-0.02em] text-black lg:text-[42px] lg:leading-[45px]">
@@ -47,7 +47,9 @@ export function ProgramsCarousel() {
                       <span className="rounded-full border border-black/20 px-4 py-2 font-sans text-[14px] font-semibold text-primary-deep">6 Months</span>
                       <span className="rounded-full border border-black/20 px-4 py-2 font-sans text-[14px] font-semibold text-primary-deep">Hybrid &amp; 100% Online</span>
                     </div>
-                    <ActionLink href={`/programs/${program.slug}/`} className="mt-auto w-fit px-5">Learn More</ActionLink>
+                    <ActionLink href={`/programs/${program.slug}/`} className="mt-auto w-fit px-5">
+                      Learn More<span className="sr-only"> about {program.title}</span>
+                    </ActionLink>
                   </div>
                 </article>
               </div>

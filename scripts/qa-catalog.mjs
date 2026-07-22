@@ -50,7 +50,6 @@ const results = [];
 try {
   for (const route of routes) {
     const response = await page.goto(`${baseUrl}${route.pathname}`, { waitUntil: "domcontentloaded" });
-    await page.waitForLoadState("networkidle");
     await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
     await page.waitForTimeout(120);
 
