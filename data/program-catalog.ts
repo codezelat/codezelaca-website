@@ -34,6 +34,8 @@ function programme(
     divisionId,
     image: `/images/programs/${slug}.${imageExtensions[slug]}`,
     imageAlt: `${title} career accelerator programme`,
+    detailImage: `/images/programs/detail/${slug}.webp`,
+    detailImageAlt: `${title} working in a professional setting`,
     heroDescription: `Join our ${title} Career Accelerator and go from beginner to job-ready. Learn through practical projects, industry mentorship and a structured six-month pathway to a modern career.`,
     roleDescription,
     modules: moduleTitles.map((moduleTitle) => ({

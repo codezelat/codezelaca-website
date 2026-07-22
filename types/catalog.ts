@@ -16,6 +16,8 @@ export interface ProgrammeCatalogEntry {
   divisionId: DivisionId;
   image: string;
   imageAlt: string;
+  detailImage: string;
+  detailImageAlt: string;
   heroDescription: string;
   roleDescription: string;
   modules: CurriculumModule[];
