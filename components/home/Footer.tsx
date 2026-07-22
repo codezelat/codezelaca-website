@@ -16,9 +16,13 @@ const siteMenu = [
   ["Divisions", "/divisions/"],
   ["About Us", "/about-us/"],
   ["Contact Us", "/contact-us/"],
-  ["Privacy Policy", "/privacy-policy/"],
   ["Terms and Conditions", "/terms-and-conditions/"],
+] as const;
+
+const policyLinks = [
+  ["Privacy Policy", "/privacy-policy/"],
   ["Refund Policy", "/refund-policy/"],
+  ["Sitemap", "/sitemap.xml"],
 ] as const;
 
 const socialLinks = [
@@ -50,21 +54,31 @@ export function Footer() {
           <div>
             <h2 className="font-sans text-[18px] font-bold">Divisions</h2>
             <ul className="mt-6 space-y-5 font-sans text-[14px] leading-6">
-              {divisions.map(([label, href]) => <li key={label}><a href={href} className="transition-colors hover:text-primary-bright">{label}</a></li>)}
+              {divisions.map(([label, href]) => <li key={label}><Link href={href} className="transition-colors hover:text-primary-bright">{label}</Link></li>)}
             </ul>
           </div>
 
           <div>
             <h2 className="font-sans text-[18px] font-bold">Site Menu</h2>
-            <ul className="mt-6 space-y-5 font-sans text-[14px] leading-6">
-              {siteMenu.map(([label, href]) => <li key={label}><a href={href} className="transition-colors hover:text-primary-bright">{label}</a></li>)}
+            <ul aria-label="Site menu" className="mt-6 space-y-5 font-sans text-[14px] leading-6">
+              {siteMenu.map(([label, href]) => <li key={label}><Link href={href} className="transition-colors hover:text-primary-bright">{label}</Link></li>)}
             </ul>
           </div>
         </div>
 
         <div className="flex min-h-[84px] flex-col items-center justify-between gap-6 border-t border-white/20 px-[10px] pb-10 pt-8 font-body text-[14px] sm:flex-row lg:pb-6">
           <p>© 2026 <a href="https://codezela.com/" className="hover:text-primary-bright">Codezela Technologies</a>. All rights reserved.</p>
-          <a href="/sitemap.xml" className="text-white/70 transition-colors hover:text-primary-bright">Sitemap</a>
+          <nav aria-label="Policies and site information">
+            <ul className="flex flex-wrap items-center justify-center divide-x divide-white/25 text-white/70 sm:justify-end">
+              {policyLinks.map(([label, href]) => (
+                <li key={label} className="px-3 first:pl-0 last:pr-0">
+                  <Link href={href} className="transition-colors hover:text-primary-bright hover:underline hover:underline-offset-4">
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </div>
     </footer>

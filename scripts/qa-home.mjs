@@ -36,6 +36,11 @@ async function inspectPage(page) {
         height: Math.round(rect.height),
       };
     };
+    const heroCareerLink = document.querySelector('section[aria-labelledby="hero-heading"] a[href="/divisions/"]');
+    const mobileMenuButton = document.querySelector('button[aria-label="Open navigation menu"]');
+    const mobileMenuIcon = mobileMenuButton?.querySelector("svg");
+    const mobileMenuButtonRect = mobileMenuButton?.getBoundingClientRect();
+    const mobileMenuIconRect = mobileMenuIcon?.getBoundingClientRect();
 
     return {
       viewport: { width: window.innerWidth, height: window.innerHeight },
@@ -77,6 +82,16 @@ async function inspectPage(page) {
           heading.textContent?.replace(/\s+/g, " ").trim(),
         ),
       },
+      heroCareerLink: {
+        text: heroCareerLink?.textContent?.replace(/\s+/g, " ").trim(),
+        whiteSpace: heroCareerLink ? getComputedStyle(heroCareerLink).whiteSpace : null,
+        wraps: heroCareerLink ? heroCareerLink.scrollHeight > heroCareerLink.clientHeight : true,
+        overflows: heroCareerLink ? heroCareerLink.scrollWidth > heroCareerLink.clientWidth : true,
+      },
+      mobileMenuIcon: mobileMenuButtonRect && mobileMenuIconRect ? {
+        centerOffsetX: Math.abs((mobileMenuButtonRect.left + mobileMenuButtonRect.width / 2) - (mobileMenuIconRect.left + mobileMenuIconRect.width / 2)),
+        centerOffsetY: Math.abs((mobileMenuButtonRect.top + mobileMenuButtonRect.height / 2) - (mobileMenuIconRect.top + mobileMenuIconRect.height / 2)),
+      } : null,
       seo: {
         title: document.title,
         description: document.querySelector('meta[name="description"]')?.getAttribute("content"),
@@ -265,6 +280,16 @@ const seoChecks = [
     report.desktop.seo.structuredDataTypes.includes(type),
   ),
   Object.values(report.desktop.approvedContent).every(Boolean),
+  report.desktop.heroCareerLink.text === "Explore Career Tracks",
+  report.desktop.heroCareerLink.whiteSpace === "nowrap",
+  !report.desktop.heroCareerLink.wraps,
+  !report.desktop.heroCareerLink.overflows,
+  report.mobile.heroCareerLink.text === "Explore Career Tracks",
+  report.mobile.heroCareerLink.whiteSpace === "nowrap",
+  !report.mobile.heroCareerLink.wraps,
+  !report.mobile.heroCareerLink.overflows,
+  report.mobile.mobileMenuIcon?.centerOffsetX <= 1,
+  report.mobile.mobileMenuIcon?.centerOffsetY <= 1,
   report.desktop.links.externalSelf.length === 0,
   report.mobile.links.externalSelf.length === 0,
   report.seoEndpoints.internalLinkStatuses.every((entry) => entry.status === 200),

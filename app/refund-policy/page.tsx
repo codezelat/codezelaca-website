@@ -14,8 +14,7 @@ export default function RefundPolicyRoute() {
   return (
     <>
       <PageStructuredData name="Refund Policy" description={description} pathname="/refund-policy/" />
-      <LegalDocument label="Refund Policy" title="when programme fees may be refunded" updatedAt="July 22, 2026" sections={refundSections} />
+      <LegalDocument label="Refund Policy" title="Programme Fee Refunds" updatedAt="22 July 2026" sections={refundSections} />
     </>
   );
 }
-

@@ -14,8 +14,7 @@ export default function PrivacyPolicyRoute() {
   return (
     <>
       <PageStructuredData name="Privacy Policy" description={description} pathname="/privacy-policy/" />
-      <LegalDocument label="Privacy Policy" title="how we collect and protect your personal information" updatedAt="November 24, 2025" sections={privacySections} />
+      <LegalDocument label="Privacy Policy" title="How We Handle Personal Information" updatedAt="22 July 2026" sections={privacySections} />
     </>
   );
 }
-

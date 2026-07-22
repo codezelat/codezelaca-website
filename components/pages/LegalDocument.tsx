@@ -15,31 +15,37 @@ export function LegalDocument({ label, title, updatedAt, sections }: LegalDocume
     <PageShell>
       <InnerHero eyebrow={label} title={title} variant="legal" />
 
-      <article className="relative overflow-hidden bg-white px-5 pb-28 pt-8 lg:pb-40 lg:pt-16">
-        <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-[44%] aspect-square w-[1300px] -translate-x-1/2 rounded-full bg-[repeating-radial-gradient(circle_at_center,transparent_0,transparent_95px,rgba(192,38,211,.04)_96px,rgba(192,38,211,.04)_97px)]" />
-        <div className="relative mx-auto max-w-[1160px] space-y-5">
-          <p className="font-body text-[15px] leading-6 text-muted-foreground lg:text-[16px]">
-            <strong>Last Updated:</strong> {updatedAt}
-          </p>
-          {sections.map((section) => (
-            <section key={section.title} aria-labelledby={`legal-${section.title.split(".")[0]}`}>
-              <h2 id={`legal-${section.title.split(".")[0]}`} className="text-[20px] leading-7 font-semibold text-black lg:text-[24px]">
-                {section.title}
-              </h2>
-              <div className="mt-2 space-y-3 font-body text-[15px] leading-7 text-muted-foreground lg:text-[16px] lg:leading-[25px]">
-                {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                {section.bullets ? (
-                  <ul className="ml-5 list-disc space-y-2 pl-3">
-                    {section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
-                  </ul>
-                ) : null}
-              </div>
-            </section>
-          ))}
+      <article className="bg-white px-5 pb-28 pt-14 sm:px-8 lg:pb-40 lg:pt-24">
+        <div className="mx-auto max-w-[820px]">
+          <div className="border-b border-black/10 pb-8">
+            <p className="font-body text-[13px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+              Last updated <span className="ml-1 normal-case tracking-normal text-black">{updatedAt}</span>
+            </p>
+          </div>
 
-          <p className="font-body text-[15px] leading-7 text-muted-foreground lg:text-[16px] lg:leading-[25px]">
-            Email: <a href="mailto:ca@codezela.com" className="font-semibold text-primary-deep underline decoration-primary-bright/40 underline-offset-4 transition hover:text-primary-bright">ca@codezela.com</a>
-          </p>
+          <div className="mt-12 space-y-12 lg:mt-16 lg:space-y-16">
+            {sections.map((section) => (
+              <section key={section.title} aria-labelledby={`legal-${section.title.split(".")[0]}`}>
+                <h2 id={`legal-${section.title.split(".")[0]}`} className="text-[21px] leading-8 font-semibold tracking-[-0.015em] text-black lg:text-[25px]">
+                  {section.title}
+                </h2>
+                <div className="mt-4 space-y-4 font-body text-[15px] leading-7 text-muted-foreground sm:text-[16px] sm:leading-8">
+                  {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                  {section.bullets ? (
+                    <ul className="list-disc space-y-3 pl-6 marker:text-primary-bright">
+                      {section.bullets.map((bullet) => <li key={bullet} className="pl-1">{bullet}</li>)}
+                    </ul>
+                  ) : null}
+                </div>
+              </section>
+            ))}
+          </div>
+
+          <aside aria-label="Policy contact" className="mt-16 border-t border-black/10 pt-8 lg:mt-20">
+            <p className="font-body text-[15px] leading-7 text-muted-foreground sm:text-[16px] sm:leading-8">
+              Questions about this document? Email <a href="mailto:ca@codezela.com" className="font-semibold text-primary-deep underline decoration-primary-bright/40 underline-offset-4 transition hover:text-primary-bright">ca@codezela.com</a>.
+            </p>
+          </aside>
         </div>
       </article>
     </PageShell>

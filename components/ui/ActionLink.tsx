@@ -23,7 +23,7 @@ export function ActionLink({
     <a
       href={href}
       className={cn(
-        "inline-flex min-h-14 items-center justify-center gap-2 rounded-[10px] px-5 font-sans text-[15px] font-medium transition duration-300 hover:-translate-y-0.5 focus-visible:-translate-y-0.5",
+        "inline-flex min-h-14 items-center justify-center gap-2 whitespace-nowrap rounded-[10px] px-5 font-sans text-[15px] font-medium transition duration-300 hover:-translate-y-0.5 focus-visible:-translate-y-0.5",
         variant === "primary" && "bg-primary text-white hover:bg-primary-bright",
         variant === "outline" && "border border-primary-bright bg-white text-primary-bright hover:bg-primary-bright hover:text-white",
         variant === "deep" && "bg-primary-deep text-white hover:bg-primary-bright",

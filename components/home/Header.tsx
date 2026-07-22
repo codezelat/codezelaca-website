@@ -104,7 +104,7 @@ export function Header() {
               onClick={() => setMenuOpen(true)}
               className="inline-flex size-[44px] shrink-0 items-center justify-center rounded-full text-primary-bright transition-colors hover:bg-primary-bright/10 lg:hidden"
             >
-              <Menu aria-hidden="true" className="size-[28px] translate-x-[5px] stroke-[3.5]" />
+              <Menu aria-hidden="true" className="size-[28px] stroke-[3.5]" />
             </button>
           </div>
         </div>

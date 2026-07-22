@@ -60,241 +60,173 @@ export const divisions: Division[] = [
 
 export const privacySections: LegalSection[] = [
   {
-    title: "1. Introduction",
+    title: "1. About This Privacy Policy",
     paragraphs: [
-      "Welcome to the Codezela Career Accelerator website. This privacy policy outlines how we collect and protect your personal information. As a venture of Codezela Technologies, we understand the critical importance of data security and digital trust. We are committed to ensuring your privacy is protected while you explore our courses and apply for our programs. By using this website, you agree to the collection and use of information in accordance with this policy.",
+      "This Privacy Policy explains how Codezela Career Accelerator (CCA), a venture of Codezela Technologies, handles personal information when you visit our website, make an enquiry, apply for a programme or participate in our services.",
     ],
   },
   {
     title: "2. Information We Collect",
     paragraphs: [
-      "We collect information that helps us serve you better as a prospective student. This includes personal details such as your full name, email address, phone number, and educational background when you fill out an inquiry form or application. We may also collect technical data automatically, including your IP address and browser type, to improve our website performance and user experience.",
+      "We collect information you provide directly and limited technical information generated when you use our website. Depending on how you interact with CCA, this may include:",
+    ],
+    bullets: [
+      "your name, contact details, educational background and application information;",
+      "enrolment, attendance, payment and programme-support records;",
+      "messages, enquiries and other communications with our team; and",
+      "device, browser, IP address and website-usage information.",
     ],
   },
   {
     title: "3. How We Use Your Information",
     paragraphs: [
-      "The primary purpose of collecting your data is to support your educational journey. We use your information to process your enrolment applications, verify your eligibility for specific tracks, and communicate with you regarding intake dates and course updates. We also use this data to improve our curriculum and website functionality based on user behaviour and preferences.",
+      "We use personal information only where it is reasonably necessary to operate and improve our services. This includes responding to enquiries, reviewing applications, managing enrolment and payments, delivering programmes, providing learner support, communicating important updates, maintaining security and meeting legal or regulatory obligations.",
     ],
   },
   {
-    title: "4. Data Sharing and Disclosure",
+    title: "4. Sharing Personal Information",
     paragraphs: [
-      "Codezela Career Accelerator is committed to maintaining your trust. We do not sell or rent your personal information to third parties. We may disclose your information within our internal organisation to ensure your application is processed efficiently by the admissions team. We will only disclose your personal information outside of our organisation if required by law or if necessary to protect our legal rights.",
+      "We do not sell personal information. Information may be shared with authorised CCA and Codezela Technologies personnel, trusted service providers that support our website or programme delivery, professional advisers, payment providers, or public authorities where disclosure is required by law. We expect service providers to use personal information only for the services they provide to us.",
     ],
   },
   {
-    title: "5. Data Security",
+    title: "5. Cookies and Website Data",
     paragraphs: [
-      "As the education arm of a software company, we implement robust security measures to maintain the safety of your personal information. We use industry-standard encryption and secure server protocols to protect your data from unauthorised access or alteration. We store your digital records in secure databases accessible only to authorised personnel who are required to keep the information confidential.",
+      "Our website may use essential cookies and similar technologies to operate correctly, remember preferences, understand website performance and improve the visitor experience. You can manage cookies through your browser settings, although disabling some cookies may affect certain website features.",
     ],
   },
   {
-    title: "6. Cookies and Tracking",
+    title: "6. Retention and Security",
     paragraphs: [
-      "Our website uses cookies to enhance your browsing experience. These small text files help us remember your preferences and analyse web traffic to provide a smoother user experience. You can choose to accept or decline cookies through your browser settings. Declining cookies may prevent you from taking full advantage of certain interactive features on our website.",
+      "We retain personal information only for as long as reasonably needed for the purposes described in this policy, including academic, administrative, accounting and legal requirements. We use reasonable organisational and technical safeguards designed to protect information against unauthorised access, loss, misuse or alteration. No method of storage or transmission can be guaranteed to be completely secure.",
     ],
   },
   {
-    title: "7. Your Rights",
+    title: "7. Your Rights and Choices",
     paragraphs: [
-      "You have the right to request access to the personal information we hold about you. If you wish to update your details or request the deletion of your data from our records, you may contact our administrative team. We will respond to your request and ensure your data is handled according to your preferences.",
+      "Subject to applicable law, you may ask to access or correct personal information we hold about you, request deletion where appropriate, withdraw consent where processing relies on consent, or raise a concern about how your information is handled. We may need to verify your identity before completing a request.",
     ],
   },
   {
-    title: "8. Changes to This Policy",
+    title: "8. Updates to This Policy",
     paragraphs: [
-      "We may update our Privacy Policy from time to time to reflect changes in our practices or operational requirements. We encourage you to review this page periodically for any updates. Continued use of our services after any modifications indicates your acceptance of the updated policy.",
-    ],
-  },
-  {
-    title: "9. Contact Us",
-    paragraphs: [
-      "If you have any questions about this Privacy Policy or our data practices, please contact us directly using the details below.",
+      "We may update this policy when our services, practices or legal obligations change. The current version will remain available on this page and will show its latest update date.",
     ],
   },
 ];
 
 export const termsSections: LegalSection[] = [
   {
-    title: "1. Introduction",
+    title: "1. Agreement and Scope",
     paragraphs: [
-      "Welcome to the Codezela Career Accelerator website. These terms and conditions govern your use of this website and participation in any of our programmes. By accessing this site or submitting an application, you agree to comply with these terms. If you do not agree, you should discontinue using the site immediately.",
+      "These Terms and Conditions apply to your use of the Codezela Career Accelerator (CCA) website and, together with the information provided at enrolment, your participation in a CCA programme. By using the website, applying or enrolling, you agree to follow these terms.",
     ],
   },
   {
-    title: "2. About Us",
+    title: "2. Applications and Enrolment",
     paragraphs: [
-      "Codezela Career Accelerator operates as the education division of Codezela Technologies. We provide professional development programmes designed to help students and early career learners build industry level skills. All content, materials and services offered through this website are managed and delivered by our authorised team.",
+      "Submitting an application does not guarantee admission. Acceptance depends on eligibility, available places and CCA's review. Applicants are responsible for providing complete and accurate information and for notifying us if important enrolment details change.",
     ],
   },
   {
-    title: "3. Use of the Website",
+    title: "3. Fees and Payments",
     paragraphs: [
-      "You agree to use this website only for lawful purposes. You must not attempt to disrupt the website, access restricted areas, or engage in any activity that may harm the platform or interfere with other users. You are responsible for ensuring that any information you provide is accurate and up to date.",
+      "Programme fees must be paid according to the payment plan confirmed at enrolment. Late or incomplete payment may result in restricted access or suspension from the programme. Fees are ordinarily non-refundable except where our Refund Policy applies or a refund is required by applicable law.",
     ],
   },
   {
-    title: "4. Enrolment and Applications",
+    title: "4. Programme Delivery",
     paragraphs: [
-      "Submitting an application does not guarantee acceptance into any programme. Admission is subject to eligibility checks, availability, and internal review by our admissions team. By applying, you confirm that the information provided is truthful. Any false or misleading information may result in immediate rejection or removal from the programme.",
+      "Programmes may include online, in-person or hybrid learning. CCA may make reasonable changes to schedules, trainers, locations, platforms, curriculum sequence or delivery methods when needed to maintain programme quality or respond to operational circumstances. Material updates will be communicated to enrolled students where reasonably possible.",
     ],
   },
   {
-    title: "5. Programme Delivery",
+    title: "5. Learner Responsibilities",
     paragraphs: [
-      "Our programmes are delivered through a blend of online and in person sessions as announced for each intake. We reserve the right to adjust schedules, trainers, curriculum elements or delivery methods based on operational needs. Any changes will be communicated to students in advance whenever possible.",
+      "Students are expected to participate professionally, respect trainers and other learners, complete required work honestly, and use CCA systems lawfully. Harassment, academic misconduct, unauthorised access, disruption or misuse of learning platforms may lead to proportionate disciplinary action, including suspension or removal from the programme.",
     ],
   },
   {
-    title: "6. Payments and Fees",
+    title: "6. Learning Materials and Intellectual Property",
     paragraphs: [
-      "All fees must be paid according to the payment plan provided at the time of enrolment. Failure to complete payments may lead to suspension of access or removal from the programme. Fees paid are generally non refundable except where required by applicable law or in exceptional circumstances determined solely by Codezela Career Accelerator.",
+      "Programme materials, recordings, assignments, designs, software and other content supplied by CCA or Codezela Technologies remain protected by intellectual-property law. Students receive a limited right to use these materials for their own learning and may not copy, publish, sell, distribute or share them without written permission.",
     ],
   },
   {
-    title: "7. Digital Materials and Intellectual Property",
+    title: "7. Completion and Outcomes",
     paragraphs: [
-      "All learning materials, videos, documents, assignments and content provided to you are the intellectual property of Codezela Technologies. You are granted access solely for personal educational use. You must not reproduce, distribute, share or publish any material without written permission from Codezela Technologies.",
+      "Certificates, verifications and work-experience letters are subject to the academic, attendance, conduct and payment requirements communicated for the programme. CCA supports career development but does not guarantee employment, salary, promotion, immigration outcomes or any other particular result.",
     ],
   },
   {
-    title: "8. Conduct and Behaviour",
+    title: "8. Website Use and External Services",
     paragraphs: [
-      "Students are expected to maintain professional behaviour throughout the programme. Harassment, misuse of learning platforms or disruptive conduct may result in disciplinary action including removal from the programme without refund. We reserve the right to determine what constitutes unacceptable behaviour.",
+      "You may use the website only for lawful purposes and must not interfere with its security, availability or other users. The website and programmes may link to third-party platforms. Those services operate under their own terms and privacy practices, and CCA is not responsible for matters outside its reasonable control.",
     ],
   },
   {
-    title: "9. Certification and Completion",
+    title: "9. Suspension or Termination",
     paragraphs: [
-      "Receiving any certificate, verification or work experience letter is subject to meeting all academic, attendance and performance requirements. Programme outcomes are not guaranteed. Completion depends on your participation, effort and adherence to programme guidelines.",
+      "CCA may suspend or end access where a student materially breaches these terms, fails to meet payment obligations, or creates a significant safety, integrity or operational concern. Where appropriate, we will consider the circumstances and communicate the reason for the decision.",
     ],
   },
   {
     title: "10. Limitation of Liability",
     paragraphs: [
-      "While we strive to provide high quality learning experiences, we do not guarantee job placement, career advancement or specific outcomes. Codezela Technologies and Codezela Career Accelerator are not liable for any loss or damage arising from your use of this website or participation in our programmes except where liability cannot be excluded by law.",
+      "To the extent permitted by law, CCA and Codezela Technologies are not responsible for indirect or consequential loss arising from website use or programme participation. Nothing in these terms excludes any right, remedy or liability that cannot lawfully be excluded or limited.",
     ],
   },
   {
-    title: "11. Third Party Tools and Links",
+    title: "11. Privacy, Updates and Governing Law",
     paragraphs: [
-      "Our website may include links to external platforms or tools required for learning. These are provided for convenience only. We are not responsible for the content, policies or security of third party sites and encourage you to review their terms independently.",
-    ],
-  },
-  {
-    title: "12. Data Protection",
-    paragraphs: [
-      "Your personal information is handled in accordance with our Privacy Policy. By using this website, you consent to the collection and use of your data as described in that policy. You are responsible for maintaining the confidentiality of your login details where applicable.",
-    ],
-  },
-  {
-    title: "13. Termination of Access",
-    paragraphs: [
-      "We may suspend or terminate your access to the website or learning portals if you breach these terms or engage in behaviour that compromises the safety or integrity of the programme. We reserve the right to refuse future enrolments where necessary.",
-    ],
-  },
-  {
-    title: "14. Changes to These Terms",
-    paragraphs: [
-      "We may update these terms and conditions from time to time to reflect changes in our operations or legal requirements. Continued use of the site after updates indicates your acceptance of the revised terms. You are encouraged to review this page periodically.",
-    ],
-  },
-  {
-    title: "15. Governing Law",
-    paragraphs: [
-      "These terms and conditions are governed by the laws applicable in Sri Lanka. Any disputes arising from your use of this website or participation in our programmes will be resolved under the jurisdiction of the courts of Sri Lanka.",
-    ],
-  },
-  {
-    title: "16. Contact Us",
-    paragraphs: [
-      "If you have any questions about these terms and conditions, please contact us using the details below.",
+      "Personal information is handled under our Privacy Policy. We may update these terms when our services or legal obligations change, and the current version will show its latest update date. These terms are governed by the laws of Sri Lanka, and disputes will be subject to the jurisdiction of the courts of Sri Lanka.",
     ],
   },
 ];
 
 export const refundSections: LegalSection[] = [
   {
-    title: "1. Purpose and Scope",
+    title: "1. Scope",
     paragraphs: [
-      "This Refund Policy applies to programme fees paid directly to Codezela Career Accelerator (CCA). It should be read together with the enrolment terms, payment plan and Terms and Conditions provided for the relevant programme.",
+      "This policy applies to programme fees paid directly to Codezela Career Accelerator (CCA). It should be read together with the payment plan, enrolment information and Terms and Conditions provided for the relevant programme.",
     ],
   },
   {
-    title: "2. General No-Refund Rule",
+    title: "2. Refund Eligibility",
     paragraphs: [
-      "Programme fees, registration fees and other amounts paid to CCA are non-refundable once paid, except in the limited circumstances stated in Section 3 or where a refund is required by applicable law.",
+      "Programme fees are ordinarily non-refundable once paid. A refund is available when CCA permanently cancels an enrolled programme because it is unable to continue delivery, or where a refund is otherwise required by applicable law.",
+      "If CCA permanently cancels a programme, affected students will be informed directly and offered the refund arrangements described below.",
     ],
   },
   {
-    title: "3. When a Refund Is Available",
+    title: "3. Programme Alternatives and Changes",
     paragraphs: [
-      "A refund is available only when CCA permanently cancels the enrolled programme because CCA is unable to continue delivering it. A postponement, temporary suspension, change of trainer, venue, schedule, curriculum or delivery method is not a cancellation.",
-      "Where reasonably possible, CCA may first offer a comparable replacement intake, transfer, online or hybrid delivery option. If CCA permanently cancels the programme and the student does not accept a comparable replacement offered by CCA, the refund calculation in Section 7 will apply.",
+      "Before cancelling a programme, CCA may offer a comparable intake, transfer or alternative delivery arrangement where this is practical. Reasonable changes to dates, trainers, locations, curriculum sequence or online, in-person or hybrid delivery do not amount to a cancellation where CCA continues to provide the programme or a substantially comparable learning opportunity.",
     ],
   },
   {
-    title: "4. Circumstances That Are Not Refundable",
-    paragraphs: ["No refund is provided for a student’s withdrawal or inability to continue, including for any of the following reasons:"],
-    bullets: [
-      "a change of mind, career plan or personal preference;",
-      "work, study, travel, health, family, financial, scheduling or other personal circumstances;",
-      "absence, missed classes, late attendance, non-participation or failure to complete assessments or programme requirements;",
-      "withdrawal, deferral or a request to transfer after enrolment;",
-      "suspension or removal for non-payment, misconduct, breach of programme rules or breach of the Terms and Conditions;",
-      "dissatisfaction based on personal expectations or failure to obtain a particular grade, certificate, job, salary, promotion or other career outcome;",
-      "a student’s equipment, software, electricity, internet or connectivity limitations; or",
-      "travel, accommodation, banking, payment-provider, foreign-exchange or other third-party costs.",
+    title: "4. Student-Initiated Changes",
+    paragraphs: [
+      "Fees are not refundable when a student withdraws, changes their plans, is unable to continue for personal reasons, does not attend or complete programme requirements, or loses access because of non-payment or a material breach of programme rules. Students experiencing a change in circumstances are welcome to contact the CCA team; where practical, an alternative intake or transfer may be considered at CCA's discretion, but this does not create a refund entitlement.",
     ],
   },
   {
-    title: "5. Programme Changes and Rescheduling",
+    title: "5. Refund Amount",
     paragraphs: [
-      "CCA may make reasonable academic or operational changes, including changes to dates, timetables, trainers, teaching location, learning platform, programme sequence, curriculum content or online, in-person or hybrid delivery. Such changes do not create a right to a refund where CCA continues to provide the programme or a substantially comparable learning opportunity.",
+      "If CCA permanently cancels a programme before delivery begins, the refundable amount will be the programme fees received by CCA for that programme. If cancellation occurs after delivery has begun, the refund will be calculated against the undelivered portion of the programme tuition received by CCA.",
+      "The calculation may take account of discounts, scholarships, amounts already returned, completed services and non-recoverable third-party charges where permitted by law. A refund will not exceed the amount CCA received for the affected programme.",
     ],
   },
   {
-    title: "6. Events Beyond CCA’s Reasonable Control",
+    title: "6. Refund Process",
     paragraphs: [
-      "If programme delivery is affected by an event beyond CCA’s reasonable control, CCA may suspend, postpone, reschedule or change the delivery method while it works to continue the programme. A refund becomes available only if CCA later confirms that the programme is permanently cancelled because delivery cannot continue, subject to Section 7 and applicable law.",
+      "CCA will contact affected students if a programme is permanently cancelled. To complete the refund, we may request enrolment details, proof of payment and the information needed to return the funds. Once eligibility and payment details are confirmed, CCA will aim to process the approved refund within 30 business days, normally through the original payment method. Bank or payment-provider processing times may apply after funds are released.",
     ],
   },
   {
-    title: "7. Refund Amount",
+    title: "7. Statutory Rights and Policy Updates",
     paragraphs: [
-      "If CCA permanently cancels a programme before delivery begins, the refundable amount will be the programme fees actually received by CCA for that programme.",
-      "If CCA permanently cancels a programme after delivery has begun, the refundable amount will be limited to the proportion of programme tuition actually received by CCA that relates to the undelivered part of the cancelled programme. Any amount already refunded, charge reversed, scholarship, discount, completed service, supplied material or non-recoverable third-party charge may be taken into account to the extent permitted by law. A refund will never exceed the amount actually received by CCA from the student for the affected programme.",
-    ],
-  },
-  {
-    title: "8. Refund Process and Timing",
-    paragraphs: [
-      "CCA will notify affected students when it permanently cancels a programme. The student must provide the enrolment details, proof of payment and requested payment information within 14 calendar days of that notice. Once eligibility and payment details are verified, CCA will aim to issue the approved refund within 30 business days, normally to the original payment method. Bank or payment-provider processing times may apply after CCA releases the funds.",
-    ],
-  },
-  {
-    title: "9. Chargebacks and Payment Disputes",
-    paragraphs: [
-      "Students should contact CCA first so that any payment concern can be reviewed promptly. Starting a chargeback or payment dispute does not create a refund entitlement outside this policy or applicable law, and CCA may provide the payment provider with accurate enrolment, attendance, delivery and communication records.",
-    ],
-  },
-  {
-    title: "10. Statutory Rights",
-    paragraphs: [
-      "Nothing in this policy excludes, restricts or limits any consumer right, warranty, remedy or liability that cannot lawfully be excluded, restricted or limited under the laws of Sri Lanka. If applicable law requires a different outcome, applicable law will prevail to that extent.",
-    ],
-  },
-  {
-    title: "11. Changes to This Policy",
-    paragraphs: [
-      "CCA may update this policy from time to time. Any change will apply prospectively from its published effective date and will not remove a refund right that had already arisen under an earlier version or applicable law.",
-    ],
-  },
-  {
-    title: "12. Contact Us",
-    paragraphs: [
-      "For questions about this policy or a programme cancellation, contact us using the details below.",
+      "Nothing in this policy limits any consumer right or remedy that cannot lawfully be excluded under the laws of Sri Lanka. CCA may update this policy when its services or legal obligations change. The current version will remain available on this page and will show its latest update date.",
     ],
   },
 ];

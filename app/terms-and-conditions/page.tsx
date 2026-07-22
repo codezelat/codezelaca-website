@@ -14,8 +14,7 @@ export default function TermsRoute() {
   return (
     <>
       <PageStructuredData name="Terms and Conditions" description={description} pathname="/terms-and-conditions/" />
-      <LegalDocument label="Terms and Conditions" title="how you use our website and programmes" updatedAt="November 24, 2025" sections={termsSections} />
+      <LegalDocument label="Terms and Conditions" title="Website and Programme Terms" updatedAt="22 July 2026" sections={termsSections} />
     </>
   );
 }
-

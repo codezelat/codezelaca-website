@@ -52,7 +52,7 @@ export function Hero() {
               <ActionLink
                 href={navigation[1].href}
                 variant="outline"
-                className="h-[57px] min-h-[57px] w-[205px] px-[20px] leading-[15px]"
+                className="h-[57px] min-h-[57px] w-[232px] px-[20px] leading-[15px]"
               >
                 Explore Career Tracks
               </ActionLink>

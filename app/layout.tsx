@@ -81,7 +81,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-US" className={`${poppins.variable} ${inter.variable}`}>
+    <html lang="en-US" data-scroll-behavior="smooth" className={`${poppins.variable} ${inter.variable}`}>
       <body>
         <SiteStructuredData />
         {children}

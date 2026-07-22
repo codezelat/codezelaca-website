@@ -53,7 +53,7 @@ export function InnerHero({
         <h2
           id="inner-page-title"
           className={cn(
-            "font-sans font-semibold capitalize tracking-[-0.035em]",
+            "font-sans font-semibold tracking-[-0.035em]",
             legal
               ? "mt-10 max-w-[1000px] text-[40px] leading-[1.08] text-[#710bc0] sm:text-[52px] lg:text-[62px]"
               : "mt-10 max-w-[1050px] bg-gradient-to-r from-[#710bc0] via-[#a712df] to-[#cb00f8] bg-clip-text text-[42px] leading-[1.08] text-transparent sm:text-[58px] lg:text-[76px]",

@@ -35,7 +35,7 @@ const routes = [
     title: "Privacy Policy - Data Protection At Codezela Career Accelerator",
     description: "We value your trust. Read how Codezela Career Accelerator protects your personal student data and learn more about our transparency.",
     h1: "Privacy Policy",
-    required: ["Last Updated: November 24, 2025", "9. Contact Us"],
+    required: ["Last updated 22 July 2026", "8. Updates to This Policy"],
   },
   {
     slug: "terms-and-conditions",
@@ -43,7 +43,7 @@ const routes = [
     title: "Terms And Conditions - Codezela Career Accelerator",
     description: "Read the official terms of service for Codezela Career Accelerator. Understand the rules regarding enrollment course fees and the code of conduct for students.",
     h1: "Terms and Conditions",
-    required: ["Last Updated: November 24, 2025", "16. Contact Us"],
+    required: ["Last updated 22 July 2026", "11. Privacy, Updates and Governing Law"],
   },
   {
     slug: "refund-policy",
@@ -51,7 +51,7 @@ const routes = [
     title: "Refund Policy - Codezela Career Accelerator",
     description: "Read the Codezela Career Accelerator refund policy, including the limited circumstances that apply when CCA permanently cancels a programme.",
     h1: "Refund Policy",
-    required: ["Last Updated: July 22, 2026", "10. Statutory Rights"],
+    required: ["Last updated 22 July 2026", "7. Statutory Rights and Policy Updates"],
   },
 ];
 
@@ -133,7 +133,10 @@ async function inspect(page, route) {
       externalSelfLinks: Array.from(document.querySelectorAll('a[href^="https://cca.it.com"]'))
         .map((link) => link.getAttribute("href")),
       copyright2026: text.includes("© 2026"),
-      hasRefundFooterLink: Boolean(document.querySelector('footer a[href="/refund-policy/"]')),
+      hasRefundFooterLink: Boolean(document.querySelector('footer a[href="/refund-policy"]')),
+      policyFooterLinks: Array.from(document.querySelectorAll('footer nav[aria-label="Policies and site information"] a'))
+        .map((link) => link.getAttribute("href")),
+      policiesRemovedFromSiteMenu: !document.querySelector('footer ul[aria-label="Site menu"] a[href="/privacy-policy"], footer ul[aria-label="Site menu"] a[href="/refund-policy"]'),
     };
   }, route);
 }
@@ -252,7 +255,13 @@ for (const route of routes) {
     if (result.dimensions.horizontalOverflow) failures.push(`${route.slug}/${device}: horizontal overflow`);
     if (result.brokenImages.length) failures.push(`${route.slug}/${device}: broken images`);
     if (result.errors.length) failures.push(`${route.slug}/${device}: browser errors`);
-    if (!result.localPrimaryNavigation || !result.copyright2026 || !result.hasRefundFooterLink) failures.push(`${route.slug}/${device}: shared shell`);
+    if (
+      !result.localPrimaryNavigation
+      || !result.copyright2026
+      || !result.hasRefundFooterLink
+      || !result.policiesRemovedFromSiteMenu
+      || result.policyFooterLinks.join(",") !== "/privacy-policy,/refund-policy,/sitemap.xml"
+    ) failures.push(`${route.slug}/${device}: shared shell`);
     if (result.externalSelfLinks.length) failures.push(`${route.slug}/${device}: absolute self-links`);
     if (!result.statusCopyPresent.every((check) => check.present)) failures.push(`${route.slug}/${device}: required copy`);
   }
