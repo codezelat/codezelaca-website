@@ -9,7 +9,11 @@ const expectedDescription =
 
 await mkdir(outputDirectory, { recursive: true });
 
-const browser = await chromium.launch({ channel: "chrome", headless: true });
+const browser = await chromium.launch({
+  channel: "chrome",
+  headless: true,
+  args: ["--host-resolver-rules=MAP cca.it.com 127.0.0.1"],
+});
 const report = { baseUrl, generatedAt: new Date().toISOString(), desktop: {}, mobile: {} };
 
 async function waitForImages(page) {
@@ -247,15 +251,65 @@ const programDotChanged = programDotAvailable
   ? (await secondProgramDot.getAttribute("aria-current")) === "true"
   : false;
 
+const secondRecognitionDot = mobileSession.page
+  .locator('[aria-label="Choose a recognition logo"] button')
+  .nth(1);
+const recognitionDotAvailable = (await secondRecognitionDot.count()) === 1;
+if (recognitionDotAvailable) await secondRecognitionDot.click();
+const recognitionDotChanged = recognitionDotAvailable
+  ? (await secondRecognitionDot.getAttribute("aria-current")) === "true"
+  : false;
+
 report.mobile = {
   ...mobileInspection,
   expandedAfterClick,
   menuOpenedAndClosed: menuOpened,
   programDotAvailable,
   programDotChanged,
+  recognitionDotAvailable,
+  recognitionDotChanged,
   errors: mobileSession.errors,
 };
 await mobileSession.page.close();
+
+const qaOrigin = new URL(baseUrl);
+if (["localhost", "127.0.0.1"].includes(qaOrigin.hostname)) {
+  const consentPage = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  await consentPage.route("**/*googletagmanager.com/**", (route) => route.abort());
+  const consentUrl = `http://cca.it.com:${qaOrigin.port || "80"}/`;
+  await consentPage.goto(consentUrl, { waitUntil: "domcontentloaded" });
+
+  const consentRegion = consentPage.locator('section[aria-label="Analytics preferences"]');
+  await consentRegion.waitFor({ state: "visible" });
+  const semantics = await consentRegion.evaluate((element) => ({
+    tagName: element.tagName,
+    explicitRole: element.getAttribute("role"),
+    live: element.getAttribute("aria-live"),
+  }));
+
+  await consentPage.getByRole("button", { name: "Decline" }).click();
+  const declined = await consentPage.evaluate(() => ({
+    stored: window.localStorage.getItem("cca-analytics-consent"),
+    update: window.dataLayer?.findLast?.(
+      (entry) => entry?.[0] === "consent" && entry?.[1] === "update",
+    )?.[2]?.analytics_storage,
+  }));
+  await consentPage.reload({ waitUntil: "domcontentloaded" });
+  const staysDismissed = (await consentRegion.count()) === 0;
+
+  await consentPage.evaluate(() => window.localStorage.removeItem("cca-analytics-consent"));
+  await consentPage.reload({ waitUntil: "domcontentloaded" });
+  await consentPage.getByRole("button", { name: "Allow analytics" }).click();
+  const granted = await consentPage.evaluate(() => ({
+    stored: window.localStorage.getItem("cca-analytics-consent"),
+    update: window.dataLayer?.findLast?.(
+      (entry) => entry?.[0] === "consent" && entry?.[1] === "update",
+    )?.[2]?.analytics_storage,
+  }));
+
+  report.analyticsConsent = { semantics, declined, staysDismissed, granted };
+  await consentPage.close();
+}
 
 await browser.close();
 
@@ -300,6 +354,19 @@ const seoChecks = [
   !report.mobile.heroCareerLink.overflows,
   report.mobile.mobileMenuIcon?.centerOffsetX <= 1,
   report.mobile.mobileMenuIcon?.centerOffsetY <= 1,
+  report.mobile.menuOpenedAndClosed,
+  report.mobile.programDotAvailable,
+  report.mobile.programDotChanged,
+  report.mobile.recognitionDotAvailable,
+  report.mobile.recognitionDotChanged,
+  report.analyticsConsent?.semantics.tagName === "SECTION",
+  report.analyticsConsent?.semantics.explicitRole === null,
+  report.analyticsConsent?.semantics.live === "polite",
+  report.analyticsConsent?.declined.stored === "denied",
+  report.analyticsConsent?.declined.update === "denied",
+  report.analyticsConsent?.staysDismissed,
+  report.analyticsConsent?.granted.stored === "granted",
+  report.analyticsConsent?.granted.update === "granted",
   report.desktop.links.externalSelf.length === 0,
   report.mobile.links.externalSelf.length === 0,
   report.seoEndpoints.internalLinkStatuses.every((entry) => entry.status === 200),

@@ -83,6 +83,23 @@ try {
       };
     }, route);
 
+    if (route.type === "programme") {
+      const firstDetails = page.locator("details").first();
+      const firstSummary = firstDetails.locator("summary");
+      const initiallyOpen = await firstDetails.evaluate((element) => element.open);
+      await firstSummary.click();
+      const toggled = await firstDetails.evaluate(
+        (element, initial) => element.open !== initial,
+        initiallyOpen,
+      );
+      await firstSummary.click();
+      const restored = await firstDetails.evaluate(
+        (element, initial) => element.open === initial,
+        initiallyOpen,
+      );
+      audit.accordionOpenedAndClosed = toggled && restored;
+    }
+
     results.push({ ...route, status: response?.status(), desktop: audit });
   }
 
@@ -138,6 +155,7 @@ try {
     if (result.desktop.selfDomainLinks.length) failures.push(`${result.pathname}: links back to live CCA`);
     if (result.desktop.horizontalOverflow || result.mobile.horizontalOverflow) failures.push(`${result.pathname}: horizontal overflow`);
     if (result.type === "programme" && result.desktop.moduleCount < 8) failures.push(`${result.pathname}: incomplete course breakdown`);
+    if (result.type === "programme" && !result.desktop.accordionOpenedAndClosed) failures.push(`${result.pathname}: curriculum accordion interaction`);
     if (result.type === "division" && result.desktop.programmeLinks.length < 2) failures.push(`${result.pathname}: missing programme links`);
     if (result.mobile.mobileMenuCentered?.x !== 0 || result.mobile.mobileMenuCentered?.y !== 0) failures.push(`${result.pathname}: mobile menu icon not centered`);
   }

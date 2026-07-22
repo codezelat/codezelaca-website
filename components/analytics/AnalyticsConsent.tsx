@@ -51,8 +51,7 @@ export function AnalyticsConsent() {
   if (!isVisible) return null;
 
   return (
-    <aside
-      role="dialog"
+    <section
       aria-label="Analytics preferences"
       aria-live="polite"
       className="fixed inset-x-4 bottom-4 z-[100] mx-auto flex max-w-[720px] flex-col gap-4 rounded-2xl border border-black/10 bg-white p-5 shadow-[0_18px_70px_rgba(16,24,40,.18)] sm:flex-row sm:items-center sm:gap-6"
@@ -69,6 +68,6 @@ export function AnalyticsConsent() {
           Allow analytics
         </button>
       </div>
-    </aside>
+    </section>
   );
 }
