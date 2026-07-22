@@ -66,6 +66,7 @@ export function Header() {
           <div className="relative flex h-[82px] items-center justify-between gap-[10px] rounded-[80px] border border-black/25 bg-white/72 py-[10px] pr-[20px] pl-[15px] shadow-[0_0_10px_rgba(0,0,0,0.09)] backdrop-blur-[2px] lg:h-[79px] lg:p-[10px]">
             <Link
               href="/"
+              prefetch={false}
               aria-label="CodeZela Career Accelerator home"
               className="min-w-0 shrink-0 rounded-full"
             >
@@ -78,6 +79,7 @@ export function Header() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
+                      prefetch={item.href === "/" ? false : undefined}
                       className="flex h-[46px] items-center px-[20px] font-sans text-[16px] leading-[20px] font-semibold text-primary-deep transition-colors duration-300 hover:text-primary-bright"
                     >
                       {item.label}
@@ -126,7 +128,7 @@ export function Header() {
             className="mx-auto w-full max-w-[420px] rounded-[30px] bg-white p-[20px] shadow-2xl"
           >
             <div className="flex items-center justify-between gap-4 border-b border-black/10 pb-[18px]">
-              <Link href="/" aria-label="CodeZela Career Accelerator home" onClick={closeMenu}>
+              <Link href="/" prefetch={false} aria-label="CodeZela Career Accelerator home" onClick={closeMenu}>
                 <Brand compact />
               </Link>
               <button
@@ -146,6 +148,7 @@ export function Header() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
+                      prefetch={item.href === "/" ? false : undefined}
                       onClick={closeMenu}
                       className="block rounded-[14px] px-[16px] py-[14px] font-sans text-[17px] font-semibold text-muted-foreground transition-colors hover:bg-hero hover:text-primary-deep"
                     >

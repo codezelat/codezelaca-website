@@ -21,7 +21,7 @@ export function DivisionDetailPage({ division }: { division: DivisionCatalogEntr
           <div>
             <nav aria-label="Breadcrumb" className="mb-7 font-body text-[13px] text-muted-foreground">
               <ol className="flex flex-wrap items-center gap-2">
-                <li><Link href="/" className="hover:text-primary-bright">Home</Link></li>
+                <li><Link href="/" prefetch={false} className="hover:text-primary-bright">Home</Link></li>
                 <li aria-hidden="true">/</li>
                 <li><Link href="/divisions/" className="hover:text-primary-bright">Divisions</Link></li>
                 <li aria-hidden="true">/</li>

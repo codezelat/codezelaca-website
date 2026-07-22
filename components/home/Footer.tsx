@@ -42,7 +42,7 @@ export function Footer() {
       <div className="mx-auto flex w-full max-w-[1280px] flex-col rounded-[20px] bg-footer px-5 py-10 text-white sm:px-8 sm:py-12 lg:min-h-[582px] lg:px-5 lg:py-[10px]">
         <div className="grid flex-1 gap-12 px-0 py-2 text-center md:grid-cols-2 md:py-4 md:text-left lg:grid-cols-[1.15fr_1fr_.85fr] lg:gap-10 lg:px-[10px] lg:py-[40px]">
           <div className="flex flex-col items-center md:col-span-2 md:items-start lg:col-span-1">
-            <Link href="/" aria-label="CodeZela Career Accelerator home"><Brand inverse compact /></Link>
+            <Link href="/" prefetch={false} aria-label="CodeZela Career Accelerator home"><Brand inverse compact /></Link>
             <p className="mt-8 max-w-[380px] font-body text-[16px] leading-6 text-white">Transform your career in months with expert mentorship, real projects, and a proven curriculum.</p>
             <div className="mt-8 space-y-4 font-body text-[16px]">
               <a href="mailto:ca@codezela.com" className="flex items-center justify-center gap-3 transition-colors hover:text-primary-bright md:justify-start"><Mail aria-hidden="true" className="size-5" />ca@codezela.com</a>
@@ -75,9 +75,15 @@ export function Footer() {
             <ul className="flex flex-wrap items-center justify-center divide-x divide-white/25 text-white/70 sm:justify-end">
               {policyLinks.map(([label, href]) => (
                 <li key={label} className="px-3 first:pl-0 last:pr-0">
-                  <Link href={href} className="transition-colors hover:text-primary-bright hover:underline hover:underline-offset-4">
-                    {label}
-                  </Link>
+                  {href === "/sitemap.xml" ? (
+                    <a href={href} className="transition-colors hover:text-primary-bright hover:underline hover:underline-offset-4">
+                      {label}
+                    </a>
+                  ) : (
+                    <Link href={href} className="transition-colors hover:text-primary-bright hover:underline hover:underline-offset-4">
+                      {label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
