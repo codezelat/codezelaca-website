@@ -12,7 +12,7 @@ import { programs } from "@/data/home";
 import { cn } from "@/lib/utils";
 
 export function ProgramsCarousel() {
-  const autoplay = useMemo(() => Autoplay({ delay: 5_000, stopOnInteraction: true, stopOnMouseEnter: true }), []);
+  const autoplay = useMemo(() => Autoplay({ delay: 5_000, stopOnInteraction: false, stopOnMouseEnter: true }), []);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start", slidesToScroll: 1 }, [autoplay]);
   const { selectedIndex, scrollSnaps, onDotClick } = useCarouselDots(emblaApi);
 
@@ -39,7 +39,7 @@ export function ProgramsCarousel() {
               >
                 <article className="flex h-[535px] w-full flex-col rounded-[20px] border border-black/15 p-[10px] lg:h-[550px]">
                   <div className="relative h-[300px] shrink-0 overflow-hidden rounded-[18px]">
-                    <Image src={program.image} alt={program.alt} fill quality={90} sizes="620px" className="object-cover object-center" />
+                    <Image src={program.image} alt={program.alt} fill quality={90} sizes="400px" className="object-cover object-center" />
                   </div>
                   <div className="flex min-h-[213px] flex-1 flex-col pt-8 lg:min-h-[228px]">
                     <h3 className="font-sans text-[28px] font-bold leading-[32px] tracking-[-0.03em] text-black">{program.title}</h3>

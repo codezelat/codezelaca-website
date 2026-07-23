@@ -41,7 +41,7 @@ export function RecognitionCarousel() {
                   alt={recognition.name}
                   width={recognition.width}
                   height={recognition.height}
-                  unoptimized
+                  quality={90}
                   sizes="(max-width: 767px) 42vw, (max-width: 1023px) 27vw, 220px"
                   className="max-h-[90px] w-auto max-w-full object-contain"
                 />

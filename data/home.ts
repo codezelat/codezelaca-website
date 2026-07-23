@@ -57,18 +57,18 @@ export const differences: DifferenceItem[] = [
 ];
 
 export const programs: Program[] = [
-  { title: "Full-Stack Developer", slug: "full-stack-developer", divisionId: "software-and-development", image: "/images/programs/full-stack-developer.jpeg", alt: "Full-stack developer building a web application" },
-  { title: "AI/ML Engineer", slug: "ai-ml-engineer", divisionId: "ai-and-data-science", image: "/images/programs/ai-ml-engineer.jpeg", alt: "AI and machine learning engineer at work" },
-  { title: "Back-End Developer", slug: "back-end-developer", divisionId: "software-and-development", image: "/images/programs/back-end-developer.jpeg", alt: "Back-end developer engineering a server application" },
-  { title: "Business Analyst", slug: "business-analyst", divisionId: "marketing-and-business", image: "/images/programs/business-analyst.jpeg", alt: "Business analyst reviewing a process" },
-  { title: "Cyber Security Engineer", slug: "cyber-security-engineer", divisionId: "systems-engineering", image: "/images/programs/cyber-security-engineer.jpeg", alt: "Cyber security engineer monitoring systems" },
-  { title: "Data Analyst", slug: "data-analyst", divisionId: "ai-and-data-science", image: "/images/programs/data-analyst.jpeg", alt: "Data analyst reviewing business insights" },
-  { title: "Data Engineer", slug: "data-engineer", divisionId: "ai-and-data-science", image: "/images/programs/data-engineer.jpg", alt: "Data engineer working with data infrastructure" },
-  { title: "Data Scientist", slug: "data-scientist", divisionId: "ai-and-data-science", image: "/images/programs/data-scientist.jpeg", alt: "Data scientist analysing a model" },
-  { title: "DevOps Engineer", slug: "devops-engineer", divisionId: "systems-engineering", image: "/images/programs/devops-engineer.jpg", alt: "DevOps engineer managing technology operations" },
-  { title: "Digital Marketing Specialist", slug: "digital-marketing-specialist", divisionId: "marketing-and-business", image: "/images/programs/digital-marketing-specialist.jpeg", alt: "Digital marketing specialist planning a campaign" },
-  { title: "Front-End Developer", slug: "front-end-developer", divisionId: "software-and-development", image: "/images/programs/front-end-developer.jpg", alt: "Front-end developer building a responsive interface" },
-  { title: "Graphic Designer", slug: "graphic-designer", divisionId: "creative-media-and-design", image: "/images/programs/graphic-designer.jpg", alt: "Graphic designer creating visual artwork" },
+  { title: "Full-Stack Developer", slug: "full-stack-developer", divisionId: "software-and-development", image: "/images/programs/detail/full-stack-developer.webp", alt: "Full-stack developer building a web application" },
+  { title: "AI/ML Engineer", slug: "ai-ml-engineer", divisionId: "ai-and-data-science", image: "/images/programs/detail/ai-ml-engineer.webp", alt: "AI and machine learning engineer at work" },
+  { title: "Back-End Developer", slug: "back-end-developer", divisionId: "software-and-development", image: "/images/programs/detail/back-end-developer.webp", alt: "Back-end developer engineering a server application" },
+  { title: "Business Analyst", slug: "business-analyst", divisionId: "marketing-and-business", image: "/images/programs/detail/business-analyst.webp", alt: "Business analyst reviewing a process" },
+  { title: "Cyber Security Engineer", slug: "cyber-security-engineer", divisionId: "systems-engineering", image: "/images/programs/detail/cyber-security-engineer.webp", alt: "Cyber security engineer monitoring systems" },
+  { title: "Data Analyst", slug: "data-analyst", divisionId: "ai-and-data-science", image: "/images/programs/detail/data-analyst.webp", alt: "Data analyst reviewing business insights" },
+  { title: "Data Engineer", slug: "data-engineer", divisionId: "ai-and-data-science", image: "/images/programs/detail/data-engineer.webp", alt: "Data engineer working with data infrastructure" },
+  { title: "Data Scientist", slug: "data-scientist", divisionId: "ai-and-data-science", image: "/images/programs/detail/data-scientist.webp", alt: "Data scientist analysing a model" },
+  { title: "DevOps Engineer", slug: "devops-engineer", divisionId: "systems-engineering", image: "/images/programs/detail/devops-engineer.webp", alt: "DevOps engineer managing technology operations" },
+  { title: "Digital Marketing Specialist", slug: "digital-marketing-specialist", divisionId: "marketing-and-business", image: "/images/programs/detail/digital-marketing-specialist.webp", alt: "Digital marketing specialist planning a campaign" },
+  { title: "Front-End Developer", slug: "front-end-developer", divisionId: "software-and-development", image: "/images/programs/detail/front-end-developer.webp", alt: "Front-end developer building a responsive interface" },
+  { title: "Graphic Designer", slug: "graphic-designer", divisionId: "creative-media-and-design", image: "/images/programs/detail/graphic-designer.webp", alt: "Graphic designer creating visual artwork" },
 ];
 
 export const recognitions: Recognition[] = [

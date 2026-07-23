@@ -7,18 +7,18 @@ const expectedTitle = "Codezela Career Accelerator - #1 Tech Career Program In S
 const expectedDescription =
   "Launch your tech career in months, not years. Join Sri Lanka’s top accelerator with SITC & LBC Group UK. Get DEC recognized certification & hired. Apply now.";
 const expectedProgramImagePaths = [
-  "/images/programs/full-stack-developer.jpeg",
-  "/images/programs/ai-ml-engineer.jpeg",
-  "/images/programs/back-end-developer.jpeg",
-  "/images/programs/business-analyst.jpeg",
-  "/images/programs/cyber-security-engineer.jpeg",
-  "/images/programs/data-analyst.jpeg",
-  "/images/programs/data-engineer.jpg",
-  "/images/programs/data-scientist.jpeg",
-  "/images/programs/devops-engineer.jpg",
-  "/images/programs/digital-marketing-specialist.jpeg",
-  "/images/programs/front-end-developer.jpg",
-  "/images/programs/graphic-designer.jpg",
+  "/images/programs/detail/full-stack-developer.webp",
+  "/images/programs/detail/ai-ml-engineer.webp",
+  "/images/programs/detail/back-end-developer.webp",
+  "/images/programs/detail/business-analyst.webp",
+  "/images/programs/detail/cyber-security-engineer.webp",
+  "/images/programs/detail/data-analyst.webp",
+  "/images/programs/detail/data-engineer.webp",
+  "/images/programs/detail/data-scientist.webp",
+  "/images/programs/detail/devops-engineer.webp",
+  "/images/programs/detail/digital-marketing-specialist.webp",
+  "/images/programs/detail/front-end-developer.webp",
+  "/images/programs/detail/graphic-designer.webp",
 ];
 const qaOrigin = new URL(baseUrl);
 const isLocalQa = ["localhost", "127.0.0.1"].includes(qaOrigin.hostname);
