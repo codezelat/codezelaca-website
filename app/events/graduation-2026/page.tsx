@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { GraduationEventPage } from "@/components/pages/GraduationEventPage";
 import { PageStructuredData } from "@/components/seo/PageStructuredData";
-import { eventStructuredImages } from "@/data/events";
+import { graduationStoryStructuredImages } from "@/data/events";
 import { createPageMetadata } from "@/lib/page-metadata";
 
 const title = "CCA Graduation 2026 - Event Story & Photo Highlights";
@@ -25,8 +25,9 @@ export default function GraduationEventRoute() {
         name="CCA Graduation 2026"
         description={description}
         pathname="/events/graduation-2026/"
-        primaryImage="/images/events/convocation-2026/presentation-handshake.webp"
-        images={eventStructuredImages}
+        primaryImage="/images/events/convocation-2026/graduate-friends.webp"
+        images={graduationStoryStructuredImages}
+        breadcrumbs={[{ name: "Events", pathname: "/events/" }]}
       />
       <GraduationEventPage />
     </>

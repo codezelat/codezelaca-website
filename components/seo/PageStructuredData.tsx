@@ -9,6 +9,10 @@ interface PageStructuredDataProps {
     name: string;
     description: string;
   }>;
+  breadcrumbs?: Array<{
+    name: string;
+    pathname: string;
+  }>;
 }
 
 export function PageStructuredData({
@@ -18,6 +22,7 @@ export function PageStructuredData({
   pageType = "WebPage",
   primaryImage,
   images = [],
+  breadcrumbs = [],
 }: PageStructuredDataProps) {
   const url = `https://cca.it.com${pathname}`;
   const absoluteImage = primaryImage ? `https://cca.it.com${primaryImage}` : undefined;
@@ -56,7 +61,13 @@ export function PageStructuredData({
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: "https://cca.it.com/" },
-        { "@type": "ListItem", position: 2, name, item: url },
+        ...breadcrumbs.map((breadcrumb, index) => ({
+          "@type": "ListItem",
+          position: index + 2,
+          name: breadcrumb.name,
+          item: `https://cca.it.com${breadcrumb.pathname}`,
+        })),
+        { "@type": "ListItem", position: breadcrumbs.length + 2, name, item: url },
       ],
     },
   ];

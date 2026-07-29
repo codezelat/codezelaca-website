@@ -113,3 +113,144 @@ export const eventStructuredImages = graduationGallery.slice(0, 8).map((photo) =
   name: photo.caption,
   description: photo.alt,
 }));
+
+export const graduationStoryGallery: EventPhoto[] = [
+  {
+    src: `${imageRoot}/women-graduates.webp`,
+    alt: "Five graduates celebrating together with their graduation scrolls",
+    caption: "A milestone shared together",
+    width: 1800,
+    height: 1200,
+    layout: "feature",
+  },
+  {
+    src: `${imageRoot}/keynote-address.webp`,
+    alt: "A speaker addressing the convocation from the flower-lined podium",
+    caption: "Words for the graduating class",
+    width: 1200,
+    height: 1800,
+    layout: "portrait",
+  },
+  {
+    src: `${imageRoot}/celebration-cake.webp`,
+    alt: "A graduate receiving flowers, a keepsake and a celebration cake",
+    caption: "Celebration beyond the stage",
+    width: 1800,
+    height: 1200,
+    layout: "landscape",
+  },
+  {
+    src: `${imageRoot}/graduation-keepsakes.webp`,
+    alt: "Graduation scrolls and a celebration cake prepared for a graduate",
+    caption: "The details that made it personal",
+    width: 1800,
+    height: 1200,
+    layout: "landscape",
+  },
+  {
+    src: `${imageRoot}/pre-ceremony-conversation.webp`,
+    alt: "Graduates and guests gathering in conversation before the ceremony",
+    caption: "Anticipation before the ceremony",
+    width: 1800,
+    height: 1200,
+    layout: "landscape",
+  },
+  {
+    src: `${imageRoot}/ceremony-leadership.webp`,
+    alt: "Academic representatives seated together during the convocation",
+    caption: "The ceremony in session",
+    width: 1800,
+    height: 1200,
+    layout: "landscape",
+  },
+  {
+    src: `${imageRoot}/graduate-recognition-group.webp`,
+    alt: "A graduate receiving recognition with academic representatives on stage",
+    caption: "Recognition with the academic community",
+    width: 1800,
+    height: 1200,
+    layout: "feature",
+  },
+  {
+    src: `${imageRoot}/graduate-recognition-moment.webp`,
+    alt: "A graduate and academic representatives marking a presentation moment",
+    caption: "Achievement formally recognised",
+    width: 1800,
+    height: 1200,
+    layout: "landscape",
+  },
+  {
+    src: `${imageRoot}/graduate-profile-man.webp`,
+    alt: "A graduate photographed inside the auditorium after the ceremony",
+    caption: "Proud of the journey",
+    width: 1200,
+    height: 1800,
+    layout: "portrait",
+  },
+  {
+    src: `${imageRoot}/graduate-profile-woman.webp`,
+    alt: "A graduate photographed against the convocation stage",
+    caption: "Ready for the next chapter",
+    width: 1200,
+    height: 1800,
+    layout: "portrait",
+  },
+  {
+    src: `${imageRoot}/graduate-portrait-wall.webp`,
+    alt: "A graduate holding a scroll at the convocation portrait wall",
+    caption: "A portrait of achievement",
+    width: 1800,
+    height: 1200,
+    layout: "landscape",
+  },
+  {
+    src: `${imageRoot}/graduate-portrait-wall-woman.webp`,
+    alt: "A graduate standing with her scroll at the convocation portrait wall",
+    caption: "The moment made lasting",
+    width: 1800,
+    height: 1200,
+    layout: "landscape",
+  },
+];
+
+const graduationStoryEditorialImages = [
+  {
+    url: `${imageRoot}/graduate-friends.webp`,
+    name: "Graduates celebrating together",
+    description: "A group of graduates celebrating together with their graduation scrolls",
+  },
+  {
+    url: `${imageRoot}/guest-arrivals.webp`,
+    name: "Guests and graduates arriving",
+    description: "Graduates and guests gathering before the convocation ceremony",
+  },
+  {
+    url: `${imageRoot}/academic-portrait.webp`,
+    name: "Graduation portrait",
+    description: "A graduate in academic dress photographed with international flags",
+  },
+  {
+    url: `${imageRoot}/ceremony-hosts.webp`,
+    name: "Convocation hosts",
+    description: "The convocation hosts speaking from the flower-lined podium",
+  },
+  {
+    url: `${imageRoot}/auditorium-community.webp`,
+    name: "The graduating community",
+    description: "Graduates and guests seated together inside the auditorium",
+  },
+  {
+    url: `${imageRoot}/convocation-identity.webp`,
+    name: "SITC General Convocation 2026",
+    description: "The SITC General Convocation 2026 stage during a graduate presentation",
+  },
+] as const;
+
+export const graduationStoryStructuredImages = [
+  ...graduationStoryEditorialImages,
+  ...graduationStoryGallery.map((photo) => ({
+    url: photo.src,
+    name: photo.caption,
+    description: photo.alt,
+  })),
+];

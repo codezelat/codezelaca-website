@@ -17,7 +17,7 @@ const routes = [
     description: "Explore the CCA Graduation 2026 event story, including real photographs from the SITC convocation, graduate recognition and celebration moments.",
     h1: "A proud chapter, celebrated together",
     ogImage: "https://cca.it.com/seo/cca-events-graduation-og.jpg",
-    required: ["The moment behind the milestone", "From arrival to achievement"],
+    required: ["The day began before the doors opened", "More moments from the 2026 graduating class"],
   },
   {
     slug: "events",
