@@ -12,9 +12,14 @@ export const metadata: Metadata = createPageMetadata({ title, description, pathn
 export default function AboutRoute() {
   return (
     <>
-      <PageStructuredData name="About Us" description={description} pathname="/about-us/" pageType="AboutPage" />
+      <PageStructuredData
+        name="About Us"
+        description={description}
+        pathname="/about-us/"
+        pageType="AboutPage"
+        primaryImage="/images/events/convocation-2026/formal-graduate-group.webp"
+      />
       <AboutPage />
     </>
   );
 }
-

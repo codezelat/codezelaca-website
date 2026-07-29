@@ -16,13 +16,13 @@ export function Hero() {
   preload("/images/cca/Hero-BG-mobile.avif", {
     as: "image",
     type: "image/avif",
-    media: "(max-width: 1023px)",
+    media: "(max-width: 639px)",
     fetchPriority: "high",
   });
   preload("/images/cca/Hero-BG.avif", {
     as: "image",
     type: "image/avif",
-    media: "(min-width: 1024px)",
+    media: "(min-width: 640px)",
     fetchPriority: "high",
   });
 
@@ -73,7 +73,7 @@ export function Hero() {
             </div>
 
             <div className="absolute top-[404px] left-[10px] flex flex-col items-start gap-[5px] font-sans text-[14px] leading-[20px] text-muted-foreground lg:top-[465px] lg:flex-row lg:items-center lg:gap-[18px]">
-              <span className="whitespace-nowrap">1000+ Student Applications</span>
+              <span className="whitespace-nowrap">500+ Alumni</span>
               <span aria-hidden="true" className="hidden h-[17px] w-px bg-[#98a2b3] lg:block" />
               <Image
                 src="/images/cca/stars.png"
@@ -90,8 +90,8 @@ export function Hero() {
           <div className="relative h-[262px] min-w-0 sm:h-[520px] lg:h-[514px] lg:p-[10px]">
             <div className="absolute inset-x-0 bottom-0 h-[322px] sm:h-[520px] lg:inset-[10px] lg:h-auto">
               <picture>
-                <source type="image/avif" media="(max-width: 1023px)" srcSet="/images/cca/Hero-BG-mobile.avif" />
-                <source type="image/webp" media="(max-width: 1023px)" srcSet="/images/cca/Hero-BG-mobile.webp" />
+                <source type="image/avif" media="(max-width: 639px)" srcSet="/images/cca/Hero-BG-mobile.avif" />
+                <source type="image/webp" media="(max-width: 639px)" srcSet="/images/cca/Hero-BG-mobile.webp" />
                 <source type="image/avif" srcSet="/images/cca/Hero-BG.avif" />
                 {/* A pre-generated responsive picture avoids runtime image transformations for the LCP asset. */}
                 <img
@@ -102,14 +102,14 @@ export function Hero() {
                   loading="eager"
                   fetchPriority="high"
                   decoding="async"
-                  className="absolute inset-0 h-full w-full object-cover object-bottom sm:object-contain sm:object-center lg:object-cover lg:object-bottom"
+                  className="absolute inset-0 h-full w-full object-cover object-bottom sm:object-contain sm:object-center xl:object-cover xl:object-bottom"
                 />
               </picture>
             </div>
           </div>
         </div>
 
-        <div className="mx-auto mt-[10px] h-[350px] w-full rounded-[20px] border-[5px] border-white bg-gradient-to-b from-[#cb00f8] to-[#710bc0] p-[10px] shadow-[0_0_10px_rgba(0,0,0,0.08)] lg:h-[152px] lg:w-[1088px]">
+        <div className="mx-auto mt-[10px] h-[350px] w-full rounded-[20px] border-[5px] border-white bg-gradient-to-b from-[#cb00f8] to-[#710bc0] p-[10px] shadow-[0_0_10px_rgba(0,0,0,0.08)] lg:h-[152px] lg:max-w-[1088px]">
           <ul aria-label="Program metrics" className="grid h-full grid-cols-2 gap-[20px] lg:grid-cols-4">
             {metrics.map((metric) => (
               <li

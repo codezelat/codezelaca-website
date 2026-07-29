@@ -1,4 +1,5 @@
 import { BadgeCheck, Clock3, Mail, MessageCircle } from "lucide-react";
+import Image from "next/image";
 
 import { ConsultationForm } from "./ConsultationForm";
 import { InnerHero } from "./InnerHero";
@@ -29,6 +30,20 @@ export function ContactPage() {
             <p className="mt-6 max-w-[560px] font-body text-[16px] leading-7 text-muted-foreground lg:text-[17px] lg:leading-8">
               Tell us where you are now and what you want to achieve. A programme advisor will help you compare suitable tracks, understand the learning format and prepare for the August 2026 cohort.
             </p>
+
+            <figure className="relative mt-8 aspect-[16/7] max-w-[560px] overflow-hidden rounded-[20px_70px_20px_20px] bg-footer shadow-[0_14px_40px_rgba(16,24,40,.13)]">
+              <Image
+                src="/images/events/convocation-2026/graduate-friends.webp"
+                alt="CCA graduates celebrating together with their graduation scrolls"
+                fill
+                quality={90}
+                sizes="(min-width: 1024px) 510px, calc(100vw - 40px)"
+                className="object-cover object-center"
+              />
+              <figcaption className="absolute right-4 bottom-4 left-4 rounded-full border border-white/30 bg-footer/78 px-4 py-2 text-center font-body text-[12px] font-medium text-white backdrop-blur-sm sm:right-auto sm:text-[13px]">
+                Real learners. Real milestones.
+              </figcaption>
+            </figure>
 
             <div className="mt-9 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
               <a href="https://wa.me/94766772923" target="_blank" rel="noreferrer" className="group flex items-center gap-4 rounded-[18px] border border-black/10 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-primary-bright/40 hover:shadow-md">

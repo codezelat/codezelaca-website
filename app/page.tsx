@@ -5,6 +5,7 @@ import { Header } from "@/components/home/Header";
 import { Hero } from "@/components/home/Hero";
 import { ProgrammeOverview } from "@/components/home/ProgrammeOverview";
 import { ProgramsCarousel } from "@/components/home/ProgramsCarousel";
+import { RealMoments } from "@/components/home/RealMoments";
 import { RecognitionCarousel } from "@/components/home/RecognitionCarousel";
 import { HomeStructuredData } from "@/components/seo/HomeStructuredData";
 
@@ -18,6 +19,7 @@ export default function Home() {
         <ProgrammeOverview />
         <Differences />
         <ProgramsCarousel />
+        <RealMoments />
         <RecognitionCarousel />
         <Consultation />
       </main>

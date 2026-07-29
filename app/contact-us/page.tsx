@@ -12,7 +12,13 @@ export const metadata: Metadata = createPageMetadata({ title, description, pathn
 export default function ContactRoute() {
   return (
     <>
-      <PageStructuredData name="Contact Us" description={description} pathname="/contact-us/" pageType="ContactPage" />
+      <PageStructuredData
+        name="Contact Us"
+        description={description}
+        pathname="/contact-us/"
+        pageType="ContactPage"
+        primaryImage="/images/events/convocation-2026/graduate-friends.webp"
+      />
       <ContactPage />
     </>
   );

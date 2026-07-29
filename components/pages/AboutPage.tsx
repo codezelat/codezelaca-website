@@ -13,10 +13,11 @@ interface EditorialSectionProps {
   paragraphs: string[];
   image: string;
   imageAlt: string;
+  caption?: string;
   reverse?: boolean;
 }
 
-function EditorialSection({ title, paragraphs, image, imageAlt, reverse = false }: EditorialSectionProps) {
+function EditorialSection({ title, paragraphs, image, imageAlt, caption, reverse = false }: EditorialSectionProps) {
   return (
     <section aria-labelledby={`${title.toLowerCase().replaceAll(/[^a-z0-9]+/g, "-")}-title`} className="bg-white px-5 py-16 lg:py-24">
       <div className="mx-auto grid max-w-[1280px] items-center gap-12 lg:grid-cols-2 lg:gap-20">
@@ -30,9 +31,14 @@ function EditorialSection({ title, paragraphs, image, imageAlt, reverse = false 
             ))}
           </div>
         </div>
-        <div className={`relative aspect-[4/3] overflow-hidden rounded-[24px_120px_24px_24px] lg:h-[570px] lg:aspect-auto ${reverse ? "lg:order-1 lg:rounded-[120px_24px_24px_24px]" : ""}`}>
+        <figure className={`relative aspect-[4/3] overflow-hidden rounded-[24px_120px_24px_24px] bg-footer lg:h-[570px] lg:aspect-auto ${reverse ? "lg:order-1 lg:rounded-[120px_24px_24px_24px]" : ""}`}>
           <Image src={image} alt={imageAlt} fill quality={90} sizes="(min-width: 1024px) 900px, calc(150vw - 60px)" className="object-cover" />
-        </div>
+          {caption ? (
+            <figcaption className="absolute right-5 bottom-5 left-5 rounded-full border border-white/30 bg-footer/78 px-4 py-2 text-center font-body text-[13px] font-medium text-white backdrop-blur-sm sm:right-auto sm:text-[14px]">
+              {caption}
+            </figcaption>
+          ) : null}
+        </figure>
       </div>
     </section>
   );
@@ -67,8 +73,9 @@ export function AboutPage() {
           "Codezela Technologies is a UK-based technology company operating across the EU, UAE, Australia and Sri Lanka, with teams working for clients in the US, UK, Canada, Australia, New Zealand, countries in Europe and more.",
           "The CodeZela Career Accelerator is our education arm, created to fix a simple but painful truth: too many students study for years yet never gain the skills required for real industry work. We built a programme that closes that gap.",
         ]}
-        image="/images/cca/night-programmer-man-office-typing-overlay-interface-keyboard-software-dark-dashboard-coder-agency-information-technology-ideas-programming-data-web-1024x686.jpg"
-        imageAlt="Technology professional working with software systems"
+        image="/images/events/convocation-2026/formal-graduate-group.webp"
+        imageAlt="CCA graduates gathered together at the 2026 convocation"
+        caption="CCA graduates at the 2026 convocation"
         reverse
       />
 
@@ -93,7 +100,10 @@ export function AboutPage() {
             </div>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-[120px_24px_24px_24px] lg:h-[600px] lg:aspect-auto">
-            <Image src="/images/cca/happy-smiling-man-working-with-laptop2-1536x1024.jpg" alt="Learner confidently building a technology career" fill quality={90} sizes="(min-width: 1024px) 900px, calc(150vw - 60px)" className="object-cover" />
+            <Image src="/images/events/convocation-2026/women-graduates.webp" alt="Five CCA graduates celebrating together with their graduation scrolls" fill quality={90} sizes="(min-width: 1024px) 900px, calc(150vw - 60px)" className="object-cover" />
+            <p className="absolute right-5 bottom-5 left-5 rounded-full border border-white/30 bg-footer/78 px-4 py-2 text-center font-body text-[13px] font-medium text-white backdrop-blur-sm sm:right-auto sm:text-[14px]">
+              A milestone earned together
+            </p>
           </div>
         </div>
       </section>
