@@ -180,8 +180,8 @@ export const graduationStoryGallery: EventPhoto[] = [
     layout: "landscape",
   },
   {
-    src: `${imageRoot}/graduate-profile-man.webp`,
-    alt: "A graduate photographed inside the auditorium after the ceremony",
+    src: `${imageRoot}/cca-graduate-pride.webp`,
+    alt: "A CCA graduate holding his convocation scroll inside the auditorium",
     caption: "Proud of the journey",
     width: 1200,
     height: 1800,
@@ -220,14 +220,14 @@ const graduationStoryEditorialImages = [
     description: "A group of graduates celebrating together with their graduation scrolls",
   },
   {
-    url: `${imageRoot}/guest-arrivals.webp`,
-    name: "Guests and graduates arriving",
-    description: "Graduates and guests gathering before the convocation ceremony",
+    url: `${imageRoot}/ceremony-procession-line.webp`,
+    name: "Graduates gathering for the procession",
+    description: "Graduates gathering in procession before entering the convocation ceremony",
   },
   {
-    url: `${imageRoot}/academic-portrait.webp`,
-    name: "Graduation portrait",
-    description: "A graduate in academic dress photographed with international flags",
+    url: `${imageRoot}/graduate-ready-portrait.webp`,
+    name: "Ready for the graduation moment",
+    description: "A graduate in academic dress holding flowers and her graduation scroll",
   },
   {
     url: `${imageRoot}/ceremony-hosts.webp`,

@@ -40,7 +40,7 @@ export function GraduationEventPage() {
     <PageShell>
       <section className="relative isolate overflow-hidden bg-hero px-5 pt-[170px] pb-20 lg:pt-[190px] lg:pb-24">
         <div aria-hidden="true" className="absolute -top-28 -right-24 -z-10 size-[380px] rounded-full bg-primary-bright/8 blur-3xl" />
-        <div className="mx-auto grid max-w-[1280px] items-center gap-12 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
+        <div className="mx-auto grid max-w-[1280px] items-center gap-12 lg:grid-cols-[.92fr_1.08fr] lg:gap-16">
           <div>
             <nav aria-label="Breadcrumb" className="mb-7 font-body text-[13px] text-muted-foreground">
               <ol className="flex flex-wrap items-center gap-2">
@@ -80,7 +80,7 @@ export function GraduationEventPage() {
           </div>
 
           <figure className="relative overflow-hidden rounded-[28px_120px_28px_28px] bg-footer shadow-[0_24px_70px_rgba(113,11,192,.18)]">
-            <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:min-h-[610px] lg:aspect-auto">
+            <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3]">
               <Image
                 src="/images/events/convocation-2026/graduate-friends.webp"
                 alt="A group of graduates celebrating together with their graduation scrolls"
@@ -121,30 +121,30 @@ export function GraduationEventPage() {
           <div className="mt-12 grid gap-5 lg:grid-cols-12 lg:items-end">
             <figure className="group relative min-h-[430px] overflow-hidden rounded-[24px_90px_24px_24px] bg-footer shadow-[0_18px_55px_rgba(16,24,40,.14)] sm:min-h-[560px] lg:col-span-8 lg:min-h-[650px]">
               <Image
-                src="/images/events/convocation-2026/guest-arrivals.webp"
-                alt="Graduates and guests gathering before the convocation ceremony"
+                src="/images/events/convocation-2026/ceremony-procession-line.webp"
+                alt="Graduates gathering in procession before entering the convocation ceremony"
                 fill
                 quality={90}
                 sizes="(min-width: 1280px) 1000px, (min-width: 1024px) 75vw, 100vw"
                 className="object-cover transition duration-700 ease-out group-hover:scale-[1.02]"
               />
               <figcaption className="absolute right-5 bottom-5 left-5 z-10 font-sans text-[18px] font-semibold text-white drop-shadow-lg sm:text-[22px]">
-                Arrival, preparation and anticipation
+                Gathering for the procession
               </figcaption>
               <span aria-hidden="true" className="absolute inset-x-0 bottom-0 z-0 h-1/2 bg-[linear-gradient(to_top,rgba(16,24,40,.72),transparent)]" />
             </figure>
 
             <figure className="group relative min-h-[500px] overflow-hidden rounded-[90px_24px_24px_24px] bg-footer shadow-[0_18px_55px_rgba(16,24,40,.14)] sm:min-h-[620px] lg:col-span-4 lg:min-h-[560px]">
               <Image
-                src="/images/events/convocation-2026/academic-portrait.webp"
-                alt="A graduate in academic dress photographed with international flags"
+                src="/images/events/convocation-2026/graduate-ready-portrait.webp"
+                alt="A graduate in academic dress holding flowers and her graduation scroll"
                 fill
                 quality={90}
                 sizes="(min-width: 1280px) 417px, (min-width: 1024px) 32vw, calc(100vw - 40px)"
                 className="object-cover object-center transition duration-700 ease-out group-hover:scale-[1.02]"
               />
               <figcaption className="absolute right-5 bottom-5 left-5 z-10 font-sans text-[18px] font-semibold text-white drop-shadow-lg sm:text-[22px]">
-                Ready for the ceremony
+                Ready for the moment
               </figcaption>
               <span aria-hidden="true" className="absolute inset-x-0 bottom-0 z-0 h-1/2 bg-[linear-gradient(to_top,rgba(16,24,40,.72),transparent)]" />
             </figure>
