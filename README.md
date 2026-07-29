@@ -37,7 +37,7 @@ bun run sync:program-catalog
 
 `qa:home` expects the site at `http://localhost:3000`. Set `HOME_QA_URL` to check another local or deployed URL. It validates desktop and mobile geometry, visible image loading, horizontal overflow, the mobile navigation dialog, and carousel pagination. Screenshots and the JSON report are written to `output/playwright/`.
 
-`qa:pages` verifies `/events/`, `/divisions/`, `/about-us/`, `/contact-us/`, `/privacy-policy/`, `/terms-and-conditions/`, and `/refund-policy/` at desktop, tablet, and mobile widths. It checks the rendered content, images, responsive overflow, local navigation, the event gallery and consultation interactions, titles, descriptions, canonicals, robots directives, social metadata, structured data, sitemap entries, and browser errors. Set `PAGES_QA_URL` to target another local or deployed URL.
+`qa:pages` verifies `/events/`, `/events/graduation-2026/`, `/divisions/`, `/about-us/`, `/contact-us/`, `/privacy-policy/`, `/terms-and-conditions/`, and `/refund-policy/` at desktop, tablet, and mobile widths. It checks the rendered content, images, responsive overflow, local navigation, the event gallery and consultation interactions, titles, descriptions, canonicals, robots directives, social metadata, structured data, sitemap entries, and browser errors. Set `PAGES_QA_URL` to target another local or deployed URL.
 
 `qa:catalog` verifies every division and programme detail route at desktop and mobile widths, including route health, responsive overflow, local navigation, metadata, structured data, images, curriculum accordions, and consultation actions.
 

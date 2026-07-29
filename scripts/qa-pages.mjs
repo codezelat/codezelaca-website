@@ -11,6 +11,15 @@ const devices = [
 
 const routes = [
   {
+    slug: "graduation-2026",
+    pathname: "/events/graduation-2026/",
+    title: "CCA Graduation 2026 - Event Story & Photo Highlights",
+    description: "Explore the CCA Graduation 2026 event story, including real photographs from the SITC convocation, graduate recognition and celebration moments.",
+    h1: "A proud chapter, celebrated together",
+    ogImage: "https://cca.it.com/seo/cca-events-graduation-og.jpg",
+    required: ["The moment behind the milestone", "From arrival to achievement"],
+  },
+  {
     slug: "events",
     pathname: "/events/",
     title: "CCA Events & Moments - 2026 Graduation Celebration",

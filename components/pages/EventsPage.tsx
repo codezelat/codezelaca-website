@@ -53,8 +53,8 @@ export function EventsPage() {
               <ActionLink href="#gallery" showArrow className="min-w-[190px]">
                 Explore the Moments
               </ActionLink>
-              <ActionLink href="/divisions/" variant="outline" className="min-w-[190px]">
-                Start Your Journey
+              <ActionLink href="/events/graduation-2026/" variant="outline" className="min-w-[190px]">
+                View Event Story
               </ActionLink>
             </div>
           </div>

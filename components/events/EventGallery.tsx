@@ -7,6 +7,21 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { EventPhoto } from "@/data/events";
 import { cn } from "@/lib/utils";
 
+const desktopLayouts = [
+  "lg:col-span-7 lg:min-h-[560px]",
+  "lg:col-span-5 lg:min-h-[560px]",
+  "lg:col-span-5 lg:min-h-[380px]",
+  "lg:col-span-7 lg:min-h-[380px]",
+  "lg:col-span-4 lg:min-h-[380px]",
+  "lg:col-span-4 lg:min-h-[380px]",
+  "lg:col-span-4 lg:min-h-[380px]",
+  "lg:col-span-6 lg:min-h-[420px]",
+  "lg:col-span-6 lg:min-h-[420px]",
+  "lg:col-span-4 lg:min-h-[380px]",
+  "lg:col-span-4 lg:min-h-[380px]",
+  "lg:col-span-4 lg:min-h-[380px]",
+] as const;
+
 export function EventGallery({ photos }: { photos: EventPhoto[] }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -52,9 +67,8 @@ export function EventGallery({ photos }: { photos: EventPhoto[] }) {
             onClick={() => openPhoto(index)}
             className={cn(
               "group relative isolate min-h-[310px] overflow-hidden rounded-[20px] bg-footer text-left shadow-[0_12px_34px_rgba(16,24,40,.12)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(16,24,40,.2)] focus-visible:-translate-y-1 sm:min-h-[360px]",
-              photo.layout === "feature" && "lg:col-span-7 lg:min-h-[560px]",
-              photo.layout === "landscape" && "lg:col-span-5 lg:min-h-[360px]",
-              photo.layout === "portrait" && "sm:min-h-[500px] lg:col-span-5 lg:min-h-[560px]",
+              photo.layout === "portrait" && "sm:min-h-[500px]",
+              desktopLayouts[index] ?? "lg:col-span-4 lg:min-h-[380px]",
             )}
           >
             <Image
