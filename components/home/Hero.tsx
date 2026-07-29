@@ -3,7 +3,7 @@ import { preload } from "react-dom";
 
 import { MetricIcon } from "@/components/icons";
 import { ActionLink } from "@/components/ui/ActionLink";
-import { metrics, navigation, whatsappRegistration } from "@/data/home";
+import { metrics, whatsappRegistration } from "@/data/home";
 import type { Metric } from "@/types/home";
 
 const metricTone: Record<Metric["tone"], string> = {
@@ -64,7 +64,7 @@ export function Hero() {
                 Register Now
               </ActionLink>
               <ActionLink
-                href={navigation[1].href}
+                href="/divisions/"
                 variant="outline"
                 className="h-[57px] min-h-[57px] w-[232px] px-[20px] leading-[15px]"
               >

@@ -67,7 +67,6 @@ export function Header() {
             <Link
               href="/"
               prefetch={false}
-              aria-label="CodeZela Career Accelerator home"
               className="min-w-0 shrink-0 rounded-full"
             >
               <Brand compact className="[&_img]:size-[60px] lg:[&_img]:size-14" />
@@ -128,7 +127,7 @@ export function Header() {
             className="mx-auto w-full max-w-[420px] rounded-[30px] bg-white p-[20px] shadow-2xl"
           >
             <div className="flex items-center justify-between gap-4 border-b border-black/10 pb-[18px]">
-              <Link href="/" prefetch={false} aria-label="CodeZela Career Accelerator home" onClick={closeMenu}>
+              <Link href="/" prefetch={false} onClick={closeMenu}>
                 <Brand compact />
               </Link>
               <button

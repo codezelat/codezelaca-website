@@ -9,6 +9,7 @@ import type {
 
 export const navigation: NavigationItem[] = [
   { label: "About Us", href: "/about-us/" },
+  { label: "Events", href: "/events/" },
   { label: "Divisions", href: "/divisions/" },
   { label: "Contact Us", href: "/contact-us/" },
 ];

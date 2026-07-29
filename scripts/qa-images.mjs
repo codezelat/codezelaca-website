@@ -13,8 +13,8 @@ const sitemapResponse = await request.get(`${baseUrl}/sitemap.xml`);
 const sitemap = await sitemapResponse.text();
 const routes = Array.from(sitemap.matchAll(/<loc>https:\/\/cca\.it\.com([^<]*)<\/loc>/g), (match) => match[1]);
 
-if (sitemapResponse.status() !== 200 || routes.length !== 30) {
-  throw new Error(`Expected 30 public routes in the sitemap; received ${routes.length}.`);
+if (sitemapResponse.status() !== 200 || routes.length !== 31) {
+  throw new Error(`Expected 31 public routes in the sitemap; received ${routes.length}.`);
 }
 
 const report = { baseUrl, generatedAt: new Date().toISOString(), routes: {}, summary: {} };

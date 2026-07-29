@@ -6,13 +6,23 @@ interface PageMetadataOptions {
   pathname: string;
   image?: string;
   imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
 }
 
-export function createPageMetadata({ title, description, pathname, image = "/seo/cca-og-live.jpg", imageAlt = "CodeZela Career Accelerator technology career programmes" }: PageMetadataOptions): Metadata {
+export function createPageMetadata({
+  title,
+  description,
+  pathname,
+  image = "/seo/cca-og-live.jpg",
+  imageAlt = "CodeZela Career Accelerator technology career programmes",
+  imageWidth,
+  imageHeight,
+}: PageMetadataOptions): Metadata {
   const canonical = `https://cca.it.com${pathname}`;
   const openGraphImage = image === "/seo/cca-og-live.jpg"
     ? { url: image, width: 1640, height: 721, alt: imageAlt }
-    : { url: image, alt: imageAlt };
+    : { url: image, width: imageWidth, height: imageHeight, alt: imageAlt };
 
   return {
     title: { absolute: title },

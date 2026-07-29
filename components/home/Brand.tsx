@@ -15,9 +15,9 @@ export function Brand({ inverse = false, compact = false, className }: BrandProp
         src="/images/cca/cca-logo-300x300.png"
         alt=""
         aria-hidden="true"
-        width={300}
-        height={300}
-        unoptimized
+        width={compact ? 60 : 96}
+        height={compact ? 60 : 96}
+        sizes={compact ? "60px" : "96px"}
         className={cn("shrink-0 object-contain", compact ? "size-14" : "size-24")}
       />
       <span className="flex min-w-0 flex-col text-left leading-none">

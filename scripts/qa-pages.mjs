@@ -3,8 +3,22 @@ import { chromium } from "@playwright/test";
 
 const baseUrl = process.env.PAGES_QA_URL ?? "http://localhost:3000";
 const outputDirectory = "output/playwright/pages";
+const devices = [
+  { name: "desktop", viewport: { width: 1440, height: 1000 } },
+  { name: "tablet", viewport: { width: 820, height: 1180 } },
+  { name: "mobile", viewport: { width: 390, height: 844 } },
+];
 
 const routes = [
+  {
+    slug: "events",
+    pathname: "/events/",
+    title: "CCA Events & Moments - 2026 Graduation Celebration",
+    description: "Explore the CCA 2026 graduation celebration through real photographs of graduates, the convocation ceremony and milestone moments from the day.",
+    h1: "Celebrating the CCA Graduating Batch",
+    ogImage: "https://cca.it.com/seo/cca-events-graduation-og.jpg",
+    required: ["SITC General Convocation 2026", "The moments that made the day"],
+  },
   {
     slug: "divisions",
     pathname: "/divisions/",
@@ -125,7 +139,7 @@ async function inspect(page, route) {
         .map((image) => image.currentSrc || image.src),
       localPrimaryNavigation: Array.from(document.querySelectorAll('header nav a')).every((link) => {
         const href = link.getAttribute("href") ?? "";
-        return ["/about-us/", "/divisions/", "/contact-us/"].includes(href);
+        return ["/about-us/", "/events/", "/divisions/", "/contact-us/"].includes(href);
       }),
       internalLinks: Array.from(document.querySelectorAll("a[href]"))
         .map((link) => link.getAttribute("href") ?? "")
@@ -144,10 +158,7 @@ async function inspect(page, route) {
 for (const route of routes) {
   report.routes[route.slug] = {};
 
-  for (const device of [
-    { name: "desktop", viewport: { width: 1440, height: 1000 } },
-    { name: "mobile", viewport: { width: 390, height: 844 } },
-  ]) {
+  for (const device of devices) {
     const page = await browser.newPage({ viewport: device.viewport, reducedMotion: "reduce" });
     const errors = [];
     page.on("console", (message) => {
@@ -206,6 +217,18 @@ for (const route of routes) {
       interaction = { ...interaction, menuOpenedAndClosed: opened };
     }
 
+    if (route.slug === "events" && device.name === "desktop") {
+      const firstPhoto = page.getByRole("button", { name: /^Open photo 1:/ });
+      await firstPhoto.click();
+      const dialog = page.getByRole("dialog");
+      const opened = await dialog.isVisible();
+      await page.keyboard.press("ArrowRight");
+      const advanced = await dialog.getByText(`2 of 12`).isVisible();
+      await page.keyboard.press("Escape");
+      await dialog.waitFor({ state: "hidden" });
+      interaction = { ...interaction, galleryOpenedAdvancedAndClosed: opened && advanced };
+    }
+
     report.routes[route.slug][device.name] = {
       httpStatus: response?.status(),
       ...inspection,
@@ -243,7 +266,7 @@ await writeFile(`${outputDirectory}/cca-pages-qa.json`, `${JSON.stringify(report
 
 const failures = [];
 for (const route of routes) {
-  for (const device of ["desktop", "mobile"]) {
+  for (const device of devices.map(({ name }) => name)) {
     const result = report.routes[route.slug][device];
     if (result.httpStatus !== 200) failures.push(`${route.slug}/${device}: HTTP ${result.httpStatus}`);
     if (result.h1Count !== 1 || result.h1 !== route.h1) failures.push(`${route.slug}/${device}: H1 contract`);
@@ -251,7 +274,7 @@ for (const route of routes) {
     if (result.canonical !== `https://cca.it.com${route.pathname}`) failures.push(`${route.slug}/${device}: canonical`);
     if (!result.robots?.includes("index") || !result.robots?.includes("follow")) failures.push(`${route.slug}/${device}: robots`);
     if (result.ogTitle !== route.title || result.ogDescription !== route.description || result.twitterCard !== "summary_large_image") failures.push(`${route.slug}/${device}: social metadata`);
-    if (result.ogImage !== "https://cca.it.com/seo/cca-og-live.jpg") failures.push(`${route.slug}/${device}: social image`);
+    if (result.ogImage !== (route.ogImage ?? "https://cca.it.com/seo/cca-og-live.jpg")) failures.push(`${route.slug}/${device}: social image`);
     if (!result.jsonLdValid || result.jsonLdCount < 1) failures.push(`${route.slug}/${device}: structured data`);
     if (result.dimensions.horizontalOverflow) failures.push(`${route.slug}/${device}: horizontal overflow`);
     if (result.brokenImages.length) failures.push(`${route.slug}/${device}: broken images`);
@@ -269,6 +292,7 @@ for (const route of routes) {
 }
 
 if (!report.routes["about-us"].mobile.interaction.menuOpenedAndClosed) failures.push("mobile navigation interaction");
+if (!report.routes.events.desktop.interaction.galleryOpenedAdvancedAndClosed) failures.push("events gallery interaction");
 if (!report.routes["contact-us"].desktop.interaction.openedUrl?.startsWith("https://wa.me/94766772923?text=")) failures.push("contact WhatsApp handoff");
 if (report.endpoints.sitemapStatus !== 200 || report.endpoints.robotsStatus !== 200 || !report.endpoints.sitemapRoutesPresent.every((entry) => entry.present)) failures.push("SEO endpoints");
 if (!report.endpoints.internalLinkStatuses.every((entry) => entry.status === 200)) failures.push("internal link status");
@@ -278,7 +302,7 @@ if (failures.length) throw new Error(`Page QA failed:\n- ${failures.join("\n- ")
 console.log(JSON.stringify({
   result: "passed",
   pages: routes.length,
-  viewports: 2,
+  viewports: devices.length,
   routes: Object.fromEntries(routes.map((route) => [route.pathname, {
     desktopHeight: report.routes[route.slug].desktop.dimensions.documentHeight,
     mobileHeight: report.routes[route.slug].mobile.dimensions.documentHeight,

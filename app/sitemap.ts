@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const coreRoutes = [
     ["/", "weekly", 1],
+    ["/events/", "monthly", 0.9],
     ["/divisions/", "monthly", 0.9],
     ["/about-us/", "monthly", 0.8],
     ["/contact-us/", "monthly", 0.8],
