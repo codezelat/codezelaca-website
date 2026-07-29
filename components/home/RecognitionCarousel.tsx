@@ -43,7 +43,10 @@ export function RecognitionCarousel() {
                   height={recognition.height}
                   quality={90}
                   sizes="(max-width: 767px) 42vw, (max-width: 1023px) 27vw, 220px"
-                  className="max-h-[90px] w-auto max-w-full object-contain"
+                  className={cn(
+                    "max-h-[90px] w-auto max-w-full object-contain transition-transform duration-300",
+                    recognition.imageClassName,
+                  )}
                 />
               </div>
             ))}

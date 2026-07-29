@@ -75,10 +75,16 @@ export const programs: Program[] = [
 export const recognitions: Recognition[] = [
   { name: "ISO Certified Training Provider", image: "/images/cca/iso.png", width: 456, height: 128 },
   { name: "SITC Campus", image: "/images/cca/sitc-logo-768x235-1.png", width: 768, height: 235 },
-  { name: "Gatehouse Awards", image: "/images/cca/Gatehouse-Awards_big-1.png", width: 218, height: 64 },
+  { name: "Gatehouse Awards", image: "/images/cca/Gatehouse-Awards_big-1.png", width: 218, height: 64, imageClassName: "scale-[1.14]" },
   { name: "London Business Consultancy", image: "/images/cca/seal-logo-full-768x240.png", width: 768, height: 240 },
   { name: "Distance Education Council", image: "/images/cca/DEC1-768x323.png", width: 768, height: 323 },
-  { name: "Chamber of Psychology and Counselling", image: "/images/cca/Chamber-of-Psychology-and-Counselling.png", width: 200, height: 100 },
+  {
+    name: "Chamber of Psychology and Counselling",
+    image: "/images/cca/Chamber-of-Psychology-and-Counselling.png",
+    width: 200,
+    height: 100,
+    imageClassName: "scale-[1.3]",
+  },
 ];
 
 export const whatsappRegistration = "https://wa.me/94766772923";

@@ -7,7 +7,7 @@ import { SectionLabel } from "./SectionLabel";
 export function RealMoments() {
   return (
     <section aria-labelledby="real-moments-title" className="bg-hero px-5 py-20 lg:py-28">
-      <div className="mx-auto grid max-w-[1280px] items-center gap-12 lg:grid-cols-[.72fr_1.28fr] lg:gap-16">
+      <div className="mx-auto grid w-full max-w-[1260px] items-center gap-12 lg:grid-cols-[.72fr_1.28fr] lg:gap-16">
         <div className="max-w-[570px]">
           <SectionLabel>Life at CCA</SectionLabel>
           <h2

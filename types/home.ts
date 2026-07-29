@@ -35,4 +35,5 @@ export interface Recognition {
   image: string;
   width: number;
   height: number;
+  imageClassName?: string;
 }
