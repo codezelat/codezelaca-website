@@ -49,7 +49,7 @@ export function AboutPage() {
     <PageShell>
       <InnerHero
         eyebrow="About Us"
-        title="where your potential becomes your profession"
+        title="Where Your Potential Becomes Your Profession"
         description="Codezela Career Accelerator is the education programme built for one purpose: turning beginners into job-ready professionals with the skills, confidence and experience employers actually want."
         actions={[
           { label: "Contact Us Now", href: "/contact-us/" },
@@ -68,7 +68,7 @@ export function AboutPage() {
       />
 
       <EditorialSection
-        title="What is CCA?"
+        title="What Is CCA?"
         paragraphs={[
           "Codezela Technologies is a UK-based technology company operating across the EU, UAE, Australia and Sri Lanka, with teams working for clients in the US, UK, Canada, Australia, New Zealand, countries in Europe and more.",
           "The CodeZela Career Accelerator is our education arm, created to fix a simple but painful truth: too many students study for years yet never gain the skills required for real industry work. We built a programme that closes that gap.",

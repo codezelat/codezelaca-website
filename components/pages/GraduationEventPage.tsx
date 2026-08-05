@@ -64,7 +64,7 @@ export function GraduationEventPage() {
               2026 Graduation Event Story
             </p>
             <h1 className="mt-5 max-w-[720px] text-[42px] leading-[1.05] font-semibold tracking-[-0.045em] text-footer sm:text-[58px] lg:text-[64px]">
-              A proud chapter, celebrated together
+              A Proud Chapter, Celebrated Together
             </h1>
             <p className="mt-7 max-w-[650px] font-body text-[16px] leading-7 text-muted-foreground sm:text-[18px] sm:leading-8">
               CCA graduates joined the SITC General Convocation 2026 to recognise the work behind their achievement and the possibilities waiting beyond it.

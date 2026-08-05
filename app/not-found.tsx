@@ -31,7 +31,7 @@ export default function NotFound() {
           </div>
           <p className="mt-8 font-sans text-[14px] font-semibold uppercase tracking-[.22em] text-primary-readable">Error 404</p>
           <h1 className="mx-auto mt-5 max-w-[780px] font-sans text-[46px] font-semibold leading-[1.04] tracking-[-0.05em] text-black sm:text-[64px] lg:text-[76px]">
-            This page took a wrong turn.
+            This Page Took a Wrong Turn.
           </h1>
           <p className="mx-auto mt-7 max-w-[650px] font-body text-[16px] leading-7 text-muted-foreground sm:text-[18px] sm:leading-8">
             The address may have changed, or the page may no longer exist. Your next career move is still right here.

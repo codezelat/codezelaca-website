@@ -15,7 +15,7 @@ const routes = [
     pathname: "/events/graduation-2026/",
     title: "CCA Graduation 2026 - Event Story & Photo Highlights",
     description: "Explore the CCA Graduation 2026 event story, including real photographs from the SITC convocation, graduate recognition and celebration moments.",
-    h1: "A proud chapter, celebrated together",
+    h1: "A Proud Chapter, Celebrated Together",
     ogImage: "https://cca.it.com/seo/cca-events-graduation-og.jpg",
     required: ["The day began before the doors opened", "More moments from the 2026 graduating class"],
   },
@@ -41,16 +41,16 @@ const routes = [
     pathname: "/about-us/",
     title: "About Codezela Career Accelerator - Born From Industry Tech Training",
     description: "Discover the story behind Codezela Career Accelerator, the industry-led education programme helping Sri Lankan learners build job-ready skills and global careers.",
-    h1: "where your potential becomes your profession",
-    required: ["where your potential becomes your profession", "over 18 specialized tracks"],
+    h1: "Where Your Potential Becomes Your Profession",
+    required: ["Where Your Potential Becomes Your Profession", "over 18 specialized tracks"],
   },
   {
     slug: "contact-us",
     pathname: "/contact-us/",
     title: "Contact Us - Start Your Application At Codezela Career Accelerator",
     description: "Talk with the CodeZela Career Accelerator admissions team about programmes, applications and the August 2026 cohort. Request a free career consultation today.",
-    h1: "Your journey to a global career begins here",
-    required: ["Your journey to a global career begins here", "Request Consultation"],
+    h1: "Your Journey to a Global Career Begins Here",
+    required: ["Your Journey to a Global Career Begins Here", "Request Consultation"],
   },
   {
     slug: "privacy-policy",
@@ -85,7 +85,6 @@ const report = { baseUrl, generatedAt: new Date().toISOString(), routes: {} };
 
 async function loadAllImages(page) {
   await page.evaluate(async () => {
-    for (const image of document.images) image.loading = "eager";
     const step = Math.max(500, Math.floor(window.innerHeight * 0.85));
     for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
       window.scrollTo(0, y);

@@ -10,7 +10,7 @@ export function ContactPage() {
     <PageShell>
       <InnerHero
         eyebrow="Contact Us"
-        title="Your journey to a global career begins here"
+        title="Your Journey to a Global Career Begins Here"
         description="Whether you are exploring options, ready to apply, or simply want clarity, our support team and programme advisors are here to help. We make the process simple, friendly and transparent so you can focus on what truly matters: building the skills and confidence for the career you want."
         actions={[
           { label: "WhatsApp Us Now", href: "https://wa.me/94766772923" },
