@@ -16,6 +16,7 @@ const siteMenu = [
   ["Divisions", "/divisions/"],
   ["About Us", "/about-us/"],
   ["Events", "/events/"],
+  ["Skills Self-Audit", "/personal-skills-self-audit/"],
   ["Contact Us", "/contact-us/"],
   ["Terms and Conditions", "/terms-and-conditions/"],
 ] as const;

@@ -53,6 +53,14 @@ const routes = [
     required: ["Your Journey to a Global Career Begins Here", "Request Consultation"],
   },
   {
+    slug: "personal-skills-self-audit",
+    pathname: "/personal-skills-self-audit/",
+    title: "Personal Skills Self-Audit - Build Your 30-Day Career Plan",
+    description: "Reflect on 25 practical career skills, identify your strengths and growth areas, and create a private 30-day action plan with the CCA Personal Skills Self-Audit.",
+    h1: "Personal Skills Self-Audit",
+    required: ["Personal Skills Self-Audit", "Answers stay on this device", "Start your audit"],
+  },
+  {
     slug: "privacy-policy",
     pathname: "/privacy-policy/",
     title: "Privacy Policy - Data Protection At Codezela Career Accelerator",

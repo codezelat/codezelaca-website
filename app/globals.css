@@ -71,3 +71,24 @@ button {
     animation-iteration-count: 1 !important;
   }
 }
+
+@media print {
+  header,
+  footer,
+  nextjs-portal,
+  nav[aria-label="Breadcrumb"] {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff;
+  }
+
+  main > section {
+    padding: 0 !important;
+  }
+
+  @page {
+    margin: 14mm;
+  }
+}

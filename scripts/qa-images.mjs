@@ -13,8 +13,8 @@ const sitemapResponse = await request.get(`${baseUrl}/sitemap.xml`);
 const sitemap = await sitemapResponse.text();
 const routes = Array.from(sitemap.matchAll(/<loc>https:\/\/cca\.it\.com([^<]*)<\/loc>/g), (match) => match[1]);
 
-if (sitemapResponse.status() !== 200 || routes.length !== 32) {
-  throw new Error(`Expected 32 public routes in the sitemap; received ${routes.length}.`);
+if (sitemapResponse.status() !== 200 || routes.length !== 33) {
+  throw new Error(`Expected 33 public routes in the sitemap; received ${routes.length}.`);
 }
 
 const report = { baseUrl, generatedAt: new Date().toISOString(), routes: {}, summary: {} };
@@ -36,7 +36,6 @@ for (const route of routes) {
 
   const response = await page.goto(`${baseUrl}${route}`, { waitUntil: "domcontentloaded" });
   await page.evaluate(async () => {
-    for (const image of document.images) image.loading = "eager";
     const step = Math.max(600, Math.floor(window.innerHeight * 0.9));
     for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
       window.scrollTo(0, y);
