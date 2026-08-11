@@ -51,7 +51,10 @@ for (let index = 0; index < 25; index += 1) {
 await page.getByRole("heading", { level: 1, name: "Your skills picture" }).waitFor();
 await page.getByRole("heading", { name: "Your 30-day action plan" }).waitFor();
 await page.getByRole("button", { name: "Copy summary" }).click();
+await page.getByRole("button", { name: "Copied", exact: true }).waitFor();
 const clipboard = await page.evaluate(() => navigator.clipboard.readText());
+const copiedStateVisible = await page.getByRole("button", { name: "Copied", exact: true }).isVisible();
+const resultsActionsDoNotWrap = await page.locator("button", { hasText: "Print or save PDF" }).evaluate((button) => button.scrollWidth <= button.clientWidth);
 const persisted = await page.evaluate(() => {
   const value = window.localStorage.getItem("cca-personal-skills-self-audit-v1");
   return value ? JSON.parse(value) : null;
@@ -93,6 +96,8 @@ const report = {
     persistedPhase: persisted?.phase,
     answerCount: persisted ? Object.keys(persisted.answers ?? {}).length : 0,
     clipboardIncludesPlan: clipboard.includes("30-day focus:") && clipboard.includes("Evidence:"),
+    copiedStateVisible,
+    resultsActionsDoNotWrap,
     restoredResults,
   },
   mobile: mobileState,
@@ -115,7 +120,7 @@ if (intro.description !== "Reflect on 25 practical career skills, identify your 
 if (intro.canonical !== "https://cca.it.com/personal-skills-self-audit/") failures.push("canonical metadata");
 if (intro.h1Count !== 1 || !intro.jsonLdValid || intro.overflow) failures.push("intro document contract");
 if (report.assessment.persistedPhase !== "results" || report.assessment.answerCount !== 25) failures.push("completion persistence");
-if (!report.assessment.clipboardIncludesPlan || !report.assessment.restoredResults) failures.push("results export or restore");
+if (!report.assessment.clipboardIncludesPlan || !report.assessment.copiedStateVisible || !report.assessment.resultsActionsDoNotWrap || !report.assessment.restoredResults) failures.push("results export or restore");
 if (mobileState.overflow || mobileState.h1Count !== 1 || !mobileState.progressVisible) failures.push("mobile assessment layout");
 if (report.sitemap.status !== 200 || !report.sitemap.routePresent) failures.push("sitemap");
 if (report.errors.length) failures.push(`browser errors: ${report.errors.join(" | ")}`);

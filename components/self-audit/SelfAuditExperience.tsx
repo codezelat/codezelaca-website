@@ -10,8 +10,8 @@ import {
   ClipboardCheck,
   Clock3,
   Copy,
-  Download,
   LockKeyhole,
+  Printer,
   RefreshCcw,
   RotateCcw,
   Sparkles,
@@ -55,12 +55,44 @@ function persistAudit(audit: StoredAudit) {
   }
 }
 
+async function copyTextToClipboard(text: string) {
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return;
+    } catch {
+      // Use the browser fallback below when clipboard permission is unavailable.
+    }
+  }
+
+  const textarea = document.createElement("textarea");
+  const previouslyFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.opacity = "0";
+  textarea.style.pointerEvents = "none";
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+  textarea.setSelectionRange(0, textarea.value.length);
+
+  try {
+    if (!document.execCommand("copy")) throw new Error("Copy command was rejected");
+  } finally {
+    textarea.remove();
+    previouslyFocused?.focus();
+  }
+}
+
 export function SelfAuditExperience() {
   const [audit, setAudit] = useState<StoredAudit>(() => createEmptyAudit());
   const [hydrated, setHydrated] = useState(false);
   const [notice, setNotice] = useState("");
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const phaseHeadingRef = useRef<HTMLHeadingElement>(null);
+  const copyResetTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
     const restoreTimer = window.setTimeout(() => {
@@ -75,6 +107,10 @@ export function SelfAuditExperience() {
     }, 0);
 
     return () => window.clearTimeout(restoreTimer);
+  }, []);
+
+  useEffect(() => () => {
+    if (copyResetTimerRef.current) window.clearTimeout(copyResetTimerRef.current);
   }, []);
 
   const commit = (update: StoredAudit | ((current: StoredAudit) => StoredAudit), message = "Progress saved on this device") => {
@@ -177,11 +213,16 @@ export function SelfAuditExperience() {
     const summary = `CCA Personal Skills Self-Audit\nCareer context: ${audit.context ?? "Not selected"}\nCompleted: ${audit.completedAt ? formatAuditDate(audit.completedAt) : "Not completed"}\n\nSkill profile\n${profile}\n\nStrengths: ${strengths}\nGrowth areas: ${growth}${plan}`;
 
     try {
-      await navigator.clipboard.writeText(summary);
+      await copyTextToClipboard(summary);
+      setCopyStatus("copied");
       setNotice("Summary copied to your clipboard");
     } catch {
-      setNotice("Copy was unavailable. You can use Print or save as PDF instead.");
+      setCopyStatus("error");
+      setNotice("Copy was unavailable. Please try again or use the PDF option.");
     }
+
+    if (copyResetTimerRef.current) window.clearTimeout(copyResetTimerRef.current);
+    copyResetTimerRef.current = window.setTimeout(() => setCopyStatus("idle"), 2600);
   };
 
   const clearAudit = () => {
@@ -201,7 +242,7 @@ export function SelfAuditExperience() {
 
   return (
     <section className="relative isolate overflow-hidden bg-white px-5 pb-20 pt-[168px] sm:pb-28 lg:pt-[190px]">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden print:hidden">
         <div className="absolute -left-[320px] -top-[300px] size-[690px] rounded-full border-[80px] border-primary-deep/[0.045]" />
         <div className="absolute -right-[340px] top-[410px] size-[720px] rounded-full border-[90px] border-primary-bright/[0.045]" />
         <div className="absolute inset-x-0 top-0 h-[650px] bg-[radial-gradient(circle_at_50%_12%,rgba(253,242,248,.95),transparent_64%)]" />
@@ -263,6 +304,7 @@ export function SelfAuditExperience() {
             selectedSkill={selectedSkill}
             reviewDate={reviewDate}
             canRetake={canRetake}
+            copyStatus={copyStatus}
             onSelectPriority={selectPriority}
             onCopy={copySummary}
             onPrint={() => window.print()}
@@ -494,6 +536,7 @@ function ResultsView({
   selectedSkill,
   reviewDate,
   canRetake,
+  copyStatus,
   onSelectPriority,
   onCopy,
   onPrint,
@@ -509,6 +552,7 @@ function ResultsView({
   selectedSkill: (typeof auditQuestions)[number] | null;
   reviewDate: Date | null;
   canRetake: boolean;
+  copyStatus: "idle" | "copied" | "error";
   onSelectPriority: (skillId: string) => void;
   onCopy: () => void;
   onPrint: () => void;
@@ -521,20 +565,32 @@ function ResultsView({
   const previousResults = audit.previous ? getCategoryResults(audit.previous.answers) : null;
 
   return (
-    <div className="mx-auto max-w-[1040px] print:max-w-none">
-      <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+    <div className="self-audit-results mx-auto max-w-[1040px] print:max-w-none">
+      <div className="grid gap-6 print:break-inside-avoid lg:grid-cols-[minmax(0,1fr)_360px] lg:items-end">
         <div>
           <p className="inline-flex items-center gap-2 font-sans text-[13px] font-semibold text-primary-readable"><Sparkles aria-hidden="true" className="size-4" />Your reflection</p>
           <h1 ref={headingRef} tabIndex={-1} className="mt-3 font-sans text-[38px] leading-[1.08] font-semibold tracking-[-0.04em] text-primary-deep outline-none sm:text-[52px]">Your skills picture</h1>
           <p className="mt-4 max-w-[700px] font-body text-[15px] leading-7 text-muted-foreground sm:text-[16px]">Use this as a starting point. Your ratings show where you feel confident today and where practice can create the most useful progress.</p>
         </div>
-        <div className="flex flex-wrap gap-2 print:hidden">
-          <button type="button" onClick={onCopy} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[10px] border border-black/10 bg-white px-4 font-sans text-[12px] font-semibold text-primary-deep transition-colors hover:border-primary/35 hover:bg-hero"><Copy aria-hidden="true" className="size-4" />Copy summary</button>
-          <button type="button" onClick={onPrint} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[10px] bg-primary-deep px-4 font-sans text-[12px] font-semibold text-white transition-colors hover:bg-primary"><Download aria-hidden="true" className="size-4" />Print or save PDF</button>
+        <div className="grid w-full grid-cols-1 gap-2 min-[420px]:grid-cols-2 print:hidden lg:w-[360px]">
+          <button
+            type="button"
+            onClick={onCopy}
+            className={cn(
+              "inline-flex min-h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-[11px] border px-4 font-sans text-[12px] font-semibold shadow-sm transition duration-200 hover:-translate-y-0.5",
+              copyStatus === "copied" && "border-emerald-200 bg-emerald-50 text-emerald-800 hover:bg-emerald-50",
+              copyStatus === "error" && "border-red-200 bg-red-50 text-red-800 hover:bg-red-50",
+              copyStatus === "idle" && "border-primary/20 bg-white text-primary-deep hover:border-primary/45 hover:bg-hero",
+            )}
+          >
+            {copyStatus === "copied" ? <CheckCircle2 aria-hidden="true" className="size-4" /> : <Copy aria-hidden="true" className="size-4" />}
+            <span aria-live="polite">{copyStatus === "copied" ? "Copied" : copyStatus === "error" ? "Try copy again" : "Copy summary"}</span>
+          </button>
+          <button type="button" onClick={onPrint} className="inline-flex min-h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-[11px] bg-primary-deep px-4 font-sans text-[12px] font-semibold text-white shadow-[0_8px_20px_rgba(113,11,192,.16)] transition duration-200 hover:-translate-y-0.5 hover:bg-primary"><Printer aria-hidden="true" className="size-4" />Print or save PDF</button>
         </div>
       </div>
 
-      <section aria-labelledby="skill-profile-heading" className="mt-9 rounded-[24px] border border-primary-deep/10 bg-white p-6 shadow-[0_22px_65px_rgba(41,12,63,.08)] sm:p-9">
+      <section aria-labelledby="skill-profile-heading" className="mt-9 break-inside-avoid rounded-[24px] border border-primary-deep/10 bg-white p-6 shadow-[0_22px_65px_rgba(41,12,63,.08)] sm:p-9 print:shadow-none">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h2 id="skill-profile-heading" className="font-sans text-[24px] font-semibold text-primary-deep">Your skill profile</h2>
           {audit.completedAt ? <p className="font-body text-[12px] text-muted-foreground">Completed {formatAuditDate(audit.completedAt)}</p> : null}
@@ -563,26 +619,26 @@ function ResultsView({
         </div>
       </section>
 
-      <div className="mt-6 grid gap-6 md:grid-cols-2">
+      <div className="mt-6 grid break-inside-avoid gap-6 md:grid-cols-2">
         <ResultList title="Strengths to use" icon={<CheckCircle2 aria-hidden="true" className="size-5" />} tone="strength" items={rankedSkills.strengths.map((item) => ({ id: item.id, label: item.skill }))} empty="Complete more rated responses to identify strengths." />
         <ResultList title="Growth areas" icon={<TrendingUp aria-hidden="true" className="size-5" />} tone="growth" items={rankedSkills.growthAreas.map((item) => ({ id: item.id, label: item.skill }))} empty="Complete more rated responses to identify growth areas." />
       </div>
 
       {rankedSkills.exposureAreas.length ? (
-        <section aria-labelledby="exposure-heading" className="mt-6 rounded-[20px] border border-amber-200 bg-amber-50/55 p-6">
+        <section aria-labelledby="exposure-heading" className="mt-6 break-inside-avoid rounded-[20px] border border-amber-200 bg-amber-50/55 p-6">
           <h2 id="exposure-heading" className="font-sans text-[18px] font-semibold text-[#4a3213]">Skills to explore through practice</h2>
           <p className="mt-2 font-body text-[13px] leading-6 text-[#6f542d]">“Not yet” is not a low rating. These are useful opportunities to seek through a project, class, volunteering or work experience.</p>
           <ul className="mt-4 flex flex-wrap gap-2">{rankedSkills.exposureAreas.map((item) => <li key={item.id} className="rounded-full border border-amber-200 bg-white px-3 py-2 font-sans text-[11px] font-semibold text-[#4a3213]">{item.skill}</li>)}</ul>
         </section>
       ) : null}
 
-      <section aria-labelledby="action-plan-heading" className="mt-8 overflow-hidden rounded-[24px] border border-primary-deep/10 bg-white shadow-[0_22px_65px_rgba(41,12,63,.08)]">
+      <section aria-labelledby="action-plan-heading" className="mt-8 break-inside-avoid overflow-hidden rounded-[24px] border border-primary-deep/10 bg-white shadow-[0_22px_65px_rgba(41,12,63,.08)] print:break-before-page print:shadow-none">
         <div className="bg-[linear-gradient(110deg,rgba(253,242,248,.95),rgba(255,255,255,.98))] p-6 sm:p-9">
           <p className="font-sans text-[12px] font-semibold text-primary-readable">One focused next step</p>
           <h2 id="action-plan-heading" className="mt-2 font-sans text-[27px] leading-tight font-semibold text-primary-deep sm:text-[34px]">Your 30-day action plan</h2>
           <p className="mt-3 max-w-[700px] font-body text-[14px] leading-6 text-muted-foreground">Choose one priority. Small, visible evidence is more useful than trying to improve everything at once.</p>
 
-          <fieldset className="mt-6 grid gap-3 md:grid-cols-3">
+          <fieldset className="mt-6 grid gap-3 md:grid-cols-3 print:hidden">
             <legend className="sr-only">Choose a growth area for your action plan</legend>
             {rankedSkills.growthAreas.map((item) => {
               const checked = selectedSkill?.id === item.id;
@@ -609,7 +665,7 @@ function ResultsView({
             </div>
             <ol className="mt-6 grid gap-4 sm:grid-cols-2">
               {selectedSkill.actionPlan.weeks.map((step, index) => (
-                <li key={step} className="flex gap-3 rounded-[14px] border border-black/8 p-4">
+                <li key={step} className="flex break-inside-avoid gap-3 rounded-[14px] border border-black/8 p-4">
                   <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary-deep text-[12px] font-semibold text-white">{index + 1}</span>
                   <div><p className="font-sans text-[11px] font-semibold text-primary-readable">Week {index + 1}</p><p className="mt-1 font-body text-[13px] leading-5 text-muted-foreground">{step}</p></div>
                 </li>
@@ -652,7 +708,7 @@ function StepHeader({ eyebrow, title, description, headingRef }: HeadingRefProps
 
 function ResultList({ title, icon, tone, items, empty }: { title: string; icon: React.ReactNode; tone: "strength" | "growth"; items: { id: string; label: string }[]; empty: string }) {
   return (
-    <section className={cn("rounded-[20px] border p-6", tone === "strength" ? "border-emerald-200 bg-emerald-50/45" : "border-primary/15 bg-hero/55")}>
+    <section className={cn("break-inside-avoid rounded-[20px] border p-6", tone === "strength" ? "border-emerald-200 bg-emerald-50/45" : "border-primary/15 bg-hero/55")}>
       <h2 className={cn("flex items-center gap-2 font-sans text-[18px] font-semibold", tone === "strength" ? "text-emerald-900" : "text-primary-deep")}>{icon}{title}</h2>
       {items.length ? (
         <ul className="mt-5 space-y-3">{items.map((item) => <li key={item.id} className="flex items-center gap-3 font-body text-[13px] leading-5 text-[#394150]"><span className={cn("size-1.5 shrink-0 rounded-full", tone === "strength" ? "bg-emerald-600" : "bg-primary")} />{item.label}</li>)}</ul>
