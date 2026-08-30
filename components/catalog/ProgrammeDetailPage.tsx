@@ -13,6 +13,7 @@ import type { ProgrammeCatalogEntry } from "@/types/catalog";
 
 export function ProgrammeDetailPage({ programme }: { programme: ProgrammeCatalogEntry }) {
   const division = divisionById.get(programme.divisionId);
+  const intakeIsOpen = programme.intakeStatus === "open";
 
   return (
     <PageShell>
@@ -29,7 +30,16 @@ export function ProgrammeDetailPage({ programme }: { programme: ProgrammeCatalog
                 <li aria-current="page" className="text-primary-deep">{programme.title}</li>
               </ol>
             </nav>
-            <span className="inline-flex min-h-10 items-center rounded-full border border-primary-bright/35 bg-white px-5 font-sans text-[14px] font-bold text-primary-deep shadow-sm">September 2026 Intake Open</span>
+            <span
+              className={`inline-flex min-h-8 items-center gap-2 rounded-full border px-3.5 font-sans text-[12px] font-bold shadow-sm ${
+                intakeIsOpen
+                  ? "border-emerald-500/30 bg-emerald-50 text-emerald-800"
+                  : "border-red-500/25 bg-red-50 text-red-700"
+              }`}
+            >
+              <span aria-hidden="true" className={`size-2 rounded-full ${intakeIsOpen ? "bg-emerald-500" : "bg-red-500"}`} />
+              {intakeIsOpen ? "September 2026 Intake Open" : "Intake Closed"}
+            </span>
             <h1 className="mt-7 max-w-[760px] text-balance font-sans text-[40px] font-semibold leading-[1.05] tracking-[-0.05em] text-black sm:text-[54px] lg:text-[64px] xl:text-[70px]">{programme.title}</h1>
             <p className="mt-7 max-w-[720px] font-body text-[16px] leading-7 text-muted-foreground lg:text-[18px] lg:leading-8">{programme.heroDescription}</p>
             <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap">

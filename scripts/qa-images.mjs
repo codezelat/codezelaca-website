@@ -74,7 +74,9 @@ for (const route of routes) {
         loading: image.getAttribute("loading") ?? "auto",
         fetchPriority: image.getAttribute("fetchpriority") ?? "auto",
         local: sourceUrl.origin === window.location.origin,
-        broken: !image.complete || Boolean(image.currentSrc && (image.naturalWidth === 0 || image.naturalHeight === 0)),
+        broken: image.currentSrc
+          ? !image.complete || image.naturalWidth === 0 || image.naturalHeight === 0
+          : image.loading !== "lazy",
         missingAlt: alt === null,
         invalidEmptyAlt: alt === "" && image.getAttribute("aria-hidden") !== "true",
         genericAlt: Boolean(alt && genericAlt.test(alt.trim())),

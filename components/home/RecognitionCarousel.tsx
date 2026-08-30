@@ -42,7 +42,7 @@ export function RecognitionCarousel() {
                   width={recognition.width}
                   height={recognition.height}
                   quality={90}
-                  sizes="(max-width: 767px) 42vw, (max-width: 1023px) 27vw, 220px"
+                  sizes={recognition.imageClassName ? "(max-width: 767px) 55vw, (max-width: 1023px) 35vw, 280px" : "(max-width: 767px) 42vw, (max-width: 1023px) 27vw, 220px"}
                   className={cn(
                     "max-h-[90px] w-auto max-w-full object-contain transition-transform duration-300",
                     recognition.imageClassName,

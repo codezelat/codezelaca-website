@@ -19,6 +19,7 @@ export interface ProgrammeCatalogEntry {
   detailImage: string;
   detailImageAlt: string;
   heroDescription: string;
+  intakeStatus: "open" | "closed";
   seoTitle?: string;
   seoDescription?: string;
   careerHeading?: string;
