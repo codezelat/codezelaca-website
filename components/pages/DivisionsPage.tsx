@@ -44,7 +44,7 @@ export function DivisionsPage() {
                   ))}
                 </ul>
                 <div className="mt-9 flex w-full flex-col gap-3 sm:flex-row">
-                  <ActionLink href={division.href} showArrow className="min-w-[190px]">View Program Details</ActionLink>
+                  <ActionLink href={division.href} showArrow className="min-w-[190px]">View Programs</ActionLink>
                   <ActionLink href={whatsappRegistration} variant="outline" className="min-w-[210px]">Reserve Your Seat Now!</ActionLink>
                 </div>
               </div>

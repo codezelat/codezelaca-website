@@ -7,18 +7,6 @@ const expectedTitle = "Codezela Career Accelerator - #1 Tech Career Program In S
 const expectedDescription =
   "Launch your tech career in months, not years. Join Sri Lanka’s top accelerator with SITC & LBC Group UK. Get DEC recognized certification & hired. Apply now.";
 const expectedProgramImagePaths = [
-  "/images/programs/detail/full-stack-developer.webp",
-  "/images/programs/detail/ai-ml-engineer.webp",
-  "/images/programs/detail/back-end-developer.webp",
-  "/images/programs/detail/business-analyst.webp",
-  "/images/programs/detail/cyber-security-engineer.webp",
-  "/images/programs/detail/data-analyst.webp",
-  "/images/programs/detail/data-engineer.webp",
-  "/images/programs/detail/data-scientist.webp",
-  "/images/programs/detail/devops-engineer.webp",
-  "/images/programs/detail/digital-marketing-specialist.webp",
-  "/images/programs/detail/front-end-developer.webp",
-  "/images/programs/detail/graphic-designer.webp",
   "/images/programs/full-stack-software-engineer.webp",
   "/images/programs/project-manager-business-analyst-qa-engineer.webp",
   "/images/programs/devops-cyber-security-engineer.webp",

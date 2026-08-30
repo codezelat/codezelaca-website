@@ -44,7 +44,7 @@ export function ProgrammeDetailPage({ programme }: { programme: ProgrammeCatalog
             <p className="mt-7 max-w-[720px] font-body text-[16px] leading-7 text-muted-foreground lg:text-[18px] lg:leading-8">{programme.heroDescription}</p>
             <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap">
               <ActionLink href={whatsappRegistration} showArrow className="min-w-[168px]">Register Now</ActionLink>
-              <ActionLink href="#course-breakdown" variant="outline" className="min-w-[220px]">View Course Breakdown</ActionLink>
+              {!intakeIsOpen ? <ActionLink href="#course-breakdown" variant="outline" className="min-w-[220px]">View Course Breakdown</ActionLink> : null}
               {programme.brochureUrl ? <ActionLink href={programme.brochureUrl} variant="outline" className="min-w-[210px]"><BookOpenText aria-hidden="true" className="size-4" />View Programme Guide</ActionLink> : null}
             </div>
             <div className="mt-9 grid max-w-[620px] gap-3 sm:grid-cols-2">
@@ -90,7 +90,7 @@ export function ProgrammeDetailPage({ programme }: { programme: ProgrammeCatalog
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
               [Clock3, "6 Months", "Structured career sprint"],
-              [Laptop2, "Hybrid & Online", "Flexible guided learning"],
+              [Laptop2, intakeIsOpen ? "100% Online" : "Hybrid & Online", "Flexible guided learning"],
               [Award, "Verified Work", "Portfolio-ready evidence"],
               [UsersRound, "Expert Mentors", "Professional feedback"],
             ].map(([Icon, title, description]) => {

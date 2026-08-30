@@ -18,7 +18,7 @@ export function ProgrammeCard({ programme }: { programme: ProgrammeCatalogEntry 
         />
       </Link>
       <div className="flex flex-1 flex-col px-3 pb-4 pt-6 sm:px-4">
-        <h2 className="font-sans text-[24px] font-bold leading-[1.15] tracking-[-0.03em] text-black sm:text-[27px]">
+        <h2 className="font-sans text-[24px] font-bold leading-[1.15] tracking-[-0.03em] text-black sm:text-[27px] md:min-h-[94px]">
           <Link href={`/programs/${programme.slug}/`} className="transition-colors hover:text-primary-bright">
             {programme.title}
           </Link>
@@ -28,15 +28,17 @@ export function ProgrammeCard({ programme }: { programme: ProgrammeCatalogEntry 
             <Clock3 aria-hidden="true" className="size-4" />6 Months
           </span>
           <span className="inline-flex items-center gap-2 rounded-full border border-black/15 px-3 py-2 font-sans text-[12px] font-semibold text-primary-deep">
-            <Laptop2 aria-hidden="true" className="size-4" />Hybrid &amp; Online
+            <Laptop2 aria-hidden="true" className="size-4" />{programme.intakeStatus === "open" ? "100% Online" : "Hybrid & Online"}
           </span>
         </div>
-        <Link
-          href={`/programs/${programme.slug}/`}
-          className="mt-7 inline-flex min-h-12 w-full items-center justify-center rounded-[10px] bg-primary px-5 font-sans text-[14px] font-semibold text-white transition hover:-translate-y-0.5 hover:bg-primary-bright"
-        >
-          View {programme.title}
-        </Link>
+        <div className="mt-auto pt-7">
+          <Link
+            href={`/programs/${programme.slug}/`}
+            className="inline-flex min-h-12 w-full items-center justify-center rounded-[10px] bg-primary px-5 py-3 text-center font-sans text-[14px] font-semibold leading-5 text-white transition hover:-translate-y-0.5 hover:bg-primary-bright"
+          >
+            View {programme.title}
+          </Link>
+        </div>
       </div>
     </article>
   );

@@ -42,14 +42,16 @@ export function ProgramsCarousel() {
                     <Image src={program.image} alt={program.alt} fill quality={90} sizes="400px" className="object-cover object-center" />
                   </div>
                   <div className="flex min-h-[213px] flex-1 flex-col pt-8 lg:min-h-[228px]">
-                    <h3 className={cn("text-balance font-sans text-[28px] font-bold leading-[32px] tracking-[-0.03em] text-black", program.title.length > 32 && "text-[23px] leading-[27px] lg:text-[25px] lg:leading-[29px]")}>{program.title}</h3>
-                    <div className={cn("mt-8 flex flex-wrap gap-[10px]", program.title.length > 32 && "mt-5")}>
+                    <h3 className={cn("min-h-[87px] text-balance font-sans text-[28px] font-bold leading-[32px] tracking-[-0.03em] text-black", program.title.length > 32 && "text-[23px] leading-[27px] lg:text-[25px] lg:leading-[29px]")}>{program.title}</h3>
+                    <div className="mt-5 flex flex-wrap gap-[10px]">
                       <span className="rounded-full border border-black/20 px-4 py-2 font-sans text-[14px] font-semibold text-primary-deep">6 Months</span>
-                      <span className="rounded-full border border-black/20 px-4 py-2 font-sans text-[14px] font-semibold text-primary-deep">Hybrid &amp; 100% Online</span>
+                      <span className="rounded-full border border-black/20 px-4 py-2 font-sans text-[14px] font-semibold text-primary-deep">100% Online</span>
                     </div>
-                    <ActionLink href={`/programs/${program.slug}/`} className="mt-auto w-fit px-5">
-                      Learn More<span className="sr-only"> about {program.title}</span>
-                    </ActionLink>
+                    <div className="mt-auto pt-5">
+                      <ActionLink href={`/programs/${program.slug}/`} className="min-h-12 w-fit px-5">
+                        Learn More<span className="sr-only"> about {program.title}</span>
+                      </ActionLink>
+                    </div>
                   </div>
                 </article>
               </div>
