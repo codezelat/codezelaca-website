@@ -19,7 +19,12 @@ export interface ProgrammeCatalogEntry {
   detailImage: string;
   detailImageAlt: string;
   heroDescription: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  careerHeading?: string;
+  brochureUrl?: string;
   roleDescription: string;
+  outcomes?: string[];
   modules: CurriculumModule[];
 }
 

@@ -34,11 +34,11 @@ export function Hero() {
       <div className="absolute inset-x-[10px] top-[210px] mx-auto max-w-[1280px]">
         <div className="grid h-[733px] grid-cols-1 gap-[20px] sm:h-[990px] lg:h-[514px] lg:grid-cols-2">
           <div className="relative h-[451px] min-w-0 p-[10px] lg:h-[514px]">
-            <div className="absolute top-[31px] left-[10px] hidden h-[45px] w-[470px] items-center rounded-[40px] border border-black/25 bg-white px-[18px] text-[14px] leading-[20px] text-[#4915ff] shadow-[0_2px_8px_rgba(0,0,0,0.10)] lg:flex">
+            <div className="absolute top-[31px] left-[10px] hidden h-[45px] w-[520px] items-center rounded-[40px] border border-black/25 bg-white px-[18px] text-[14px] leading-[20px] text-[#4915ff] shadow-[0_2px_8px_rgba(0,0,0,0.10)] lg:flex">
               <span aria-hidden="true" className="mr-[11px] inline-flex h-[14px] w-[21px] shrink-0 items-center rounded-full bg-[#7918d4] p-[3px]">
                 <span className="size-[8px] rounded-full bg-white" />
               </span>
-              Next Cohort Starts August 2026 - Limited Seats Available
+              September 2026 Intake Now Open - Limited Seats Available
             </div>
 
             <h1

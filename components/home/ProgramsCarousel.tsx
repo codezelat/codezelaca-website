@@ -21,7 +21,7 @@ export function ProgramsCarousel() {
   }, [autoplay]);
 
   return (
-    <section id="programs" aria-labelledby="programs-title" className="mt-[79px] h-[903px] bg-white px-5 py-[30px] lg:h-[846px] lg:px-0 lg:py-[20px]">
+    <section id="programs" aria-labelledby="programs-title" className="mt-[79px] h-[927px] bg-white px-5 py-[30px] sm:h-[903px] lg:h-[846px] lg:px-0 lg:py-[20px]">
       <div className="mx-auto flex max-w-[1260px] flex-col items-center">
         <SectionLabel>Our Programs</SectionLabel>
         <h2 id="programs-title" className="mt-[30px] max-w-[1180px] text-center font-sans text-[32px] font-semibold leading-[38.4px] tracking-[-0.02em] text-black lg:text-[42px] lg:leading-[45px]">
@@ -42,8 +42,8 @@ export function ProgramsCarousel() {
                     <Image src={program.image} alt={program.alt} fill quality={90} sizes="400px" className="object-cover object-center" />
                   </div>
                   <div className="flex min-h-[213px] flex-1 flex-col pt-8 lg:min-h-[228px]">
-                    <h3 className="font-sans text-[28px] font-bold leading-[32px] tracking-[-0.03em] text-black">{program.title}</h3>
-                    <div className="mt-8 flex flex-wrap gap-[10px]">
+                    <h3 className={cn("text-balance font-sans text-[28px] font-bold leading-[32px] tracking-[-0.03em] text-black", program.title.length > 32 && "text-[23px] leading-[27px] lg:text-[25px] lg:leading-[29px]")}>{program.title}</h3>
+                    <div className={cn("mt-8 flex flex-wrap gap-[10px]", program.title.length > 32 && "mt-5")}>
                       <span className="rounded-full border border-black/20 px-4 py-2 font-sans text-[14px] font-semibold text-primary-deep">6 Months</span>
                       <span className="rounded-full border border-black/20 px-4 py-2 font-sans text-[14px] font-semibold text-primary-deep">Hybrid &amp; 100% Online</span>
                     </div>
@@ -57,7 +57,7 @@ export function ProgramsCarousel() {
           </div>
         </div>
 
-        <div className="mt-[10px] flex min-h-6 items-center justify-center" aria-label="Choose a program slide">
+        <div className="mt-[10px] flex min-h-6 w-[216px] flex-wrap items-center justify-center sm:w-auto sm:flex-nowrap" aria-label="Choose a program slide">
           {scrollSnaps.map((_, index) => (
             <button
               key={index}

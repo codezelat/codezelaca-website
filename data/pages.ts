@@ -7,7 +7,7 @@ export const divisions: Division[] = [
     title: "School of Software and Development",
     description:
       "Become a modern developer by learning the technologies used by global companies. Build real projects and a portfolio employers can test. Programmes:",
-    programmes: ["Full-stack Developer", "Frontend Developer", "Backend Developer", "Mobile App Developer", "Software Engineer"],
+    programmes: ["Full-Stack Software Engineer", "Full-stack Developer", "Frontend Developer", "Backend Developer", "Mobile App Developer", "Software Engineer"],
     image: "/images/pages/divisions/software-development.webp",
     imageAlt: "Software developer working at a computer",
     href: "/divisions/school-of-software-and-development/",
@@ -18,7 +18,7 @@ export const divisions: Division[] = [
     title: "School of AI and Data Science",
     description:
       "Learn how to work with data, analytics, artificial intelligence, machine learning and modelling for real decision-making. Programmes:",
-    programmes: ["Data Analyst", "AI and ML Engineer", "Data Scientist", "Data Engineer"],
+    programmes: ["Data Engineer & Data Analyst", "AI & Machine Learning Engineer", "Data Analyst", "AI and ML Engineer", "Data Scientist", "Data Engineer"],
     image: "/images/pages/divisions/ai-data-science.jpg",
     imageAlt: "Developer working with code and data",
     href: "/divisions/school-of-ai-and-data-science/",
@@ -29,7 +29,7 @@ export const divisions: Division[] = [
     title: "School of Systems Engineering",
     description:
       "Become a modern engineer with training in DevOps, cyber security and quality assurance for global technical roles. Programmes:",
-    programmes: ["DevOps Engineer", "QA Engineer (Manual/Automation)", "Cyber Security Engineer"],
+    programmes: ["DevOps & Cyber Security Engineer", "DevOps Engineer", "QA Engineer (Manual/Automation)", "Cyber Security Engineer"],
     image: "/images/pages/divisions/systems-engineering.webp",
     imageAlt: "Cyber security engineer working at a computer",
     href: "/divisions/school-of-systems-engineering/",
@@ -51,7 +51,7 @@ export const divisions: Division[] = [
     title: "School of Marketing and Business",
     description:
       "Develop modern skills for digital marketing, SEO, analytical decision making, growth strategy and business operations through training that combines technical knowledge with real world application. Programmes:",
-    programmes: ["Digital Marketing Specialist", "SEO/AEO Specialist", "Project Manager", "Business Analyst"],
+    programmes: ["Project Manager, Business Analyst & QA Engineer", "Digital Marketing Specialist", "SEO/AEO Specialist", "Project Manager", "Business Analyst"],
     image: "/images/pages/divisions/marketing-business.webp",
     imageAlt: "Business professionals discussing a project",
     href: "/divisions/school-of-marketing-and-business/",

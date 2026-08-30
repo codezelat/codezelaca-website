@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 import { divisionCatalog, programmes } from "@/data/program-catalog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-08-11T00:00:00+05:30");
+  const lastModified = new Date("2026-08-31T00:00:00+05:30");
 
   const coreRoutes = [
     ["/", "weekly", 1],

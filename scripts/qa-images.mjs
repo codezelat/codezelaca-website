@@ -13,8 +13,8 @@ const sitemapResponse = await request.get(`${baseUrl}/sitemap.xml`);
 const sitemap = await sitemapResponse.text();
 const routes = Array.from(sitemap.matchAll(/<loc>https:\/\/cca\.it\.com([^<]*)<\/loc>/g), (match) => match[1]);
 
-if (sitemapResponse.status() !== 200 || routes.length !== 33) {
-  throw new Error(`Expected 33 public routes in the sitemap; received ${routes.length}.`);
+if (sitemapResponse.status() !== 200 || routes.length !== 38) {
+  throw new Error(`Expected 38 public routes in the sitemap; received ${routes.length}.`);
 }
 
 const report = { baseUrl, generatedAt: new Date().toISOString(), routes: {}, summary: {} };
@@ -74,11 +74,11 @@ for (const route of routes) {
         loading: image.getAttribute("loading") ?? "auto",
         fetchPriority: image.getAttribute("fetchpriority") ?? "auto",
         local: sourceUrl.origin === window.location.origin,
-        broken: !image.complete || image.naturalWidth === 0 || image.naturalHeight === 0,
+        broken: !image.complete || Boolean(image.currentSrc && (image.naturalWidth === 0 || image.naturalHeight === 0)),
         missingAlt: alt === null,
         invalidEmptyAlt: alt === "" && image.getAttribute("aria-hidden") !== "true",
         genericAlt: Boolean(alt && genericAlt.test(alt.trim())),
-        lowResolution: rect.width > 1 && rect.height > 1 && (image.naturalWidth + 1 < rect.width || image.naturalHeight + 1 < rect.height),
+        lowResolution: Boolean(image.currentSrc) && rect.width > 1 && rect.height > 1 && (image.naturalWidth + 1 < rect.width || image.naturalHeight + 1 < rect.height),
       };
     });
 

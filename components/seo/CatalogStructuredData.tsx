@@ -59,11 +59,19 @@ export function ProgrammeStructuredData({ programme, division }: { programme: Pr
           image: `https://cca.it.com${programme.image}`,
           educationalLevel: "Beginner to career-ready",
           teaches: programme.modules.map((module) => module.title),
+          ...(programme.brochureUrl ? {
+            subjectOf: {
+              "@type": "DigitalDocument",
+              name: `${programme.title} Programme Guide`,
+              url: programme.brochureUrl,
+              encodingFormat: "application/pdf",
+            },
+          } : {}),
           hasCourseInstance: {
             "@type": "CourseInstance",
             courseMode: ["online", "blended"],
             courseWorkload: "P6M",
-            inLanguage: "en-US",
+            inLanguage: ["en", "si"],
           },
         },
         {

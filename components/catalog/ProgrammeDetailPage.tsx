@@ -1,4 +1,4 @@
-import { Award, CheckCircle2, Clock3, Laptop2, Star, UsersRound } from "lucide-react";
+import { Award, BookOpenText, CheckCircle2, Clock3, Laptop2, Star, UsersRound } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -29,12 +29,13 @@ export function ProgrammeDetailPage({ programme }: { programme: ProgrammeCatalog
                 <li aria-current="page" className="text-primary-deep">{programme.title}</li>
               </ol>
             </nav>
-            <span className="inline-flex min-h-10 items-center rounded-full border border-primary-bright/35 bg-white px-5 font-sans text-[14px] font-bold text-primary-deep shadow-sm">Career Accelerator Programme</span>
-            <h1 className="mt-7 max-w-[720px] font-sans text-[44px] font-semibold leading-[1.05] tracking-[-0.05em] text-black sm:text-[58px] lg:text-[72px]">{programme.title}</h1>
+            <span className="inline-flex min-h-10 items-center rounded-full border border-primary-bright/35 bg-white px-5 font-sans text-[14px] font-bold text-primary-deep shadow-sm">September 2026 Intake Open</span>
+            <h1 className="mt-7 max-w-[760px] text-balance font-sans text-[40px] font-semibold leading-[1.05] tracking-[-0.05em] text-black sm:text-[54px] lg:text-[64px] xl:text-[70px]">{programme.title}</h1>
             <p className="mt-7 max-w-[720px] font-body text-[16px] leading-7 text-muted-foreground lg:text-[18px] lg:leading-8">{programme.heroDescription}</p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap">
               <ActionLink href={whatsappRegistration} showArrow className="min-w-[168px]">Register Now</ActionLink>
               <ActionLink href="#course-breakdown" variant="outline" className="min-w-[220px]">View Course Breakdown</ActionLink>
+              {programme.brochureUrl ? <ActionLink href={programme.brochureUrl} variant="outline" className="min-w-[210px]"><BookOpenText aria-hidden="true" className="size-4" />View Programme Guide</ActionLink> : null}
             </div>
             <div className="mt-9 grid max-w-[620px] gap-3 sm:grid-cols-2">
               <div className="flex items-center gap-3 rounded-[16px] border border-black/10 bg-white/80 px-4 py-3">
@@ -60,10 +61,10 @@ export function ProgrammeDetailPage({ programme }: { programme: ProgrammeCatalog
           </div>
           <div>
             <span className="font-sans text-[14px] font-semibold uppercase tracking-[.16em] text-primary-readable">The Career</span>
-            <h2 id="role-title" className="mt-4 font-sans text-[36px] font-semibold leading-[1.12] tracking-[-0.04em] text-black sm:text-[48px]">Who is a {programme.title}?</h2>
+            <h2 id="role-title" className="mt-4 text-balance font-sans text-[36px] font-semibold leading-[1.12] tracking-[-0.04em] text-black sm:text-[48px]">{programme.careerHeading ?? `Who is a ${programme.title}?`}</h2>
             <p className="mt-7 font-body text-[16px] leading-8 text-muted-foreground lg:text-[18px]">{programme.roleDescription}</p>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-              {["Production-ready technical skills", "Real portfolio evidence", "Professional team workflows", "Career preparation and mentoring"].map((outcome) => (
+              {(programme.outcomes ?? ["Production-ready technical skills", "Real portfolio evidence", "Professional team workflows", "Career preparation and mentoring"]).map((outcome) => (
                 <li key={outcome} className="flex items-start gap-3 font-body text-[14px] leading-6 text-muted-foreground">
                   <CheckCircle2 aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-primary-bright" />{outcome}
                 </li>

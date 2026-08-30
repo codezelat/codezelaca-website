@@ -40,7 +40,7 @@ const copyrightYears = currentYear > 2025 ? `2025–${currentYear}` : "2025";
 
 export function Footer() {
   return (
-    <footer className="flex items-start bg-white px-5 py-14 sm:py-20 lg:mt-px lg:min-h-[682px] lg:px-0 lg:pt-20 lg:pb-5">
+    <footer className="flex items-start bg-white px-5 py-9 sm:py-20 lg:mt-px lg:min-h-[682px] lg:px-0 lg:pt-20 lg:pb-5">
       <div className="mx-auto flex w-full max-w-[1280px] flex-col rounded-[20px] bg-footer px-5 py-10 text-white sm:px-8 sm:py-12 lg:min-h-[582px] lg:px-5 lg:py-[10px]">
         <div className="grid flex-1 gap-12 px-0 py-2 text-center md:grid-cols-2 md:py-4 md:text-left lg:grid-cols-[1.15fr_1fr_.85fr] lg:gap-10 lg:px-[10px] lg:py-[40px]">
           <div className="flex flex-col items-center md:col-span-2 md:items-start lg:col-span-1">

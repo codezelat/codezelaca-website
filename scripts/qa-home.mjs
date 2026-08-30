@@ -19,6 +19,11 @@ const expectedProgramImagePaths = [
   "/images/programs/detail/digital-marketing-specialist.webp",
   "/images/programs/detail/front-end-developer.webp",
   "/images/programs/detail/graphic-designer.webp",
+  "/images/programs/full-stack-software-engineer.webp",
+  "/images/programs/project-manager-business-analyst-qa-engineer.webp",
+  "/images/programs/devops-cyber-security-engineer.webp",
+  "/images/programs/data-engineer-data-analyst.webp",
+  "/images/programs/ai-machine-learning-engineer.webp",
 ];
 const qaOrigin = new URL(baseUrl);
 const isLocalQa = ["localhost", "127.0.0.1"].includes(qaOrigin.hostname);
@@ -162,7 +167,7 @@ async function inspectPage(page) {
         externalTagLoadedLocally: Boolean(document.querySelector('script[src*="googletagmanager.com/gtag/js"]')),
       },
       approvedContent: {
-        august2026: document.body.textContent?.includes("August 2026") ?? false,
+        september2026: document.body.textContent?.includes("September 2026") ?? false,
         over18Tracks: document.body.textContent?.includes("over 18 specialized tracks") ?? false,
         copyright2026: document.body.textContent?.includes("© 2025–2026") ?? false,
       },

@@ -14,10 +14,10 @@ export async function generateMetadata({ params }: { params: Promise<{ program: 
   const { program: slug } = await params;
   const programme = programmeBySlug.get(slug);
   if (!programme) return {};
-  const description = `Train as a ${programme.title} with CodeZela Career Accelerator. Build real projects, learn from industry mentors and prepare for a job-ready career.`;
+  const description = programme.seoDescription ?? `Train as a ${programme.title} with CodeZela Career Accelerator. Build real projects, learn from industry mentors and prepare for a job-ready career.`;
 
   return createPageMetadata({
-    title: `${programme.title} Career Accelerator Programme - CodeZela`,
+    title: programme.seoTitle ?? `${programme.title} Career Accelerator Programme - CodeZela`,
     description,
     pathname: `/programs/${programme.slug}/`,
     image: programme.image,

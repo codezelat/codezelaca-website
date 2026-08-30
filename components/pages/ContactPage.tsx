@@ -28,7 +28,7 @@ export function ContactPage() {
               Choose your next step with clarity
             </h2>
             <p className="mt-6 max-w-[560px] font-body text-[16px] leading-7 text-muted-foreground lg:text-[17px] lg:leading-8">
-              Tell us where you are now and what you want to achieve. A programme advisor will help you compare suitable tracks, understand the learning format and prepare for the August 2026 cohort.
+              Tell us where you are now and what you want to achieve. A programme advisor will help you compare suitable tracks, understand the learning format and prepare for the September 2026 intake.
             </p>
 
             <figure className="relative mt-8 aspect-[16/7] max-w-[560px] overflow-hidden rounded-[20px_70px_20px_20px] bg-footer shadow-[0_14px_40px_rgba(16,24,40,.13)]">

@@ -30,6 +30,11 @@ const programmeSlugs = [
   "project-manager",
   "digital-marketing-specialist",
   "business-analyst",
+  "full-stack-software-engineer",
+  "project-manager-business-analyst-qa-engineer",
+  "devops-cyber-security-engineer",
+  "data-engineer-data-analyst",
+  "ai-machine-learning-engineer",
 ];
 
 const routes = [
