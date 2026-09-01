@@ -15,6 +15,7 @@ import Image from "next/image";
 
 import { EnglishFooter } from "@/components/english/EnglishFooter";
 import { EnglishHeader } from "@/components/english/EnglishHeader";
+import { EnglishHeroCarousel } from "@/components/english/EnglishHeroCarousel";
 import { EnglishJourney } from "@/components/english/EnglishJourney";
 import { englishAdmissionsUrl, englishFaqs, englishOutcomes } from "@/data/english";
 
@@ -65,7 +66,7 @@ export function EnglishLandingPage() {
                 English that moves your future <span className="text-[#3216b8]">forward.</span>
               </h1>
               <p className="mt-7 max-w-[620px] font-body text-[17px] leading-8 text-[#5f5b78] lg:text-[19px]">
-                A practical Diploma in English designed to help you communicate clearly, study confidently, and step into professional life.
+                A practical 100% online Diploma in English in Sri Lanka, designed to help you communicate clearly, study confidently, and step into professional life.
               </p>
               <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap">
                 <AdmissionsLink>Talk to Admissions</AdmissionsLink>
@@ -75,9 +76,7 @@ export function EnglishLandingPage() {
               </div>
             </div>
 
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] border border-[#dedaf0] bg-[#f7f4ff] shadow-[0_24px_70px_rgba(43,24,142,.14)] lg:min-h-[620px] lg:aspect-auto">
-              <Image src="/images/english/hero-discussion.webp" alt="Sri Lankan adult learners taking part in an English communication workshop" fill priority quality={90} sizes="(min-width: 1024px) 1500px, (min-width: 640px) 1450px, 620px" className="object-cover object-center" />
-            </div>
+            <EnglishHeroCarousel />
           </div>
         </section>
 

@@ -4,6 +4,7 @@ import { ArrowRight, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+import { EnglishBrand } from "@/components/english/EnglishBrand";
 import { englishAdmissionsUrl } from "@/data/english";
 
 const links = [
@@ -12,15 +13,6 @@ const links = [
   ["Who It Is For", "#who-it-is-for"],
   ["FAQs", "#faqs"],
 ] as const;
-
-function EnglishBrand() {
-  return (
-    <span className="inline-flex items-baseline gap-2 whitespace-nowrap font-sans text-[#17125c]">
-      <span className="text-[25px] font-extrabold tracking-[-0.05em] sm:text-[29px]">CCA</span>
-      <span className="text-[15px] font-semibold tracking-[-0.025em] sm:text-[18px]">School of English</span>
-    </span>
-  );
-}
 
 export function EnglishHeader() {
   const [menuOpen, setMenuOpen] = useState(false);

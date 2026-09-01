@@ -63,8 +63,8 @@ const routes = [
   {
     slug: "english",
     pathname: "/english/",
-    title: "Diploma in English | CCA School of English",
-    description: "Build confident spoken, written, academic and workplace English through practical online learning at CCA School of English. Talk to admissions today.",
+    title: "Diploma in English in Sri Lanka | CCA School of English",
+    description: "Study for a practical 100% online Diploma in English in Sri Lanka. Build confident speaking, writing, academic and workplace communication skills with CCA.",
     h1: "English that moves your future forward.",
     ogImage: "https://cca.it.com/images/english/hero-discussion.webp",
     required: ["A Diploma built for real communication.", "Real CCA graduation moments from 2026", "100% Online"],
@@ -260,12 +260,15 @@ for (const route of routes) {
     }
 
     if (route.slug === "english" && device.name === "desktop") {
+      const secondHeroDot = page.getByRole("button", { name: "Show hero image 2" });
+      await secondHeroDot.click();
+      const heroSliderWorked = await secondHeroDot.getAttribute("aria-current") === "true";
       const applyTab = page.getByRole("tab", { name: "Apply", exact: true });
       await applyTab.click();
       const clickedStage = await page.getByRole("heading", { name: "Apply English in real situations" }).isVisible();
       await applyTab.press("Home");
       const keyboardStage = await page.getByRole("heading", { name: "Build strong foundations" }).isVisible();
-      interaction = { ...interaction, journeyTabsWorked: clickedStage && keyboardStage };
+      interaction = { ...interaction, heroSliderWorked, journeyTabsWorked: clickedStage && keyboardStage };
     }
 
     if (route.slug === "english" && device.name === "mobile") {
@@ -346,6 +349,7 @@ if (!report.routes["about-us"].mobile.interaction.menuOpenedAndClosed) failures.
 if (!report.routes.events.desktop.interaction.galleryOpenedAdvancedAndClosed) failures.push("events gallery interaction");
 if (!report.routes["contact-us"].desktop.interaction.openedUrl?.startsWith("https://wa.me/94766772923?text=")) failures.push("contact WhatsApp handoff");
 if (!report.routes.english.desktop.interaction.journeyTabsWorked) failures.push("English journey tabs interaction");
+if (!report.routes.english.desktop.interaction.heroSliderWorked) failures.push("English hero slider interaction");
 if (!report.routes.english.mobile.interaction.menuOpenedAndClosed) failures.push("English mobile navigation interaction");
 if (report.endpoints.sitemapStatus !== 200 || report.endpoints.robotsStatus !== 200 || !report.endpoints.sitemapRoutesPresent.every((entry) => entry.present)) failures.push("SEO endpoints");
 if (!report.endpoints.internalLinkStatuses.every((entry) => entry.status === 200)) failures.push("internal link status");

@@ -59,6 +59,10 @@ export const englishJourneyStages = [
 
 export const englishFaqs = [
   {
+    question: "Can I study this Diploma in English online in Sri Lanka?",
+    answer: "Yes. The programme is delivered 100% online, so learners across Sri Lanka can join live guided lessons and complete practical activities from wherever they study.",
+  },
+  {
     question: "Who is this diploma for?",
     answer: "It is designed for school leavers, university students, early-career professionals and adults who want stronger English for study, work and everyday communication.",
   },

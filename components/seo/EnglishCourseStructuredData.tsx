@@ -1,4 +1,7 @@
+import { englishFaqs } from "@/data/english";
+
 const siteUrl = "https://cca.it.com";
+const description = "Study for a practical 100% online Diploma in English in Sri Lanka. Build confident speaking, writing, academic and workplace communication skills with CCA.";
 
 const englishStructuredData = [
   {
@@ -6,8 +9,8 @@ const englishStructuredData = [
     "@type": "WebPage",
     "@id": `${siteUrl}/english/#webpage`,
     url: `${siteUrl}/english/`,
-    name: "Diploma in English | CCA School of English",
-    description: "Build confident spoken, written, academic and workplace English through practical online learning at CCA School of English.",
+    name: "Diploma in English in Sri Lanka | CCA School of English",
+    description,
     isPartOf: { "@id": `${siteUrl}/#website` },
     about: { "@id": `${siteUrl}/english/#course` },
     primaryImageOfPage: {
@@ -22,14 +25,24 @@ const englishStructuredData = [
     "@context": "https://schema.org",
     "@type": "Course",
     "@id": `${siteUrl}/english/#course`,
-    name: "Diploma in English",
-    description: "A practical online Diploma in English focused on confident speaking, clear writing, comprehension, presentations and professional communication.",
+    name: "Diploma in English in Sri Lanka",
+    description,
     url: `${siteUrl}/english/`,
     provider: { "@id": `${siteUrl}/#organization` },
     educationalCredentialAwarded: "Diploma in English",
     courseMode: "online",
     inLanguage: "en",
-    image: `${siteUrl}/images/english/hero-discussion.webp`,
+    areaServed: { "@type": "Country", name: "Sri Lanka" },
+    audience: {
+      "@type": "EducationalAudience",
+      educationalRole: "student",
+      audienceType: "School leavers, university students, early-career professionals and adult learners",
+    },
+    image: [
+      `${siteUrl}/images/english/hero-discussion.webp`,
+      `${siteUrl}/images/events/convocation-2026/hero-celebration.webp`,
+      `${siteUrl}/images/events/convocation-2026/graduate-ready-portrait.webp`,
+    ],
     teaches: [
       "English grammar and sentence control",
       "Vocabulary and pronunciation",
@@ -46,6 +59,19 @@ const englishStructuredData = [
       { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
       { "@type": "ListItem", position: 2, name: "CCA School of English", item: `${siteUrl}/english/` },
     ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${siteUrl}/english/#faqs`,
+    mainEntity: englishFaqs.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
   },
 ];
 
