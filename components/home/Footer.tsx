@@ -17,6 +17,7 @@ const siteMenu = [
   ["About Us", "/about-us/"],
   ["Events", "/events/"],
   ["Skills Self-Audit", "/personal-skills-self-audit/"],
+  ["CCA School of English", "/english/"],
   ["Contact Us", "/contact-us/"],
   ["Terms and Conditions", "/terms-and-conditions/"],
 ] as const;
@@ -42,7 +43,7 @@ export function Footer() {
   return (
     <footer className="flex items-start bg-white px-5 py-9 sm:py-20 lg:mt-px lg:min-h-[682px] lg:px-0 lg:pt-20 lg:pb-5">
       <div className="mx-auto flex w-full max-w-[1280px] flex-col rounded-[20px] bg-footer px-5 py-10 text-white sm:px-8 sm:py-12 lg:min-h-[582px] lg:px-5 lg:py-[10px]">
-        <div className="grid flex-1 gap-12 px-0 py-2 text-center md:grid-cols-2 md:py-4 md:text-left lg:grid-cols-[1.15fr_1fr_.85fr] lg:gap-10 lg:px-[10px] lg:py-[40px]">
+        <div className="grid flex-1 gap-10 px-0 py-2 text-center sm:gap-12 md:grid-cols-2 md:py-4 md:text-left lg:grid-cols-[1.15fr_1fr_.85fr] lg:gap-10 lg:px-[10px] lg:py-[40px]">
           <div className="flex flex-col items-center md:col-span-2 md:items-start lg:col-span-1">
             <Link href="/" prefetch={false}><Brand inverse compact /></Link>
             <p className="mt-8 max-w-[380px] font-body text-[16px] leading-6 text-white">Transform your career in months with expert mentorship, real projects, and a proven curriculum.</p>
@@ -58,14 +59,14 @@ export function Footer() {
 
           <div>
             <h2 className="font-sans text-[18px] font-bold">Divisions</h2>
-            <ul className="mt-6 space-y-5 font-sans text-[14px] leading-6">
+            <ul className="mt-5 space-y-4 font-sans text-[14px] leading-6 lg:mt-6 lg:space-y-5">
               {divisions.map(([label, href]) => <li key={label}><Link href={href} className="transition-colors hover:text-primary-bright">{label}</Link></li>)}
             </ul>
           </div>
 
           <div>
             <h2 className="font-sans text-[18px] font-bold">Site Menu</h2>
-            <ul aria-label="Site menu" className="mt-6 space-y-5 font-sans text-[14px] leading-6">
+            <ul aria-label="Site menu" className="mt-5 space-y-4 font-sans text-[14px] leading-6 lg:mt-6 lg:space-y-5">
               {siteMenu.map(([label, href]) => <li key={label}><Link href={href} className="transition-colors hover:text-primary-bright">{label}</Link></li>)}
             </ul>
           </div>

@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 import { divisionCatalog, programmes } from "@/data/program-catalog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-08-31T00:00:00+05:30");
+  const lastModified = new Date("2026-09-01T00:00:00+05:30");
 
   const coreRoutes = [
     ["/", "weekly", 1],
@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/about-us/", "monthly", 0.8],
     ["/contact-us/", "monthly", 0.8],
     ["/personal-skills-self-audit/", "monthly", 0.85],
+    ["/english/", "monthly", 0.9],
     ["/privacy-policy/", "yearly", 0.4],
     ["/terms-and-conditions/", "yearly", 0.4],
     ["/refund-policy/", "yearly", 0.4],

@@ -61,6 +61,16 @@ const routes = [
     required: ["Personal Skills Self-Audit", "Answers stay on this device", "Start your audit"],
   },
   {
+    slug: "english",
+    pathname: "/english/",
+    title: "Diploma in English | CCA School of English",
+    description: "Build confident spoken, written, academic and workplace English through practical online learning at CCA School of English. Talk to admissions today.",
+    h1: "English that moves your future forward.",
+    ogImage: "https://cca.it.com/images/english/hero-discussion.webp",
+    required: ["A Diploma built for real communication.", "Real CCA graduation moments from 2026", "100% Online"],
+    customShell: true,
+  },
+  {
     slug: "privacy-policy",
     pathname: "/privacy-policy/",
     title: "Privacy Policy - Data Protection At Codezela Career Accelerator",
@@ -162,11 +172,15 @@ async function inspect(page, route) {
         .filter((href) => href.startsWith("/")),
       externalSelfLinks: Array.from(document.querySelectorAll('a[href^="https://cca.it.com"]'))
         .map((link) => link.getAttribute("href")),
-      copyright2026: text.includes("© 2025–2026"),
+      copyright2026: text.includes("© 2025–2026") || text.includes("© 2025 - 2026"),
       hasRefundFooterLink: Boolean(document.querySelector('footer a[href="/refund-policy/"], footer a[href="/refund-policy"]')),
       policyFooterLinks: Array.from(document.querySelectorAll('footer nav[aria-label="Policies and site information"] a'))
         .map((link) => link.getAttribute("href")),
       policiesRemovedFromSiteMenu: !document.querySelector('footer ul[aria-label="Site menu"] a[href="/privacy-policy/"], footer ul[aria-label="Site menu"] a[href="/privacy-policy"], footer ul[aria-label="Site menu"] a[href="/refund-policy/"], footer ul[aria-label="Site menu"] a[href="/refund-policy"]'),
+      englishCustomShell: Boolean(
+        document.querySelector('header nav[aria-label="School of English navigation"]')
+        && document.querySelector('footer nav[aria-label="School of English footer navigation"] a[href="/"]')
+      ),
     };
   }, route);
 }
@@ -245,6 +259,25 @@ for (const route of routes) {
       interaction = { ...interaction, galleryOpenedAdvancedAndClosed: opened && advanced };
     }
 
+    if (route.slug === "english" && device.name === "desktop") {
+      const applyTab = page.getByRole("tab", { name: "Apply", exact: true });
+      await applyTab.click();
+      const clickedStage = await page.getByRole("heading", { name: "Apply English in real situations" }).isVisible();
+      await applyTab.press("Home");
+      const keyboardStage = await page.getByRole("heading", { name: "Build strong foundations" }).isVisible();
+      interaction = { ...interaction, journeyTabsWorked: clickedStage && keyboardStage };
+    }
+
+    if (route.slug === "english" && device.name === "mobile") {
+      await page.evaluate(() => window.scrollTo(0, 0));
+      const button = page.getByRole("button", { name: "Open English school navigation" });
+      await button.click();
+      const opened = await page.getByRole("dialog", { name: "School of English navigation" }).isVisible();
+      await page.keyboard.press("Escape");
+      await page.getByRole("dialog", { name: "School of English navigation" }).waitFor({ state: "detached" });
+      interaction = { ...interaction, menuOpenedAndClosed: opened };
+    }
+
     report.routes[route.slug][device.name] = {
       httpStatus: response?.status(),
       ...inspection,
@@ -295,7 +328,9 @@ for (const route of routes) {
     if (result.dimensions.horizontalOverflow) failures.push(`${route.slug}/${device}: horizontal overflow`);
     if (result.brokenImages.length) failures.push(`${route.slug}/${device}: broken images`);
     if (result.errors.length) failures.push(`${route.slug}/${device}: browser errors`);
-    if (
+    if (route.customShell) {
+      if (!result.englishCustomShell || !result.copyright2026) failures.push(`${route.slug}/${device}: English shell`);
+    } else if (
       !result.localPrimaryNavigation
       || !result.copyright2026
       || !result.hasRefundFooterLink
@@ -310,6 +345,8 @@ for (const route of routes) {
 if (!report.routes["about-us"].mobile.interaction.menuOpenedAndClosed) failures.push("mobile navigation interaction");
 if (!report.routes.events.desktop.interaction.galleryOpenedAdvancedAndClosed) failures.push("events gallery interaction");
 if (!report.routes["contact-us"].desktop.interaction.openedUrl?.startsWith("https://wa.me/94766772923?text=")) failures.push("contact WhatsApp handoff");
+if (!report.routes.english.desktop.interaction.journeyTabsWorked) failures.push("English journey tabs interaction");
+if (!report.routes.english.mobile.interaction.menuOpenedAndClosed) failures.push("English mobile navigation interaction");
 if (report.endpoints.sitemapStatus !== 200 || report.endpoints.robotsStatus !== 200 || !report.endpoints.sitemapRoutesPresent.every((entry) => entry.present)) failures.push("SEO endpoints");
 if (!report.endpoints.internalLinkStatuses.every((entry) => entry.status === 200)) failures.push("internal link status");
 
