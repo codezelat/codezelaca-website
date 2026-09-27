@@ -48,7 +48,7 @@ const routes = [
     slug: "contact-us",
     pathname: "/contact-us/",
     title: "Contact Us - Start Your Application At Codezela Career Accelerator",
-    description: "Talk with the CodeZela Career Accelerator admissions team about programmes, applications and the September 2026 intake. Request a free career consultation today.",
+    description: "Talk with the CodeZela Career Accelerator admissions team about programmes, applications and the October 2026 intake. Request a free career consultation today.",
     h1: "Your Journey to a Global Career Begins Here",
     required: ["Your Journey to a Global Career Begins Here", "Request Consultation"],
   },

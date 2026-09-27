@@ -38,7 +38,7 @@ export function Hero() {
               <span aria-hidden="true" className="mr-[11px] inline-flex h-[14px] w-[21px] shrink-0 items-center rounded-full bg-[#7918d4] p-[3px]">
                 <span className="size-[8px] rounded-full bg-white" />
               </span>
-              September 2026 Intake Now Open - Limited Seats Available
+              October 2026 Intake Now Open - Limited Seats Available
             </div>
 
             <h1

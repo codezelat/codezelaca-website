@@ -38,7 +38,7 @@ export function ProgrammeDetailPage({ programme }: { programme: ProgrammeCatalog
               }`}
             >
               <span aria-hidden="true" className={`size-2 rounded-full ${intakeIsOpen ? "bg-emerald-500" : "bg-red-500"}`} />
-              {intakeIsOpen ? "September 2026 Intake Open" : "Intake Closed"}
+              {intakeIsOpen ? "October 2026 Intake Open" : "Intake Closed"}
             </span>
             <h1 className="mt-7 max-w-[760px] text-balance font-sans text-[40px] font-semibold leading-[1.05] tracking-[-0.05em] text-black sm:text-[54px] lg:text-[64px] xl:text-[70px]">{programme.title}</h1>
             <p className="mt-7 max-w-[720px] font-body text-[16px] leading-7 text-muted-foreground lg:text-[18px] lg:leading-8">{programme.heroDescription}</p>

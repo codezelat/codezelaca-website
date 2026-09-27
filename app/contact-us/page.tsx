@@ -5,7 +5,7 @@ import { PageStructuredData } from "@/components/seo/PageStructuredData";
 import { createPageMetadata } from "@/lib/page-metadata";
 
 const title = "Contact Us - Start Your Application At Codezela Career Accelerator";
-const description = "Talk with the CodeZela Career Accelerator admissions team about programmes, applications and the September 2026 intake. Request a free career consultation today.";
+const description = "Talk with the CodeZela Career Accelerator admissions team about programmes, applications and the October 2026 intake. Request a free career consultation today.";
 
 export const metadata: Metadata = createPageMetadata({ title, description, pathname: "/contact-us/" });
 

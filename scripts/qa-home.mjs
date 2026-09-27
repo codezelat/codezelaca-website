@@ -155,7 +155,7 @@ async function inspectPage(page) {
         externalTagLoadedLocally: Boolean(document.querySelector('script[src*="googletagmanager.com/gtag/js"]')),
       },
       approvedContent: {
-        september2026: document.body.textContent?.includes("September 2026") ?? false,
+        october2026: document.body.textContent?.includes("October 2026") ?? false,
         over18Tracks: document.body.textContent?.includes("over 18 specialized tracks") ?? false,
         copyright2026: document.body.textContent?.includes("© 2025–2026") ?? false,
       },
